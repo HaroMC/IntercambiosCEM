@@ -172,7 +172,9 @@ public class DaoEntidades {
             c = Conexion.abrir();
             ps = c.prepareStatement(sql);
             
-            //ps.setLong  (1, objPrograma.getCodigo());
+            //Date fechaInicio = objPrograma.getFechaInicio();
+            
+            ps.setLong  (1, objPrograma.getCodigo());
             ps.setString(2, objPrograma.getNombre());
             ps.setDate  (3, (Date) objPrograma.getFechaInicio());
             ps.setDate  (4, (Date) objPrograma.getFechaTermino());

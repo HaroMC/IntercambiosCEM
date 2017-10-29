@@ -3,6 +3,7 @@ package testing;
 import cem.controlador.dao.DaoEntidades;
 import cem.controlador.dao.DaoEntidadesPA;
 import cem.modelo.entidad.Alumno;
+import cem.modelo.entidad.Programa;
 import java.math.BigInteger;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -18,6 +19,7 @@ public class Main {
     public static void main(String[] args) {
 
         DaoEntidades dao = new DaoEntidades();
+        
         /*
         try {
             ArrayList<Alumno> alumnos = dao.listarAlumnos();
@@ -76,8 +78,23 @@ public class Main {
         try {
             long codigo = dao.ultimoCodigoPrograma();
             System.out.println("Último código = " + codigo);
+            
+            DateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
+            Date fechaInicio = formateador.parse("1964-06-12");
+            Date fechaTermino = formateador.parse("2000-01-01");
+            
+            Programa programa = new Programa(
+                    codigo++, "ProgramaX", fechaInicio, fechaTermino,
+                    1000000, "No publicado");
+            
+            if(dao.insertarPrograma(programa)) {
+                System.out.println("Programa insertado correctamente.");
+            }
+            else {
+                System.out.println("Programa no insertado.");
+            }
         }
-        catch (SQLException e) {
+        catch (SQLException | ParseException e) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
         }
         

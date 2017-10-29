@@ -1,6 +1,7 @@
 package cem.controlador.servlet;
 
 import cem.controlador.dao.DaoEntidades;
+import cem.modelo.entidad.Alumno;
 import cem.modelo.entidad.Programa;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,6 +34,9 @@ public class Servlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         
+        // El formate de fechas se ocupa en muchas operaciones, por lo que bien
+        // puede ser declarado desde aquí y reutilizar la variable.
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String accion = request.getParameter("accion");
 
         switch (accion) {
@@ -40,7 +44,6 @@ public class Servlet extends HttpServlet {
             //<editor-fold defaultstate="collapsed" desc=" Agregar programa ">
             case "agregarPrograma":
                 try {
-                    DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                     // Instanciamos un programa utilizando el constructor con
                     // parámetros.
                     Programa p = new Programa(
@@ -83,9 +86,79 @@ public class Servlet extends HttpServlet {
                 }
                 break;
                 //</editor-fold>
+            
+                
+                // Falta generar el formulario para ingresar un alumno.
+                // Puede ser en el grid final o en un formulario temporal creado
+                // para el caso.
+                
+            //<editor-fold defaultstate="collapsed" desc=" Agregar alumno ">
+            case "agregarAlumno":
+                try {
+                    Alumno alumno = new Alumno(
+                            Long.parseLong(
+                                    request.getParameter("numeroMatricula")),
+                            format.parse(
+                                    request.getParameter("fechaMatricula")),
+                            Integer.parseInt(
+                                    request.getParameter("rutPersona")),
+                            request.getParameter("nombreCompleto"),
+                            format.parse(
+                                    request.getParameter("fechaNacimiento")),
+                            request.getParameter("domicilio"),
+                            request.getParameter("ciudad"),
+                            request.getParameter("pais"),
+                            request.getParameter("correo"),
+                            request.getParameter("telefono"),
+                            "Alumno"
+                    );
+                    // El método de insertar alumno retorna 4 niveles de
+                    // alertas diferentes.
+                    switch (dao.insertarAlumno(alumno)) {
+                        case -2:
+                            request.setAttribute("mensaje", "El rut ingresado "
+                                    + "ya existe en la base de datos.");
+                            request.getRequestDispatcher("agregarAlumno.jsp")
+                                    .forward(request, response);
+                            break;
+                            
+                        case -1:
+                            request.setAttribute("mensaje", "Error al insertar "
+                                    + "los datos de la persona.");
+                            request.getRequestDispatcher("agregarAlumno.jsp")
+                                    .forward(request, response);
+                            break;
+                            
+                        case 0:
+                            request.setAttribute("mensaje", "Error al insertar "
+                                    + "los datos del alumno.");
+                            request.getRequestDispatcher("agregarAlumno.jsp")
+                                    .forward(request, response);
+                            break;
+                            
+                        case 1:
+                            request.setAttribute("mensaje", "Alumno insertado "
+                                    + "correctamente.");
+                            request.getRequestDispatcher("agregarAlumno.jsp")
+                                    .forward(request, response);
+                    }
+                }
+                catch (ParseException se) {
+                    Logger.getLogger(Servlet.class.getName())
+                            .log(Level.SEVERE, null, se);
+                }
+                break;
+                //</editor-fold>
                 
             case "NUEVO_CASO":
                 break;
         }
+    }
+    
+    
+    @Override
+    protected void doGet(HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
     }
 }

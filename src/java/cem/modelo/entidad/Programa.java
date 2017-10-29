@@ -5,30 +5,28 @@ import java.util.Date;
 
 public class Programa {
     
-    private BigDecimal codigo;
+    private long codigo;
     private String nombre;
     private Date fechaInicio;
     private Date fechaTermino;
     private int valor;
-    private int tipoPrograma;
     private String estado;
 
     public Programa() {
     }
 
-    public Programa(BigDecimal codigo, String nombre, Date fechaInicio,
-            Date fechaTermino, int valor, int tipoPrograma, String estado) {
+    public Programa(long codigo, String nombre, Date fechaInicio,
+            Date fechaTermino, int valor, String estado) {
         
         this.codigo = codigo;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
         this.fechaTermino = fechaTermino;
         this.valor = valor;
-        this.tipoPrograma = tipoPrograma;
         this.estado = estado;
     }
 
-    public BigDecimal getCodigo() {
+    public long getCodigo() {
         return codigo;
     }
 
@@ -48,15 +46,11 @@ public class Programa {
         return valor;
     }
 
-    public int getTipoPrograma() {
-        return tipoPrograma;
-    }
-
     public String getEstado() {
         return estado;
     }
 
-    public void setCodigo(BigDecimal codigo) {
+    public void setCodigo(long codigo) {
         this.codigo = codigo;
     }
 
@@ -74,10 +68,6 @@ public class Programa {
 
     public void setValor(int valor) {
         this.valor = valor;
-    }
-
-    public void setTipoPrograma(int tipoPrograma) {
-        this.tipoPrograma = tipoPrograma;
     }
 
     public void setEstado(String estado) {

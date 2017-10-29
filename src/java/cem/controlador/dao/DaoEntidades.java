@@ -21,7 +21,7 @@ public class DaoEntidades {
         this.rs = null;
     }
     
-    //<editor-fold defaultstate="collapsed" desc=" Persona ">
+    //<editor-fold defaultstate="collapsed" desc=" :Persona ">
     
     public boolean insertarPersona(int rut, String nombreCompleto,
             Date fechaNacimiento, String domicilio, String ciudad, String pais,
@@ -85,7 +85,7 @@ public class DaoEntidades {
     
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc=" Alumno ">
+    //<editor-fold defaultstate="collapsed" desc=" :Alumno ">
     
     public boolean insertarAlumno(Alumno objAlumno)
             throws SQLException {
@@ -158,12 +158,34 @@ public class DaoEntidades {
     
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc=" Programa ">
+    //<editor-fold defaultstate="collapsed" desc=" :Programa ">
     
-    public boolean insertarPrograma(Programa objPrograma) {
+    public boolean insertarPrograma(Programa objPrograma)
+            throws SQLException {
         
         boolean resultado = false;
-        String sql = "INSERT INTO CEM.PROGRAMA ()";
+        String sql = "INSERT INTO CEM.PROGRAMA (CODIGO, NOMBRE, FECHA_INICIO, "
+                + "FECHA_TERMINO, VALOR, ESTADO) "
+                + "VALUES (? ,?, ?, ?, ?, ?)";
+        try {
+            c = Conexion.abrir();
+            ps = c.prepareStatement(sql);
+            
+            ps.setLong  (1, objPrograma.getCodigo());
+            ps.setString(2, objPrograma.getNombre());
+            ps.setDate  (3, (Date) objPrograma.getFechaInicio());
+            ps.setDate  (4, (Date) objPrograma.getFechaTermino());
+            ps.setInt   (5, objPrograma.getValor());
+            ps.setString(6, objPrograma.getEstado());
+            
+            ps.executeUpdate();
+            resultado = true;
+        }
+        catch (SQLException se) {
+        }
+        finally  {
+            Conexion.cerrar(c, ps, null, rs);
+        }
         return resultado;
     }
     

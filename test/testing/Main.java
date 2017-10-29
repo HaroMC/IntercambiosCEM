@@ -3,6 +3,7 @@ package testing;
 import cem.controlador.dao.DaoEntidades;
 import cem.controlador.dao.DaoEntidadesPA;
 import cem.modelo.entidad.Alumno;
+import java.math.BigInteger;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -31,7 +32,7 @@ public class Main {
         }
         */
             
-        try {
+        /*try {
             DateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
             Date fechaNacimiento = formateador.parse("1964-06-12");
             Date fechaMatricula = formateador.parse("2000-01-01");
@@ -69,6 +70,16 @@ public class Main {
         }
         catch (ParseException | SQLException e) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+        }*/
+        
+        
+        try {
+            long codigo = dao.ultimoCodigoPrograma();
+            System.out.println("Último código = " + codigo);
         }
+        catch (SQLException e) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
     }
 }

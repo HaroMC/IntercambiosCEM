@@ -2,6 +2,7 @@ package cem.controlador.dao;
 
 import cem.modelo.conexion.Conexion;
 import cem.modelo.entidad.*;
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -171,7 +172,7 @@ public class DaoEntidades {
             c = Conexion.abrir();
             ps = c.prepareStatement(sql);
             
-            ps.setLong  (1, objPrograma.getCodigo());
+            //ps.setLong  (1, objPrograma.getCodigo());
             ps.setString(2, objPrograma.getNombre());
             ps.setDate  (3, (Date) objPrograma.getFechaInicio());
             ps.setDate  (4, (Date) objPrograma.getFechaTermino());
@@ -200,8 +201,9 @@ public class DaoEntidades {
             c = Conexion.abrir();
             ps = c.prepareStatement(sql);
             rs = ps.executeQuery(sql);
+            
             while (rs.next()) {
-                codigo = rs.getLong("CODIGO");
+                codigo = rs.getLong(1);
             }
         }
         catch (SQLException se) {

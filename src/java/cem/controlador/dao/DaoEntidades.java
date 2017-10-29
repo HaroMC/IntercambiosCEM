@@ -158,4 +158,14 @@ public class DaoEntidades {
     
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc=" Programa ">
+    
+    public boolean insertarPrograma(Programa objPrograma) {
+        
+        boolean resultado = false;
+        String sql = "INSERT INTO CEM.PROGRAMA ()";
+        return resultado;
+    }
+    
+    //</editor-fold>
 }

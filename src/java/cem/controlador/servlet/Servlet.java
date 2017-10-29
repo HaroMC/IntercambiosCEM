@@ -80,7 +80,7 @@ public class Servlet extends HttpServlet {
                                 .forward(request, response);
                     }
                 }
-                catch (SQLException | ParseException ex) {
+                catch (ParseException ex) {
                     Logger.getLogger(Servlet.class.getName())
                             .log(Level.SEVERE, null, ex);
                 }

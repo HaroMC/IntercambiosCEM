@@ -42,5 +42,20 @@ public class Alumno extends Persona {
         this.fechaMatricula = fechaMatricula;
     }
     
+    @Override
+    public String toString() {
+        return
+                "Rut                 : " + getRut() + "\n" +
+                "Nombre completo     : " + getNombreCompleto() + "\n" +
+                "Fecha de nacimiento : " + getFechaNacimiento() + "\n" +
+                "Domicilio           : " + getDomicilio() + "\n"+
+                "Ciudad              : " + getCiudad() + "\n"+
+                "País                : " + getPais() + "\n"+
+                "E-mail              : " + getCorreo() + "\n"+
+                "Teléfono            : " + getTelefono() + "\n"+
+                "Número matrícula    : " + numeroMatricula + "\n" +
+                "Fecha Matrícula     : " + fechaMatricula + "\n";
+    }
+    
     
 }

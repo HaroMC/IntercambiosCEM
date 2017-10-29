@@ -34,7 +34,7 @@ public class Servlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         
-        // El formate de fechas se ocupa en muchas operaciones, por lo que bien
+        // El formato de fechas se ocupa en muchas operaciones, por lo que bien
         // puede ser declarado desde aquí y reutilizar la variable.
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String accion = request.getParameter("accion");
@@ -88,9 +88,9 @@ public class Servlet extends HttpServlet {
                 //</editor-fold>
             
                 
-                // Falta generar el formulario para ingresar un alumno.
-                // Puede ser en el grid final o en un formulario temporal creado
-                // para el caso.
+            // Falta generar el formulario para ingresar un alumno.
+            // Puede ser en el grid final o en un formulario temporal creado
+            // para el caso.
                 
             //<editor-fold defaultstate="collapsed" desc=" Agregar alumno ">
             case "agregarAlumno":

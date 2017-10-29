@@ -161,8 +161,10 @@ public class DaoEntidades {
             rs = ps.executeQuery(sql);
             while (rs.next()) {
                 listado.add(new Alumno(
+                        // Datos de alumno:
                         rs.getLong(1),
                         rs.getDate(2),
+                        // Datos de persona:
                         rs.getInt(3),
                         rs.getString(4),
                         rs.getDate(5),
@@ -276,7 +278,7 @@ public class DaoEntidades {
         return resultado;
     }
     
-    public Alumno buscarAlumno(int rut) {
+    public Alumno buscarAlumno(int rutPersona) {
         Alumno alumno = null;
         String sql = "SELECT NUMERO_MATRICULA, FECHA_MATRICULA, RUT_PERSONA, "
                 + "NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, CIUDAD, PAIS, "
@@ -287,7 +289,7 @@ public class DaoEntidades {
             Conexion conexion = new Conexion();
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
-            ps.setInt(1, rut);
+            ps.setInt(1, rutPersona);
             rs = ps.executeQuery(sql);
             while (rs.next()) {
                 alumno = new Alumno(
@@ -498,7 +500,182 @@ public class DaoEntidades {
     //</editor-fold>
     
     
-    //<editor-fold defaultstate="collapsed" desc=" Familia Anfitriona : Faltan ">
+    //<editor-fold defaultstate="collapsed" desc=" Familia Anfitriona : Completo ">
+    
+    public int insertarFamilia(FamiliaAnfitriona objFamilia) {
+        int resultado = 0;
+        if (!comprobarRutExistente(objFamilia.getRut())) {
+            Date fechaNacimiento = new java.sql.Date(
+                    objFamilia.getFechaNacimiento().getTime());
+            if (insertarPersona(
+                    objFamilia.getRut(),
+                    objFamilia.getNombreCompleto(),
+                    fechaNacimiento,
+                    objFamilia.getDomicilio(),
+                    objFamilia.getCiudad(),
+                    objFamilia.getPais(),
+                    objFamilia.getCorreo(),
+                    objFamilia.getTelefono(),
+                    objFamilia.getTipo())) {
+                
+                String sql = "INSERT INTO FAMILIA_ANFITRIONA (RUT_PERSONA, "
+                        + "CANTIDAD_INTEGRANTES, ESTADO) VALUES (?, ?, ?)";
+                try {
+                    Conexion conexion = new Conexion();
+                    c = conexion.abrir();
+                    ps = c.prepareStatement(sql);
+                    ps.setInt   (1, objFamilia.getRut());
+                    ps.setShort (2, objFamilia.getCantidadIntegrantes());
+                    ps.setString(3, objFamilia.getEstado());
+                    ps.executeUpdate();
+                    ps.close();
+                    c.close();
+                    conexion.cerrar();
+                    resultado = 1;
+                }
+                catch (SQLException se) {
+                    // Controlar excepción.
+                }
+            }
+            else {
+                resultado = -1;
+            }
+        }
+        else {
+            resultado = -2;
+        }
+        return resultado;
+    }
+    
+    public int modificarFamilia(FamiliaAnfitriona objFamilia) {
+        int resultado = 0;
+        if (comprobarRutExistente(objFamilia.getRut())) {
+            Date fechaNacimiento = new java.sql.Date(
+                    objFamilia.getFechaNacimiento().getTime());
+            if (modificarPersona(
+                    objFamilia.getRut(),
+                    objFamilia.getNombreCompleto(),
+                    fechaNacimiento,
+                    objFamilia.getDomicilio(),
+                    objFamilia.getCiudad(),
+                    objFamilia.getPais(),
+                    objFamilia.getCorreo(),
+                    objFamilia.getTelefono(),
+                    objFamilia.getTipo())) {
+                
+                String sql = "UPDATE CEM.FAMILIA_ANFITRIONA "
+                        + "SET CANTIDAD_INTEGRANTES = ?, ESTADO = ? "
+                        + "WHERE RUT_PERSONA = ?";
+                try {
+                    Conexion conexion = new Conexion();
+                    c = conexion.abrir();
+                    ps = c.prepareStatement(sql);
+                    ps.setShort (1, objFamilia.getCantidadIntegrantes());
+                    ps.setString(2, objFamilia.getEstado());
+                    ps.setInt   (3, objFamilia.getRut());
+                    ps.executeUpdate();
+                    ps.close();
+                    c.close();
+                    conexion.cerrar();
+                    resultado = 1;
+                }
+                catch (SQLException se) {
+                    // Controlar excepción.
+                }
+            }
+            else {
+                resultado = -1;
+            }
+        }
+        else {
+            resultado = -2;
+        }
+        return resultado;
+    }
+    
+    public ArrayList<FamiliaAnfitriona> listarFamilias() {
+        ArrayList<FamiliaAnfitriona> listado = new ArrayList<>();
+        String sql = "SELECT CANTIDAD_INTEGRANTES, ESTADO, RUT_PERSONA, "
+                + "NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, CIUDAD, PAIS, "
+                + "CORREO, TELEFONO, TIPO FROM CEM.FAMILIA_ANFITRIONA "
+                + "INNER JOIN CEM.PERSONA "
+                + "ON FAMILIA_ANFITRIONA.RUT_PERSONA = PERSONA.RUT";
+        try {
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            while (rs.next()) {
+                listado.add(new FamiliaAnfitriona(
+                        // Datos de familia:
+                        rs.getShort(1),
+                        rs.getString(2),
+                        // Datos de persona:
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11)
+                ));
+            }
+            rs.close();
+            ps.close();
+            c.close();
+            conexion.cerrar();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+        return listado;
+    }
+    
+    public FamiliaAnfitriona buscarFamilia(int rutPersona) {
+        FamiliaAnfitriona familia = null;
+        String sql = "SELECT CANTIDAD_INTEGRANTES, ESTADO, RUT_PERSONA, "
+                + "NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, CIUDAD, PAIS, "
+                + "CORREO, TELEFONO, TIPO FROM CEM.FAMILIA_ANFITRIONA "
+                + "INNER JOIN CEM.PERSONA "
+                + "ON FAMILIA_ANFITRIONA.RUT_PERSONA = PERSONA.RUT"
+                + "WHERE RUT = ?";
+        try {
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
+            ps = c.prepareStatement(sql);
+            ps.setInt(1, rutPersona);
+            rs = ps.executeQuery(sql);
+            while (rs.next()) {
+                familia = new FamiliaAnfitriona(
+                        // Datos de familia:
+                        rs.getShort(1),
+                        rs.getString(2),
+                        // Datos de persona:
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11)
+                );
+            }
+        }
+        catch (SQLException se) {
+            // Controlar excepción.
+        }
+        return familia;
+    }
+    
+    //</editor-fold>
+    
+    
+    //<editor-fold defaultstate="collapsed" desc=" Asignatura ">
     
     
     

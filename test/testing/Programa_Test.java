@@ -1,7 +1,6 @@
 package testing;
 
 import cem.controlador.dao.DaoEntidades;
-import cem.controlador.dao.DaoEntidadesPA;
 import cem.modelo.entidad.Alumno;
 import cem.modelo.entidad.Programa;
 import java.math.BigInteger;

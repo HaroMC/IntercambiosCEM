@@ -4,35 +4,28 @@ import java.util.Date;
 
 public class FamiliaAnfitriona extends Persona {
     
-    private int rutPersona;
     private Short cantidadIntegrantes;
     private String estado;
 
     public FamiliaAnfitriona() {
     }
 
-    public FamiliaAnfitriona(int rutPersona, Short cantidadIntegrantes,
+    public FamiliaAnfitriona(Short cantidadIntegrantes,
             String estado) {
         
-        this.rutPersona = rutPersona;
         this.cantidadIntegrantes = cantidadIntegrantes;
         this.estado = estado;
     }
 
-    public FamiliaAnfitriona(int rutPersona, Short cantidadIntegrantes,
-            String estado, int rut, String nombreCompleto, Date fechaNacimiento,
+    public FamiliaAnfitriona(Short cantidadIntegrantes, String estado,
+            int rutPersona, String nombreCompleto, Date fechaNacimiento,
             String domicilio, String ciudad, String pais, String correo,
             String telefono, String tipo) {
         
-        super(rut, nombreCompleto, fechaNacimiento, domicilio, ciudad, pais,
-                correo, telefono, tipo);
-        this.rutPersona = rutPersona;
+        super(rutPersona, nombreCompleto, fechaNacimiento, domicilio, ciudad,
+                pais, correo, telefono, tipo);
         this.cantidadIntegrantes = cantidadIntegrantes;
         this.estado = estado;
-    }
-
-    public int getRutPersona() {
-        return rutPersona;
     }
 
     public Short getCantidadIntegrantes() {
@@ -43,16 +36,27 @@ public class FamiliaAnfitriona extends Persona {
         return estado;
     }
 
-    public void setRutPersona(int rutPersona) {
-        this.rutPersona = rutPersona;
-    }
-
     public void setCantidadIntegrantes(Short cantidadIntegrantes) {
         this.cantidadIntegrantes = cantidadIntegrantes;
     }
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+    
+    @Override
+    public String toString() {
+        return
+                "Rut                     : " + getRut() + "\n" +
+                "Jefe de familia         : " + getNombreCompleto() + "\n" +
+                "Fecha de nacimiento     : " + getFechaNacimiento() + "\n" +
+                "Domicilio               : " + getDomicilio() + "\n"+
+                "Ciudad                  : " + getCiudad() + "\n"+
+                "País                    : " + getPais() + "\n"+
+                "E-mail                  : " + getCorreo() + "\n"+
+                "Teléfono                : " + getTelefono() + "\n"+
+                "Cantidad de integrantes : " + cantidadIntegrantes + "\n" +
+                "Estado de inscripción   : " + estado + "\n";
     }
     
     

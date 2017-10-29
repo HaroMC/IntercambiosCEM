@@ -33,7 +33,8 @@ public class DaoEntidades {
                 + "FECHA_NACIMIENTO, DOMICILIO, CIUDAD, PAIS, CORREO, "
                 + "TELEFONO, TIPO) VALUES (?, ?, ?, ?, ? ,? ,? ,? ,?);";
         try {
-            c = Conexion.abrir();
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
             ps = c.prepareStatement(sql);
             
             ps.setInt   (1, rut);
@@ -47,14 +48,20 @@ public class DaoEntidades {
             ps.setString(9, tipo);
             
             ps.executeUpdate();
+            
+            ps.close();
+            c.close();
+            conexion.cerrarConexion();
+            
             resultado = true;
         }
         catch (SQLException se) {
             c.rollback();
         }
-        finally {
-            Conexion.cerrar(c, ps, null, null);
-        }
+        /*finally {
+            conexion.cerrar(ps, rs);
+            //Conexion.cerrar(c, ps, null, null);
+        }*/
         return resultado;
     }
     
@@ -64,20 +71,28 @@ public class DaoEntidades {
         boolean resultado = false;
         String sql = "SELECT * FROM CEM.PERSONA WHERE RUT = ?;";
         try {
-            c = Conexion.abrir();
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
             ps = c.prepareStatement(sql);
+            
             ps.setInt(1, rut);
             rs = ps.executeQuery(sql);
             if (rs.getRow() > 0) {
                 resultado = true;
             }
+            
+            ps.close();
+            rs.close();
+            c.close();
+            conexion.cerrarConexion();
         }
         catch (SQLException se) {
             c.rollback();
         }
-        finally {
-            Conexion.cerrar(c, ps, null, rs);
-        }
+        /*finally {
+            conexion.cerrar(ps, rs);
+            //Conexion.cerrar(c, ps, null, rs);
+        }*/
         return resultado;
     }
     
@@ -107,7 +122,8 @@ public class DaoEntidades {
                         + "NUMERO_MATRICULA, FECHA_MATRICULA)"
                         + "VALUES (? , ?, ?);";
                 try {
-                    c = Conexion.abrir();
+                    Conexion conexion = new Conexion();
+                    c = conexion.abrir();
                     ps = c.prepareStatement(sql);
                     
                     ps.setInt (1, objAlumno.getRut());
@@ -115,14 +131,20 @@ public class DaoEntidades {
                     ps.setDate(3, (Date) objAlumno.getFechaMatricula());
                     
                     ps.executeUpdate();
+                    
+                    ps.close();
+                    c.close();
+                    conexion.cerrarConexion();
+                     
                     resultado = true;
                 }
                 catch (SQLException se) {
                     c.rollback();
                 }
-                finally {
-                    Conexion.cerrar(c, ps, null, null);
-                }
+                /*finally {
+                    conexion.cerrar(ps, rs);
+                    //Conexion.cerrar(c, ps, null, null);
+                }*/
             }
         }
         return resultado;
@@ -134,9 +156,11 @@ public class DaoEntidades {
         ArrayList<Alumno> listado = new ArrayList<>();
         String sql = "SELECT * FROM CEM.ALUMNO;";
         try {
-            c = Conexion.abrir();
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
             ps = c.prepareStatement(sql);
             rs = ps.executeQuery(sql);
+            
             while (rs.next()) {
                 rs.getInt("RUT_PERSONA");
                 rs.getLong("NUMERO_MATRICULA");
@@ -146,19 +170,31 @@ public class DaoEntidades {
                         rs.getDate("FECHA_MATRICULA")
                 ));
             }
+            
+            ps.close();
+            rs.close();
+            c.close();
+            conexion.cerrarConexion();
         }
         catch (SQLException se) {
             c.rollback();
         }
-        finally {
-            Conexion.cerrar(c, ps, null, rs);
-        }
+        /*finally {
+            conexion.cerrar(ps, rs);
+            //Conexion.cerrar(c, ps, null, rs);
+        }*/
         return listado;
     }
     
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc=" :Programa ">
+    
+    private void conectar() {
+        Conexion cx = new Conexion();
+        Connection ct = cx.abrir();
+    }
+    
     
     public boolean insertarPrograma(Programa objPrograma)
             throws SQLException {
@@ -168,11 +204,15 @@ public class DaoEntidades {
                 + "FECHA_TERMINO, VALOR, ESTADO) "
                 + "VALUES (? ,?, ?, ?, ?, ?)";
         try {
-            c = Conexion.abrir();
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
             ps = c.prepareStatement(sql);
             
-            Date fechaInicio = new java.sql.Date(objPrograma.getFechaInicio().getTime());
-            Date fechaTermino = new java.sql.Date(objPrograma.getFechaTermino().getTime());
+            Date fechaInicio = new java.sql.Date(
+                    objPrograma.getFechaInicio().getTime());
+            
+            Date fechaTermino = new java.sql.Date(
+                    objPrograma.getFechaTermino().getTime());
             
             ps.setLong  (1, objPrograma.getCodigo());
             ps.setString(2, objPrograma.getNombre());
@@ -182,14 +222,20 @@ public class DaoEntidades {
             ps.setString(6, objPrograma.getEstado());
             
             ps.executeUpdate();
+            
+            ps.close();
+            c.close();
+            conexion.cerrarConexion();
+            
             resultado = true;
         }
         catch (SQLException se) {
             // Controlar excepción.
         }
-        finally  {
-            Conexion.cerrar(c, ps, null, rs);
-        }
+        /*finally  {
+            conexion.cerrar(ps, rs);
+            //Conexion.cerrar(c, ps, null, rs);
+        }*/
         return resultado;
     }
     
@@ -200,19 +246,27 @@ public class DaoEntidades {
         long codigo = -1;
         String sql = "SELECT MAX(CODIGO) FROM CEM.PROGRAMA";
         try {
-            c = Conexion.abrir();
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
             ps = c.prepareStatement(sql);
             rs = ps.executeQuery(sql);
+            
             while (rs.next()) {
                 codigo = rs.getLong(1);
             }
+            
+            ps.close();
+            rs.close();
+            c.close();
+            conexion.cerrarConexion();
         }
         catch (SQLException se) {
             // Controlar excepción.
         }
-        finally {
-            Conexion.cerrar(c, ps, null, rs);
-        }
+        /*finally {
+            conexion.cerrar(ps, rs);
+            //Conexion.cerrar(c, ps, null, rs);
+        }*/
         return codigo;
     }
     

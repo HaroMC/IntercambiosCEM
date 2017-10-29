@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DaoEntidadesPA {
-    
+    /*
     private Connection c;
     private PreparedStatement ps;
     private CallableStatement cs;
@@ -36,7 +36,7 @@ public class DaoEntidadesPA {
         }
         
         
-    }*/
+    }
     
     public boolean alumnoInsertar(Alumno objAlumno) throws SQLException {
         boolean resultado = false;
@@ -79,5 +79,5 @@ public class DaoEntidadesPA {
     
     public boolean modificar() {
         throw new UnsupportedOperationException("No implementado.");
-    }
+    }*/
 }

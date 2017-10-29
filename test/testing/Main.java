@@ -93,7 +93,7 @@ public class Main {
             Date fechaTermino = new java.sql.Date(fechaTe.getTime());*/
             
             Programa programa = new Programa(
-                    codigo++, "ProgramaX", fechaInicio, fechaTermino,
+                    codigo++, "ProgramaX", fechaIn, fechaTe,
                     1000000, "No publicado");
             
             if(dao.insertarPrograma(programa)) {

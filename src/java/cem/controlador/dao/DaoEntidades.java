@@ -2,7 +2,6 @@ package cem.controlador.dao;
 
 import cem.modelo.conexion.Conexion;
 import cem.modelo.entidad.*;
-import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -172,12 +171,13 @@ public class DaoEntidades {
             c = Conexion.abrir();
             ps = c.prepareStatement(sql);
             
-            //Date fechaInicio = objPrograma.getFechaInicio();
+            Date fechaInicio = new java.sql.Date(objPrograma.getFechaInicio().getTime());
+            Date fechaTermino = new java.sql.Date(objPrograma.getFechaTermino().getTime());
             
             ps.setLong  (1, objPrograma.getCodigo());
             ps.setString(2, objPrograma.getNombre());
-            ps.setDate  (3, (Date) objPrograma.getFechaInicio());
-            ps.setDate  (4, (Date) objPrograma.getFechaTermino());
+            ps.setDate  (3, fechaInicio);
+            ps.setDate  (4, fechaTermino);
             ps.setInt   (5, objPrograma.getValor());
             ps.setString(6, objPrograma.getEstado());
             
@@ -203,7 +203,6 @@ public class DaoEntidades {
             c = Conexion.abrir();
             ps = c.prepareStatement(sql);
             rs = ps.executeQuery(sql);
-            
             while (rs.next()) {
                 codigo = rs.getLong(1);
             }

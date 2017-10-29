@@ -74,14 +74,23 @@ public class Main {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
         }*/
         
+        java.util.Date utilDate = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        System.out.println("utilDate:" + utilDate);
+        System.out.println("sqlDate:" + sqlDate);
+
         
         try {
             long codigo = dao.ultimoCodigoPrograma();
             System.out.println("Último código = " + codigo);
             
             DateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
-            Date fechaInicio = formateador.parse("1964-06-12");
-            Date fechaTermino = formateador.parse("2000-01-01");
+            
+            Date fechaIn = formateador.parse("1964-06-12");
+            Date fechaTe = formateador.parse("2000-01-01");
+            
+            /*Date fechaInicio = new java.sql.Date(fechaIn.getTime());
+            Date fechaTermino = new java.sql.Date(fechaTe.getTime());*/
             
             Programa programa = new Programa(
                     codigo++, "ProgramaX", fechaInicio, fechaTermino,

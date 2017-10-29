@@ -23,7 +23,7 @@ public class DaoEntidades {
     
     //<editor-fold defaultstate="collapsed" desc=" Persona ">
     
-    private boolean insertarPersona(int rut, String nombreCompleto,
+    public boolean insertarPersona(int rut, String nombreCompleto,
             Date fechaNacimiento, String domicilio, String ciudad, String pais,
             String correo, String telefono, String tipo)
             throws SQLException {
@@ -58,7 +58,7 @@ public class DaoEntidades {
         return resultado;
     }
     
-    private boolean buscarRut(int rut)
+    public boolean buscarRut(int rut)
             throws SQLException {
         
         boolean resultado = false;

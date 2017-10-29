@@ -86,6 +86,6 @@
             </table>
         </form>
         ${mensaje}
-        <input type="text" name="agregarPrograma" hidden="true" />
+        <input type="text" name="accion" value="agregarPrograma" hidden="true" />
     </body>
 </html>

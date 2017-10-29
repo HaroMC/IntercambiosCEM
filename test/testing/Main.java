@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
 
         DaoEntidades dao = new DaoEntidades();
-
+        /*
         try {
             ArrayList<Alumno> alumnos = dao.listarAlumnos();
             for (Alumno alumno : alumnos) {
@@ -29,36 +29,46 @@ public class Main {
         catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        */
             
-            
-            /*try {
+        try {
             DateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
             Date fechaNacimiento = formateador.parse("1964-06-12");
             Date fechaMatricula = formateador.parse("2000-01-01");
             
             Alumno alumno = new Alumno(
-            3213545,
-            fechaMatricula,
-            154789654,
-            "Juan Lira Lira",
-            fechaNacimiento,
-            "Calle 3654",
-            "Santiago",
-            "Chile",
-            "juan.lira@correo.com",
-            "9-2514-3652",
-            "Alumno"
+                3213545,
+                fechaMatricula,
+                154789654,
+                "Juan Lira Lira",
+                fechaNacimiento,
+                "Calle 3654",
+                "Santiago",
+                "Chile",
+                "juan.lira@correo.com",
+                "9-2514-3652",
+                "Alumno"
             );
             
-            if (dao.insertarAlumno(alumno)) {
-            System.out.println("Persona insertada correctamente");
+            //if (dao.insertarAlumno(alumno)) {
+            if (dao.insertarPersona(
+                154789654,
+                "Juan Lira Lira",
+                (java.sql.Date) fechaNacimiento,
+                "Calle 3654",
+                "Santiago",
+                "Chile",
+                "juan.lira@correo.com",
+                "9-2514-3652",
+                "Alumno")) {
+                    System.out.println("Persona insertada correctamente");
             }
             else {
-            System.out.println("No se logró insertar la persona.");
+                System.out.println("No se logró insertar la persona.");
             }
-            }
-            catch (ParseException | SQLException e) {
+        }
+        catch (ParseException | SQLException e) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
-            }*/
+        }
     }
 }

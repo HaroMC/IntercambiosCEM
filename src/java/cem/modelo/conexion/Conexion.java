@@ -23,7 +23,7 @@ public class Conexion {
         try {
             
             dbPropiedades = new Properties();
-            dbPropiedades.load(new FileInputStream("/src/java/cem/modelo/conexion/OracleJDBC.properties"));
+            dbPropiedades.load(new FileInputStream("./src/java/cem/modelo/conexion/OracleJDBC.properties"));
             
             // This will load all the properties (i.e. key=value) from the
             // .properties file from the current working directory.

@@ -182,11 +182,43 @@ public class DaoEntidades {
             resultado = true;
         }
         catch (SQLException se) {
+            // Controlar excepción.
         }
         finally  {
             Conexion.cerrar(c, ps, null, rs);
         }
         return resultado;
+    }
+    
+    
+    public long ultimoCodigoPrograma()
+            throws SQLException {
+        
+        long codigo = -1;
+        String sql = "SELECT MAX(CODIGO) FROM CEM.PROGRAMA";
+        try {
+            c = Conexion.abrir();
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            while (rs.next()) {
+                codigo = rs.getLong("CODIGO");
+            }
+        }
+        catch (SQLException se) {
+            // Controlar excepción.
+        }
+        finally {
+            Conexion.cerrar(c, ps, null, rs);
+        }
+        return codigo;
+    }
+    
+    
+    public ArrayList<Programa> listarProgramas() {
+        
+        ArrayList<Programa> listado = new ArrayList<>();
+        
+        return listado;
     }
     
     //</editor-fold>

@@ -35,7 +35,7 @@ public class Servlet extends HttpServlet {
         //ACCIONES DEL SERVLET SEGUN EL FORMULARIO
 
         switch (accion) {
-            case "agregarPrograma":
+            case "agregarProgramaa":
                 //<editor-fold defaultstate="collapsed" desc="Proceso para agregar un programa ">
 
                 //PROCESO PARA INSERTAR UN PROGRAMA
@@ -101,6 +101,12 @@ public class Servlet extends HttpServlet {
                     }
                 }
                 //</editor-fold>
+                break;
+            case "agregarPrograma":
+                request.setAttribute("mensaje", "llegue "
+                                    + "al sistema");
+                            request.getRequestDispatcher("agregarPrograma.jsp").
+                                    forward(request, response);
                 break;
 
         }

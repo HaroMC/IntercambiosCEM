@@ -15,7 +15,7 @@
     <body>
         <h1>Ingreso de programa</h1>
         <%-- formulario de ingreso de un programa--%>
-        <form action="AgregarPrograma" method="post">
+        <form action="Servlet" method="post">
             <!--Lo ordenè por tabla, tr es la fila, y td la columna, te genera un sector estàtico-->
             <table>
                 <tr>
@@ -71,21 +71,24 @@
                 <tr>
                     <td>Fecha de inicio:</td>
                     <td>
-                        <input type="datetime" name="fecha"/>
+                        <input type="date" name="fecha"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Fecha de Termino:</td>
                     <td>
-                        <input type="datetime" name="fecha2"/>
+                        <input type="date" name="fecha2"/>
                     </td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Ingresar Programa"/></td>
                 </tr>
+                <tr>
+                    <td><input type="text" name="accion" value="agregarPrograma" hidden="true" /></td>
+                </tr>
             </table>
         </form>
         ${mensaje}
-        <input type="text" name="accion" value="agregarPrograma" hidden="true" />
+
     </body>
 </html>

@@ -71,13 +71,13 @@
                 <tr>
                     <td>Fecha de inicio:</td>
                     <td>
-                        <input type="date" name="fecha"/>
+                        <input type="date" name="fechaInicio"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Fecha de Termino:</td>
                     <td>
-                        <input type="date" name="fecha2"/>
+                        <input type="date" name="fechaTermino"/>
                     </td>
                 </tr>
                 <tr>

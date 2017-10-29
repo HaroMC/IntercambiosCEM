@@ -29,13 +29,15 @@ public class Servlet extends HttpServlet {
     }
     
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request,
+            HttpServletResponse response)
             throws ServletException, IOException {
         
         String accion = request.getParameter("accion");
 
         switch (accion) {
             
+            //<editor-fold defaultstate="collapsed" desc=" Agregar programa ">
             case "agregarPrograma":
                 try {
                     DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -58,16 +60,16 @@ public class Servlet extends HttpServlet {
                     // Llamamos a la funcion de agregar un programa, la cual
                     // requiere de un Programa (p).
                     if (dao.insertarPrograma(p)) {
-                        // Si el metodo, luego de realizar la insercion, retorna
-                        // true, editamos el mensaje en el formulario de agregar
-                        // programa.
+                        // Si el método, luego de realizar la inserción,
+                        // retorna true, editamos el mensaje en el formulario
+                        // de agregar programa.
                         request.setAttribute("mensaje", "Programa agregado "
                                 + "correctamente.");
                         request.getRequestDispatcher("agregarPrograma.jsp")
                                 .forward(request, response);
                     }
                     else {
-                        // Si el metodo retorna false, informamos que el
+                        // Si el método retorna false, informamos que el
                         // problema se encuentra en el DAO.
                         request.setAttribute("mensaje", "Se ha producido un "
                                 + "error al registrar.");
@@ -80,6 +82,7 @@ public class Servlet extends HttpServlet {
                             .log(Level.SEVERE, null, ex);
                 }
                 break;
+                //</editor-fold>
                 
             case "NUEVO_CASO":
                 break;

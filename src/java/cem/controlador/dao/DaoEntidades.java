@@ -30,6 +30,7 @@ public class DaoEntidades {
     // datos, se eliminará tambíen el Alumno, CEL, Docente o FamiliaAnfitriona
     // enlazada.
     
+    
     //<editor-fold defaultstate="collapsed" desc=" Persona : Completo ">
     
     private boolean insertarPersona(int rut, String nombreCompleto,
@@ -144,8 +145,7 @@ public class DaoEntidades {
     }
     
     //</editor-fold>
-    
-    
+        
     //<editor-fold defaultstate="collapsed" desc=" Alumno : Completo ">
     
     public ArrayList<Alumno> listarAlumnos() {
@@ -318,8 +318,7 @@ public class DaoEntidades {
     }
     
     //</editor-fold>
-    
-    
+        
     //<editor-fold defaultstate="collapsed" desc=" Programa : Completo ">
         
     public boolean insertarPrograma(Programa objPrograma) {
@@ -498,8 +497,7 @@ public class DaoEntidades {
     }
     
     //</editor-fold>
-    
-    
+        
     //<editor-fold defaultstate="collapsed" desc=" Familia Anfitriona : Completo ">
     
     public int insertarFamilia(FamiliaAnfitriona objFamilia) {
@@ -518,7 +516,7 @@ public class DaoEntidades {
                     objFamilia.getTelefono(),
                     objFamilia.getTipo())) {
                 
-                String sql = "INSERT INTO FAMILIA_ANFITRIONA (RUT_PERSONA, "
+                String sql = "INSERT INTO CEM.FAMILIA_ANFITRIONA (RUT_PERSONA, "
                         + "CANTIDAD_INTEGRANTES, ESTADO) VALUES (?, ?, ?)";
                 try {
                     Conexion conexion = new Conexion();
@@ -594,6 +592,7 @@ public class DaoEntidades {
     }
     
     public ArrayList<FamiliaAnfitriona> listarFamilias() {
+        
         ArrayList<FamiliaAnfitriona> listado = new ArrayList<>();
         String sql = "SELECT CANTIDAD_INTEGRANTES, ESTADO, RUT_PERSONA, "
                 + "NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, CIUDAD, PAIS, "
@@ -605,6 +604,7 @@ public class DaoEntidades {
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
             rs = ps.executeQuery(sql);
+            
             while (rs.next()) {
                 listado.add(new FamiliaAnfitriona(
                         // Datos de familia:
@@ -665,6 +665,10 @@ public class DaoEntidades {
                         rs.getString(11)
                 );
             }
+            rs.close();
+            ps.close();
+            c.close();
+            conexion.cerrar();
         }
         catch (SQLException se) {
             // Controlar excepción.
@@ -673,13 +677,225 @@ public class DaoEntidades {
     }
     
     //</editor-fold>
-    
-    
+        
     //<editor-fold defaultstate="collapsed" desc=" Asignatura ">
     
+    public boolean insertarAsignatura(Asignatura objAsignatura) {
+        boolean resultado = false;
+        String sql = "INSERT INTO CEM.ASIGNATURA (CODIGO, RUT_DOCENTE, "
+                + "NOMBRE_ASIGNATURA, DESCRIPCION, CUPOS) "
+                + "VALUES (?, ?, ?, ?, ?)";
+        try {
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
+            ps = c.prepareStatement(sql);
+            ps.setLong  (1, objAsignatura.getCodigo());
+            
+            ps.setInt   (2, objAsignatura.getDocente().getRut());
+            
+            ps.setString(3, objAsignatura.getNombreAsignatura());
+            ps.setString(4, objAsignatura.getDescripcion());
+            ps.setLong  (5, objAsignatura.getCupos());
+            ps.executeLargeUpdate();
+            ps.close();
+            c.close();
+            conexion.cerrar();
+            resultado = true;
+        }
+        catch (SQLException se) {
+            // Controlar exceptión.
+        }
+        return resultado;
+    }
     
+    //</editor-fold>
+        
+    //<editor-fold defaultstate="collapsed" desc=" Docente : Completo ">
+    
+    public int ingresarDocente(Docente objDocente) {
+        
+        int resultado = 0;
+        if (!comprobarRutExistente(objDocente.getRut())) {
+            
+            Date fechaNacimiento = new java.sql.Date(
+                    objDocente.getFechaNacimiento().getTime());
+            if (insertarPersona(
+                    objDocente.getRut(),
+                    objDocente.getNombreCompleto(),
+                    fechaNacimiento,
+                    objDocente.getDomicilio(),
+                    objDocente.getCiudad(),
+                    objDocente.getPais(),
+                    objDocente.getCorreo(),
+                    objDocente.getTelefono(),
+                    objDocente.getTipo())) {
+                
+                String sql = "INSERT INTO CEM.DOCENTE (RUT_PERSONA, ESTADO, "
+                        + "OBSERVACIONES) VALUES (?, ?, ?, ?, ?)";
+                
+                try {
+                    Conexion conexion = new Conexion();
+                    c = conexion.abrir();
+                    ps = c.prepareStatement(sql);
+                    ps.setLong  (1, objDocente.getRut());
+                    ps.setString(2, objDocente.getEstado());
+                    ps.setString(3, objDocente.getObservaciones());
+                    ps.executeUpdate();
+                    ps.close();
+                    c.close();
+                    conexion.cerrar();
+                    resultado = 1;
+                }
+                catch (SQLException se) {
+                    // Controlar excepción.
+                }
+            }
+            else {
+                resultado = -1;
+            }
+        }
+        else {
+            resultado = -2;
+        }
+        return resultado;
+    }
+    
+    public Docente buscarDocente(int rutPersona) {
+        Docente objDocente = null;
+        String sql = "SELECT ESTADO, OBSERVACIONES, RUT_PERSONA, "
+                + "NOMBRE_COMPLETO, DOMICILIO, CIUDAD, PAIS, CORREO, TELEFONO, "
+                + "TIPO FROM CEM.DOCENTE INNER JOIN CEM.PERSONA "
+                + "ON DOCENTE.RUT_PERSONA = PERSONA.RUT"
+                + "WHERE RUT = ?";
+        try {
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
+            ps = c.prepareStatement(sql);
+            ps.setInt(1, rutPersona);
+            rs = ps.executeQuery(sql);
+            while (rs.next()) {
+                objDocente = new Docente(
+                        // Datos de docente:
+                        rs.getString(1),
+                        rs.getString(2),
+                        // Datos de persona:
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11));
+            }
+            rs.close();
+            ps.close();
+            c.close();
+            conexion.cerrar();
+        }
+        catch (SQLException se) {
+            // Controlar excepción.
+        }
+        return objDocente;
+    }
+    
+    public ArrayList<Docente> listarDocentes() {
+        ArrayList<Docente> listado = new ArrayList<>();
+        String sql = "SELECT ESTADO, OBSERVACIONES, RUT_PERSONA, "
+                + "NOMBRE_COMPLETO, DOMICILIO, CIUDAD, PAIS, CORREO, TELEFONO, "
+                + "TIPO FROM CEM.DOCENTE INNER JOIN CEM.PERSONA "
+                + "ON DOCENTE.RUT_PERSONA = PERSONA.RUT";
+        try {
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            while (rs.next()) {
+                listado.add(new Docente(
+                        // Datos de docente:
+                        rs.getString(1),
+                        rs.getString(2),
+                        // Datos de persona:
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11)
+                ));
+            }
+            rs.close();
+            ps.close();
+            c.close();
+            conexion.cerrar();
+        }
+        catch (SQLException se) {
+            // Controlar excepción.
+        }
+        return listado;
+    }
+    
+    public int modificarDocente(Docente objDocente) {
+        
+        int resultado = 0;
+        if (comprobarRutExistente(objDocente.getRut())) {
+            
+            Date fechaNacimiento = new java.sql.Date(
+                    objDocente.getFechaNacimiento().getTime());
+            
+            if (modificarPersona(
+                    objDocente.getRut(),
+                    objDocente.getNombreCompleto(),
+                    fechaNacimiento,
+                    objDocente.getDomicilio(),
+                    objDocente.getCiudad(),
+                    objDocente.getPais(),
+                    objDocente.getCorreo(),
+                    objDocente.getTelefono(),
+                    objDocente.getTipo())) {
+                
+                String sql = "UPDATE CEM.DOCENTE SET ESTADO = ?, "
+                        + "OBSERVACIONES = ? WHERE RUT_PERSONA = ?";
+                
+                try {
+                    Conexion conexion = new Conexion();
+                    c = conexion.abrir();
+                    ps = c.prepareStatement(sql);
+                    ps.setString(1, objDocente.getEstado());
+                    ps.setString(2, objDocente.getObservaciones());
+                    ps.setInt   (3, objDocente.getRut());
+                    ps.executeUpdate();
+                    ps.close();
+                    c.close();
+                    conexion.cerrar();
+                    resultado = 1;
+                }
+                catch (SQLException se) {
+                    // Controlar excepción.
+                }
+            }
+            else {
+                resultado = -1;
+            }
+        }
+        else {
+            resultado = -2;
+        }
+        return resultado;
+    }
     
     //</editor-fold>
     
+    public boolean ingresarAntecedente(Antecedente objAntecedente,
+            int rutPersona) {
+        
+        boolean resultado = false;
+        
+        return resultado;
+    }
     
 }

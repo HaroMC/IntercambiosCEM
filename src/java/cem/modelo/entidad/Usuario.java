@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Usuario {
     
-    private BigDecimal codigo;
+    private long codigo;
     private String nombre;
     private String contrasena;
     private Date fechaRegistro;
@@ -13,14 +13,16 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(BigDecimal codigo, String nombre, String contrasena, Date fechaRegistro) {
+    public Usuario(long codigo, String nombre, String contrasena,
+            Date fechaRegistro) {
+        
         this.codigo = codigo;
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.fechaRegistro = fechaRegistro;
     }
 
-    public BigDecimal getCodigo() {
+    public long getCodigo() {
         return codigo;
     }
 
@@ -36,21 +38,12 @@ public class Usuario {
         return fechaRegistro;
     }
 
-    public void setCodigo(BigDecimal codigo) {
-        this.codigo = codigo;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
-    }
-
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-    
+    }    
     
 }

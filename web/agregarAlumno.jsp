@@ -82,13 +82,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Domicilio</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="domicilio" required=""
-                               placeholder="Ingrese el domicilio"> 
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="col-sm-2 control-label">Ciudad</label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control" name="ciudad" required=""

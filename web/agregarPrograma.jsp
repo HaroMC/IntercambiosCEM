@@ -10,81 +10,52 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Link Bootstrap CSS -->
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
+        <!--Link J.S.-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <title>Agregar Programa</title>
     </head>
     <body>
-        <h1>Ingreso de programa</h1>
-        <%-- formulario de ingreso de un programa--%>
-        <form action="AgregarPrograma" method="post">
-            <!--Lo ordenè por tabla, tr es la fila, y td la columna, te genera un sector estàtico-->
-            <table>
-                <tr>
-                    <td>
-                        <!--
-                         Asi se comenta en esta parte, y los textos planos no requieren tag.
-                        -->
-                        Nombre del programa:
-                    </td>
-                    <td>
-                        <input type="text" name="nombrePrograma"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Nombre asignatura:
-                    </td>
-                    <td>
-                        <input type="text" name="nombreAsignatura"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Valor:
-                    </td>
-                    <td>
-                        <input type="number" name="valor"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <!--saquè el chek y puse un radio button ya que solo puede tener una 
-                        opcion seleccionada-->
-                        Tipo de Programa
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Corto 
-                        <input type="radio" name="tipoPrograma" value="corto" checked="checked" />
-                    </td>
-                    <td>
-                        Normal 
-                        <input type="radio" name="tipoPrograma" value="normal" checked="checked" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Pais Destino:</td>
-                    <td>
-                        <input type="text" name="pais"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Fecha de inicio:</td>
-                    <td>
-                        <input type="datetime" name="fecha"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Fecha de Termino:</td>
-                    <td>
-                        <input type="datetime" name="fecha2"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Ingresar Programa"/></td>
-                </tr>
-            </table>
-        </form>
-        ${mensaje}
+        <div class="container-fluid">
+            <h1>Agregar Programa</h1>
+            <form action="Servlet" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Nombre Programa</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="nombrePrograma" 
+                               placeholder="Ingrese el nombre del programa" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Fecha Inicio</label>
+                    <div class="col-sm-5">
+                        <input type="date" class="form-control" name="fechaInicio" 
+                               required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Fecha Término</label>
+                    <div class="col-sm-5">
+                        <input type="date" class="form-control" name="fechaTermino" 
+                               required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Valor</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="valor" 
+                               placeholder="Ingrese el valor del programa" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">${mensaje}</label>
+                    <div class="col-sm-5 control-label">
+                        <button type="submit" class="btn btn-default">Agregar</button>
+                    </div>
+                </div>
+                <input type="text" name="accion" value="agregarPrograma" hidden="true" />
+            </form>
+        </div>
     </body>
 </html>

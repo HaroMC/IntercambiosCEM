@@ -87,11 +87,7 @@ public class Servlet extends HttpServlet {
                 break;
                 //</editor-fold>
             
-                
-            // Falta generar el formulario para ingresar un alumno.
-            // Puede ser en el grid final o en un formulario temporal creado
-            // para el caso.
-                
+             
             //<editor-fold defaultstate="collapsed" desc=" Agregar alumno ">
             case "agregarAlumno":
                 try {

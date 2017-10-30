@@ -173,8 +173,7 @@ public class DaoEntidades {
                         rs.getString(8),
                         rs.getString(9),
                         rs.getString(10),
-                        rs.getString(11),
-                        null
+                        rs.getString(11)
                 ));
             }
             rs.close();
@@ -304,8 +303,7 @@ public class DaoEntidades {
                         rs.getString(8),
                         rs.getString(9),
                         rs.getString(10),
-                        rs.getString(11),
-                        null
+                        rs.getString(11)
                 );
             }
             rs.close();
@@ -621,8 +619,7 @@ public class DaoEntidades {
                         rs.getString(8),
                         rs.getString(9),
                         rs.getString(10),
-                        rs.getString(11),
-                        null
+                        rs.getString(11)
                 ));
             }
             rs.close();
@@ -665,8 +662,7 @@ public class DaoEntidades {
                         rs.getString(8),
                         rs.getString(9),
                         rs.getString(10),
-                        rs.getString(11),
-                        null
+                        rs.getString(11)
                 );
             }
             rs.close();

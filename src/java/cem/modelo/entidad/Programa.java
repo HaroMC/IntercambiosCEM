@@ -1,5 +1,6 @@
 package cem.modelo.entidad;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Programa {
@@ -10,6 +11,7 @@ public class Programa {
     private Date fechaTermino;
     private int valor;
     private String estado;
+    private ArrayList<Asignatura> asignaturas;
     
     //<editor-fold defaultstate="collapsed" desc=" Constructores ">
     
@@ -25,6 +27,7 @@ public class Programa {
         this.fechaTermino = fechaTermino;
         this.valor = valor;
         this.estado = estado;
+        this.asignaturas = new ArrayList<>();
     }
     
     //</editor-fold>
@@ -54,6 +57,10 @@ public class Programa {
     public String getEstado() {
         return estado;
     }
+
+    public ArrayList<Asignatura> getAsignaturas() {
+        return asignaturas;
+    }
     
     //</editor-fold>
     
@@ -78,6 +85,11 @@ public class Programa {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public void setAsignaturas(ArrayList<Asignatura> asignaturas) {
+        this.asignaturas = asignaturas;
+    }
     
     //</editor-fold>
+    
 }

@@ -7,9 +7,7 @@ public class FamiliaAnfitriona extends Persona {
     
     private short cantidadIntegrantes;
     private String estado;
-    // Falta implementar HashMap para acceder más ráidamente a los elementos
-    // del ArrayList.
-    private ArrayList<Antecedente> antecedentes = new ArrayList<>();
+    private ArrayList<Antecedente> antecedentes;
     
     //<editor-fold defaultstate="collapsed" desc=" Constructores ">
     
@@ -20,19 +18,20 @@ public class FamiliaAnfitriona extends Persona {
         
         this.cantidadIntegrantes = cantidadIntegrantes;
         this.estado = estado;
-        this.antecedentes = null;
+        this.antecedentes = new ArrayList<>();
     }
     
     public FamiliaAnfitriona(short cantidadIntegrantes, String estado,
             int rutPersona, String nombreCompleto, Date fechaNacimiento,
             String domicilio, String ciudad, String pais, String correo,
-            String telefono, String tipo, ArrayList<Antecedente> antecedentes) {
+            String telefono, String tipo) {
         
         super(rutPersona, nombreCompleto, fechaNacimiento, domicilio, ciudad,
                 pais, correo, telefono, tipo);
+        
         this.cantidadIntegrantes = cantidadIntegrantes;
         this.estado = estado;
-        this.antecedentes = antecedentes;
+        this.antecedentes = new ArrayList<>();
     }
     
     //</editor-fold>

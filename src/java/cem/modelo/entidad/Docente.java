@@ -24,6 +24,7 @@ public class Docente extends Persona {
         
         super(rutPersona, nombreCompleto, fechaNacimiento, domicilio, ciudad,
                 pais, correo, telefono, tipo);
+        
         this.estado = estado;
         this.observaciones = observaciones;
     }

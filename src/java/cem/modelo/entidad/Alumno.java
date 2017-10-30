@@ -7,7 +7,8 @@ public class Alumno extends Persona {
     
     private long numeroMatricula;
     private Date fechaMatricula;
-    private ArrayList<Certificado> certificados = new ArrayList<>();
+    private ArrayList<Certificado> certificados;
+    private ArrayList<Calificacion> calificaciones;
     
     //<editor-fold defaultstate="collapsed" desc=" Constructores ">
     
@@ -18,19 +19,21 @@ public class Alumno extends Persona {
         this.numeroMatricula = numeroMatricula;
         this.fechaMatricula = fechaMatricula;
         this.certificados = null;
+        this.calificaciones = null;
     }
     
     public Alumno(long numeroMatricula, Date fechaMatricula, int rutPersona,
             String nombreCompleto, Date fechaNacimiento, String domicilio,
             String ciudad, String pais, String correo, String telefono,
-            String tipo, ArrayList<Certificado> certificados) {
+            String tipo) {
         
         super (rutPersona, nombreCompleto, fechaNacimiento, domicilio, ciudad,
                 pais, correo, telefono, tipo);
         
         this.numeroMatricula = numeroMatricula;
         this.fechaMatricula = fechaMatricula;
-        this.certificados = certificados;
+        this.certificados = new ArrayList<>();
+        this.calificaciones = new ArrayList<>();
     }
     
     //</editor-fold>
@@ -48,6 +51,10 @@ public class Alumno extends Persona {
     public ArrayList<Certificado> getCertificados() {
         return certificados;
     }
+
+    public ArrayList<Calificacion> getCalificaciones() {
+        return calificaciones;
+    }
     
     //</editor-fold>
     
@@ -56,6 +63,11 @@ public class Alumno extends Persona {
     public void setCertificados(ArrayList<Certificado> certificados) {
         this.certificados = certificados;
     }
+
+    public void setCalificaciones(ArrayList<Calificacion> calificaciones) {
+        this.calificaciones = calificaciones;
+    }
+    
     
     //</editor-fold>
     

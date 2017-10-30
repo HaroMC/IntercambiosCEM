@@ -9,7 +9,7 @@ public class PostulacionesCel {
     private Date fechaInscripcion;
     private String estado;
     private Programa programa;
-    private ArrayList<CentroEstudiosLocal> cels = new ArrayList<>();
+    private ArrayList<CentroEstudiosLocal> cels;
     
     //<editor-fold defaultstate="collapsed" desc=" Constructores ">
     
@@ -21,6 +21,7 @@ public class PostulacionesCel {
         this.fechaInscripcion = fechaInscripcion;
         this.estado = estado;
         this.programa = null;
+        this.cels = new ArrayList<>();
     }
     
     public PostulacionesCel(long codigo, Date fechaInscripcion, String estado,
@@ -29,6 +30,17 @@ public class PostulacionesCel {
         this.fechaInscripcion = fechaInscripcion;
         this.estado = estado;
         this.programa = programa;
+        this.cels = new ArrayList<>();
+    }
+
+    public PostulacionesCel(long codigo, Date fechaInscripcion, String estado,
+            Programa programa, ArrayList<CentroEstudiosLocal> cels) {
+        
+        this.codigo = codigo;
+        this.fechaInscripcion = fechaInscripcion;
+        this.estado = estado;
+        this.programa = programa;
+        this.cels = cels;
     }
     
     //</editor-fold>

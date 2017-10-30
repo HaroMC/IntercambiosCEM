@@ -48,7 +48,7 @@ public class Servlet extends HttpServlet {
                     // parámetros.
                     Programa p = new Programa(
                             // Código:
-                            dao.ultimoCodigoPrograma() + 1,
+                            dao.ultimoCodigoIncremental("PROGRAMA") + 1,
                             // Nombre del programa:
                             request.getParameter("nombrePrograma"),
                             // Fecha de inicio:
@@ -150,6 +150,7 @@ public class Servlet extends HttpServlet {
                 }
                 break;
                 //</editor-fold>
+                
                 
             case "NUEVO_CASO":
                 break;

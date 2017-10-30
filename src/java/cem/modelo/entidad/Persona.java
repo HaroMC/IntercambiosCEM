@@ -50,7 +50,8 @@ public abstract class Persona {
         this.tipo = tipo;
         this.usuario = null;
     }
-//</editor-fold>
+    
+    //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc=" Accesadores ">
     
@@ -93,7 +94,7 @@ public abstract class Persona {
     public Usuario getUsuario() {
         return usuario;
     }
-    
+        
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc=" Mutadores ">

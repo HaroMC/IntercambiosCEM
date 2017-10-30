@@ -75,7 +75,7 @@ public class Programa_Test {
                 System.out.println("Programa no insertado.");
             }
         }
-        catch (SQLException | ParseException e) {
+        catch (ParseException e) {
             Logger.getLogger(Programa_Test.class.getName()).log(Level.SEVERE, null, e);
         }
         */

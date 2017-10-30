@@ -23,13 +23,36 @@ public class DaoEntidades {
         this.rs = null;
     }
     
+    
+    public long ultimoCodigoIncremental(String nombreTabla) {
+        long codigo = -1;
+        String sql = "SELECT MAX(CODIGO) FROM CEM." + nombreTabla;
+        try {
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            while (rs.next()) {
+                codigo = rs.getLong(1);
+            }
+            rs.close();
+            ps.close();
+            c.close();
+            conexion.cerrar();
+        }
+        catch (SQLException se) {
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
+        }
+        return codigo;
+    }
+    
     // Como persona es una clase abstracta, los métodos crud de persona no
     // serán accesibles fuera de esta clase.
-    // Eliminar persona es la única exceptión, debido a que es posible eliminar
+    // Eliminar persona es la única excepción, debido a que es posible eliminar
     // una persona por su rut y, gracias al CASCADE CONSTRAINT en la base de
     // datos, se eliminará tambíen el Alumno, CEL, Docente o FamiliaAnfitriona
     // enlazada.
-    
     
     //<editor-fold defaultstate="collapsed" desc=" Persona : Completo ">
     
@@ -61,7 +84,8 @@ public class DaoEntidades {
             resultado = true;
         }
         catch (SQLException se) {
-            // Controlar excepción.
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
         }
         return resultado;
     }
@@ -84,7 +108,8 @@ public class DaoEntidades {
             conexion.cerrar();
         }
         catch (SQLException se) {
-            // Controlar excepción.
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
         }
         return resultado;
     }
@@ -181,9 +206,9 @@ public class DaoEntidades {
             c.close();
             conexion.cerrar();
         }
-        catch (SQLException ex) {
+        catch (SQLException se) {
             Logger.getLogger(DaoEntidades.class.getName())
-                    .log(Level.SEVERE, null, ex);
+                    .log(Level.SEVERE, null, se);
         }
         return listado;
     }
@@ -236,9 +261,9 @@ public class DaoEntidades {
                     conexion.cerrar();
                     resultado = 1;
                 }
-                catch (SQLException ex) {
+                catch (SQLException se) {
                     Logger.getLogger(DaoEntidades.class.getName())
-                            .log(Level.SEVERE, null, ex);
+                            .log(Level.SEVERE, null, se);
                 }
             }
             else {
@@ -312,7 +337,8 @@ public class DaoEntidades {
             conexion.cerrar();
         }
         catch (SQLException se) {
-            // Controlar excepción.
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
         }
         return alumno;
     }
@@ -330,16 +356,19 @@ public class DaoEntidades {
             Conexion conexion = new Conexion();
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
+            
             Date fechaInicio = new java.sql.Date(
                     objPrograma.getFechaInicio().getTime());
             Date fechaTermino = new java.sql.Date(
                     objPrograma.getFechaTermino().getTime());
+            
             ps.setLong  (1, objPrograma.getCodigo());
             ps.setString(2, objPrograma.getNombre());
             ps.setDate  (3, fechaInicio);
             ps.setDate  (4, fechaTermino);
             ps.setInt   (5, objPrograma.getValor());
             ps.setString(6, objPrograma.getEstado());
+            
             ps.executeUpdate();
             ps.close();
             c.close();
@@ -347,34 +376,12 @@ public class DaoEntidades {
             resultado = true;
         }
         catch (SQLException se) {
-            // Controlar excepción.
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
         }
         return resultado;
     }
-    
-    public long ultimoCodigoPrograma() {
         
-        long codigo = -1;
-        String sql = "SELECT MAX(CODIGO) FROM CEM.PROGRAMA";
-        try {
-            Conexion conexion = new Conexion();
-            c = conexion.abrir();
-            ps = c.prepareStatement(sql);
-            rs = ps.executeQuery(sql);
-            while (rs.next()) {
-                codigo = rs.getLong(1);
-            }
-            ps.close();
-            rs.close();
-            c.close();
-            conexion.cerrar();
-        }
-        catch (SQLException se) {
-            // Controlar excepción.
-        }
-        return codigo;
-    }
-    
     public ArrayList<Programa> listarProgramas() {
         ArrayList<Programa> listado = null;
         String sql = "SELECT * FROM CEM.PROGRAMA";
@@ -399,9 +406,9 @@ public class DaoEntidades {
             c.close();
             conexion.cerrar();
         }
-        catch (SQLException ex) {
+        catch (SQLException se) {
             Logger.getLogger(DaoEntidades.class.getName())
-                    .log(Level.SEVERE, null, ex);
+                    .log(Level.SEVERE, null, se);
         }
         return listado;
     }
@@ -420,9 +427,9 @@ public class DaoEntidades {
             conexion.cerrar();
             resultado = true;
         }
-        catch (SQLException ex) {
+        catch (SQLException se) {
             Logger.getLogger(DaoEntidades.class.getName())
-                    .log(Level.SEVERE, null, ex);
+                    .log(Level.SEVERE, null, se);
         }
         return resultado;
     }
@@ -458,9 +465,9 @@ public class DaoEntidades {
             
             resultado = true;
         }
-        catch (SQLException ex) {
+        catch (SQLException se) {
             Logger.getLogger(DaoEntidades.class.getName())
-                    .log(Level.SEVERE, null, ex);
+                    .log(Level.SEVERE, null, se);
         }
         
         return resultado;
@@ -489,9 +496,9 @@ public class DaoEntidades {
             c.close();
             conexion.cerrar();
         }
-        catch (SQLException ex) {
+        catch (SQLException se) {
             Logger.getLogger(DaoEntidades.class.getName())
-                    .log(Level.SEVERE, null, ex);
+                    .log(Level.SEVERE, null, se);
         }
         return programa;
     }
@@ -532,7 +539,8 @@ public class DaoEntidades {
                     resultado = 1;
                 }
                 catch (SQLException se) {
-                    // Controlar excepción.
+                    Logger.getLogger(DaoEntidades.class.getName())
+                            .log(Level.SEVERE, null, se);
                 }
             }
             else {
@@ -578,7 +586,8 @@ public class DaoEntidades {
                     resultado = 1;
                 }
                 catch (SQLException se) {
-                    // Controlar excepción.
+                    Logger.getLogger(DaoEntidades.class.getName())
+                            .log(Level.SEVERE, null, se);
                 }
             }
             else {
@@ -627,9 +636,9 @@ public class DaoEntidades {
             c.close();
             conexion.cerrar();
         }
-        catch (SQLException ex) {
+        catch (SQLException se) {
             Logger.getLogger(DaoEntidades.class.getName())
-                    .log(Level.SEVERE, null, ex);
+                    .log(Level.SEVERE, null, se);
         }
         return listado;
     }
@@ -671,14 +680,15 @@ public class DaoEntidades {
             conexion.cerrar();
         }
         catch (SQLException se) {
-            // Controlar excepción.
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
         }
         return familia;
     }
     
     //</editor-fold>
         
-    //<editor-fold defaultstate="collapsed" desc=" Asignatura ">
+    //<editor-fold defaultstate="collapsed" desc=" Asignatura : ">
     
     public boolean insertarAsignatura(Asignatura objAsignatura) {
         boolean resultado = false;
@@ -703,7 +713,8 @@ public class DaoEntidades {
             resultado = true;
         }
         catch (SQLException se) {
-            // Controlar exceptión.
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
         }
         return resultado;
     }
@@ -747,7 +758,8 @@ public class DaoEntidades {
                     resultado = 1;
                 }
                 catch (SQLException se) {
-                    // Controlar excepción.
+                    Logger.getLogger(DaoEntidades.class.getName())
+                            .log(Level.SEVERE, null, se);
                 }
             }
             else {
@@ -795,7 +807,8 @@ public class DaoEntidades {
             conexion.cerrar();
         }
         catch (SQLException se) {
-            // Controlar excepción.
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
         }
         return objDocente;
     }
@@ -834,7 +847,8 @@ public class DaoEntidades {
             conexion.cerrar();
         }
         catch (SQLException se) {
-            // Controlar excepción.
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
         }
         return listado;
     }
@@ -875,7 +889,8 @@ public class DaoEntidades {
                     resultado = 1;
                 }
                 catch (SQLException se) {
-                    // Controlar excepción.
+                    Logger.getLogger(DaoEntidades.class.getName())
+                            .log(Level.SEVERE, null, se);
                 }
             }
             else {
@@ -890,12 +905,197 @@ public class DaoEntidades {
     
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc=" Antecedente : ">
+    
     public boolean ingresarAntecedente(Antecedente objAntecedente,
             int rutPersona) {
         
         boolean resultado = false;
-        
+        if (comprobarRutExistente(rutPersona)) {
+            
+            String sql = "INSERT INTO CEM.ANTECEDENTE (CODIGO, DESCRIPCION, "
+                    + "FECHA_CADUCIDAD, DOCUMENTO, RUT_FAMILIA) "
+                    + "VALUES (?, ?, ?, ?, ?)";
+            try {
+                Conexion conexion = new Conexion();
+                c = conexion.abrir();
+                ps = c.prepareStatement(sql);
+                
+                Date fechaCaducidad = new java.sql.Date(
+                        objAntecedente.getFechaCaducidad().getTime());
+                
+                ps.setLong  (1, objAntecedente.getCodigo());
+                ps.setString(2, objAntecedente.getDescripcion());
+                ps.setDate  (3, fechaCaducidad);
+                ps.setBlob  (4, objAntecedente.getDocumento());
+                ps.setInt   (5, rutPersona);
+                
+                ps.executeUpdate();
+                
+                ps.close();
+                c.close();
+                conexion.cerrar();
+                resultado = true;
+            }
+            catch (SQLException se) {
+                Logger.getLogger(DaoEntidades.class.getName())
+                        .log(Level.SEVERE, null, se);
+            }
+        }
         return resultado;
     }
     
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Usuario : Completo ">
+    
+    public boolean validarUsuario(String nombreUsuario,
+            String c) {
+        
+        boolean resultado = false;
+        String sql = "SELECT NOMBRE FROM CEM.USUARIO "
+                + "WHERE NOMBRE = ? AND CONTRASENA = ?";
+        try {
+            Conexion conexion = new Conexion();
+            this.c = conexion.abrir();
+            ps = this.c.prepareStatement(sql);
+            ps.setString(1, nombreUsuario);
+            ps.setString(2, c);
+            rs = ps.executeQuery(sql);
+            if (rs.getRow() > 0) {
+                resultado = true;
+            }
+            rs.close();
+            ps.close();
+            this.c.close();
+            conexion.cerrar();
+            resultado = true;
+        }
+        catch (SQLException se) {
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
+        }
+        return resultado;
+    }
+    
+    public boolean registrarUsuario(Usuario objUsuario, int rutPersona,
+            String c) {
+        boolean resultado = false;
+        if (comprobarRutExistente(rutPersona)) {
+            
+            String sql = "INSERT INTO CEM.USUARIO (CODIGO, NOMBRE, CONTRASENA, "
+                    + "FECHA_REGISTRO, RUT_PERSONA, PERFIL) "
+                    + "VALUES (?, ?, ?, ?, ?, ?)";
+            try {
+                Conexion conexion = new Conexion();
+                this.c = conexion.abrir();
+                ps = this.c.prepareStatement(sql);
+                
+                Date fechaRegistro = new java.sql.Date(
+                        objUsuario.getFechaRegistro().getTime());
+            
+                ps.setLong  (1, objUsuario.getCodigo());
+                ps.setString(2, objUsuario.getNombre());
+                ps.setString(3, c);
+                ps.setDate  (4, fechaRegistro);
+                ps.setInt   (5, rutPersona);
+                ps.setString(6, objUsuario.getPerfil());
+                
+                ps.executeUpdate();
+                ps.close();
+                this.c.close();
+                conexion.cerrar();
+                resultado = true;
+            }
+            catch (SQLException se) {
+                Logger.getLogger(DaoEntidades.class.getName()).log(Level.SEVERE, null, se);
+            }
+        }
+        return resultado;
+    }
+    
+    public boolean modificarUsuario(Usuario objUsuario, int rutPersona,
+            String c) {
+        boolean resultado = false;
+        if (comprobarRutExistente(rutPersona)) {
+            String sql = "UPDATE CEM.USUARIO SET NOMBRE = ?, CONTRSENA = ?, "
+                    + "PERFIL = ? WHERE RUT_PERSONA = ?";
+            try {
+                Conexion conexion = new Conexion();
+                this.c = conexion.abrir();
+                ps = this.c.prepareStatement(sql);
+                ps.setString(1, objUsuario.getNombre());
+                ps.setString(2, c);
+                ps.setString(3, objUsuario.getPerfil());
+                ps.executeUpdate();
+                ps.close();
+                this.c.close();
+                conexion.cerrar();
+                resultado = true;
+            }
+            catch (SQLException se) {
+                Logger.getLogger(DaoEntidades.class.getName())
+                        .log(Level.SEVERE, null, se);
+            }
+        }
+        return resultado;
+    }
+    
+    public boolean eliminarUsuario(int rutPersona) {
+        boolean resultado = false;
+        if (comprobarRutExistente(rutPersona)) {
+            
+            String sql = "DELETE FROM CEM.USUARIO WHERE RUT_PERSONA = ?";
+            try {
+                Conexion conexion = new Conexion();
+                c = conexion.abrir();
+                ps = c.prepareStatement(sql);
+                ps.executeUpdate();
+                ps.close();
+                c.close();
+                conexion.cerrar();
+                resultado = true;
+            }
+            catch (SQLException se) {
+                Logger.getLogger(DaoEntidades.class.getName())
+                        .log(Level.SEVERE, null, se);
+            }
+        }
+        return resultado;
+    }
+    
+    public Usuario buscarUsuario(int rutPersona) {
+        Usuario objUsuario = null;
+        if (comprobarRutExistente(rutPersona)) {
+            
+            String sql = "SELECT CODIGO, NOMBRE, FECHA_REGISTRO, PERFIL "
+                    + "FROM USUARIO WHERE RUT_PERSONA = ?";
+            try {
+                Conexion conexion = new Conexion();
+                c = conexion.abrir();
+                ps = c.prepareStatement(sql);
+                ps.setInt(1, rutPersona);
+                rs = ps.executeQuery(sql);
+                while (rs.next()) {
+                    objUsuario = new Usuario(
+                            rs.getLong(1),
+                            rs.getString(2),
+                            rs.getDate(3),
+                            rs.getString(4)
+                    );
+                }
+                rs.close();
+                ps.close();
+                c.close();
+                conexion.cerrar();
+            }
+            catch (SQLException se) {
+                Logger.getLogger(DaoEntidades.class.getName())
+                        .log(Level.SEVERE, null, se);
+            }
+        }
+        return objUsuario;
+    }
+    
+//</editor-fold>
 }

@@ -23,7 +23,9 @@
     <body>
         <%-- formulario de ingreso de un alumno--%>
         <div class="container-fluid">
-            <h1 align="center">Agregar Alumno</h1>
+
+            <h1>Agregar Alumno</h1>
+
             <form action="Servlet" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Numero Matricula</label>
@@ -116,7 +118,7 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">${mensaje}</label>
-                    <div class="col-sm-7 control-label">
+                    <div class="col-sm-5 control-label">
                         <button type="submit" class="btn btn-default">Agregar</button>
                     </div>
                 </div>

@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Nombres</label>
                     <div class="col-sm-5">
-                        <input type="number" class="form-control" name="nombres" 
+                        <input type="text" class="form-control" name="nombres" 
                                placeholder="Ingrese Nombres" required="">
                     </div>
                 </div>

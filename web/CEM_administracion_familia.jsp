@@ -28,11 +28,18 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administracion de Usuarios
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Alumnos</a></li>
-                            <li class="active"><a href="#">Familia</a></li>
+                            <li><a href="CEM_administracion_alumnos.jsp">Alumnos</a></li>
+                            <li class="active"><a href="CEM_administracion_familia.jsp">Familia</a></li>
                         </ul>
                     </li>
-                    <li><a href="CEL_postulaciones.jsp">Administracion de programas</a></li>
+                     <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administracion de programas
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="CEM_administrar_programas.jsp">Ver listado de Programas</a></li>
+                            <li><a href="CEM_agregarPrograma.jsp">Agregar Programas</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Consultar Postulaciones
                             <span class="caret"></span></a>
@@ -53,7 +60,6 @@
             <p>Buscar una familia puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput" type="text" placeholder="Escribe aca lo que buscas..">
             <br>
-            <form action="" method="">
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -67,19 +73,6 @@
                         </tr>
                     </thead>
                     <tbody id="myTable">
-                        <tr>
-                            <td><input type=text name="nombre"></td>
-                            <td><input type=number name="cantidad"></td>
-                            <td><input type=text name="rut"></td>
-                            <td><input type=text name="direccion"></td>
-                            <td><input type=text name="pais"></td>
-                            <td><button type="button" class="btn btn-primary">
-                                    <i class="glyphicon glyphicon-minus"></i>
-                                </button></td>
-                            <td><button type="button" class="btn btn-primary">
-                                    <i class="glyphicon glyphicon-pencil"></i>
-                                </button></td>
-                        </tr>
                         <tr>
                             <td>Mary</td>
                             <td>5</td>
@@ -119,18 +112,8 @@
                                 </button></td>
                         </tr>
                     </tbody>
-                    <input  type="submit" value="Enviar">
                 </table>
-            </form>
-            <button type="button" class="btn btn-primary">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-            <button type="button" class="btn btn-primary">
-                <i class="glyphicon glyphicon-pencil"></i>
-            </button>
-             <button type="button" class="btn btn-primary">
-                <i class="glyphicon glyphicon-minus"></i>
-            </button>
+            <a href="CEM_agregarFamilia.jsp" class="btn btn-primary">agregar familia...</a>
         </div>
 
 

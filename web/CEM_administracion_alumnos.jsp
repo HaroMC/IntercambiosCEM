@@ -61,26 +61,17 @@
             <br>
             <table class="table table-bordered table-striped">
                 <thead>
-                    
-                <form action="AgregarAlumno" method="post">
-                    <td><input type="text" name="nombreAlumno" required=""/></td>
-                    <td><input type="text" name="idAlumno" required=""/> </td>
-                    <td><input type="text" name="Desarrollo WEB" required=""/></td>
-                    <td><input type="text" name="Ingeniería en Informática" required=""/></td>
-                    <td><input type="text" name="7731262" required=""/></td>
-                    <td><input type="submit" value="Agregar" class="btn btn-primary" required=""/>
-                    </td>
-                </form>
-                
-                <tr>
-                    <th>Nombre del alumno</th>
-                    <th>ID</th>
-                    <th>Programa que cursa</th>
-                    <th>Carrera que cursa</th>
-                    <th>Numero de matricula</th>
-                    <th>Eliminar</th>
-                    <th>Editar</th>
-                </tr>
+
+
+                    <tr>
+                        <th>Nombre del alumno</th>
+                        <th>ID</th>
+                        <th>Programa que cursa</th>
+                        <th>Carrera que cursa</th>
+                        <th>Numero de matricula</th>
+                        <th>Eliminar</th>
+                        <th>Editar</th>
+                    </tr>
                 </thead>
                 <tbody id="myTable">
                     <tr>
@@ -136,9 +127,7 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-primary">
-                <i class="glyphicon glyphicon-plus"> Agregar un Alumno</i>
-            </button>
+            <a href="CEM_agregarAlumno.jsp" class="btn btn-primary">agregar alumno</a>
         </div>
         <div class="container">
             <h2>Notas por Asignatura</h2>           

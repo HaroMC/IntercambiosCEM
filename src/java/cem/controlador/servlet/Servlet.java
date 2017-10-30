@@ -95,6 +95,10 @@ public class Servlet extends HttpServlet {
             //<editor-fold defaultstate="collapsed" desc=" Agregar alumno ">
             case "agregarAlumno":
                 try {
+                    String nombres = request.getParameter("nombres");
+                    String appP = request.getParameter("apellidoPaterno");
+                    String appM = request.getParameter("apellidoMaterno");
+                    String nombreCompleto = nombres + " " + appM + " " + appM;
                     Alumno alumno = new Alumno(
                             Long.parseLong(
                                     request.getParameter("numeroMatricula")),
@@ -102,7 +106,8 @@ public class Servlet extends HttpServlet {
                                     request.getParameter("fechaMatricula")),
                             Integer.parseInt(
                                     request.getParameter("rutPersona")),
-                            request.getParameter("nombreCompleto"),
+                            //Asi recibo por formulario el nombre ordenado
+                            nombreCompleto,
                             format.parse(
                                     request.getParameter("fechaNacimiento")),
                             request.getParameter("domicilio"),

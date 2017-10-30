@@ -1,7 +1,6 @@
-
 <%-- 
-    Document   : agregarPrograma
-    Created on : 16-10-2017, 02:25:50 AM
+    Document   : agregarUsuario
+    Created on : 30-10-2017, 08:51:05 AM
     Author     : David
 --%>
 
@@ -15,38 +14,45 @@
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
         <!--Link J.S.-->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <title>Agregar Programa</title>
+        <title>Agregar Usuario</title>
     </head>
     <body>
         <div class="container-fluid">
-            <h1>Agregar Programa</h1>
+            <h1>Agregar Usuario</h1>
             <form action="Servlet" method="post" class="form-horizontal">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Nombre Programa</label>
+                    <label class="col-sm-2 control-label">Nombre Usuario</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="nombrePrograma" 
-                               placeholder="Ingrese el nombre del programa" required="">
+                        <input type="text" class="form-control" name="nombreUsuario" 
+                               placeholder="Ingrese el nombre del usuario" required="">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Fecha Inicio</label>
+                    <label class="col-sm-2 control-label">Contraseña</label>
                     <div class="col-sm-5">
-                        <input type="date" class="form-control" name="fechaInicio" 
+                        <input type="password" class="form-control" name="contrasenna" 
+                               placeholder="Ingrese la contraseña" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Fecha Registro</label>
+                    <div class="col-sm-5">
+                        <input type="date" class="form-control" name="fechaRegistro" 
                                required="">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Fecha Término</label>
+                    <label class="col-sm-2 control-label">Contraseña</label>
                     <div class="col-sm-5">
-                        <input type="date" class="form-control" name="fechaTermino" 
-                               required="">
+                        <input type="password" class="form-control" name="contrasenna" 
+                               placeholder="Ingrese la contraseña" required="">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Valor</label>
+                    <label class="col-sm-2 control-label">Tipo Usuario</label>
                     <div class="col-sm-5">
-                        <input type="number" class="form-control" name="valor" 
-                               placeholder="Ingrese el valor del programa" required="">
+                        <input type="text" class="form-control" name="perfil" 
+                               required="">
                     </div>
                 </div>
                 <div class="form-group">
@@ -55,7 +61,7 @@
                         <button type="submit" class="btn btn-default">Agregar</button>
                     </div>
                 </div>
-                <input type="text" name="accion" value="agregarPrograma" hidden="true" />
+                <input type="text" name="accion" value="agregarUsuario" hidden="true" />
             </form>
         </div>
     </body>

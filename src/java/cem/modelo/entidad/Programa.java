@@ -10,10 +10,12 @@ public class Programa {
     private Date fechaTermino;
     private int valor;
     private String estado;
-
+    
+    //<editor-fold defaultstate="collapsed" desc=" Constructores ">
+    
     public Programa() {
     }
-
+    
     public Programa(long codigo, String nombre, Date fechaInicio,
             Date fechaTermino, int valor, String estado) {
         
@@ -24,54 +26,58 @@ public class Programa {
         this.valor = valor;
         this.estado = estado;
     }
-
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Accesadores ">
+    
     public long getCodigo() {
         return codigo;
     }
-
+    
     public String getNombre() {
         return nombre;
     }
-
+    
     public Date getFechaInicio() {
         return fechaInicio;
     }
-
+    
     public Date getFechaTermino() {
         return fechaTermino;
     }
-
+    
     public int getValor() {
         return valor;
     }
-
+    
     public String getEstado() {
         return estado;
     }
-
-    public void setCodigo(long codigo) {
-        this.codigo = codigo;
-    }
-
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Mutadores ">
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
-
+    
     public void setFechaTermino(Date fechaTermino) {
         this.fechaTermino = fechaTermino;
     }
-
+    
     public void setValor(int valor) {
         this.valor = valor;
     }
-
+    
     public void setEstado(String estado) {
         this.estado = estado;
     }
     
-    
+    //</editor-fold>
 }

@@ -4,54 +4,62 @@ import java.util.Date;
 
 public class Docente extends Persona {
     
-    private int rutPersona;
     private String estado;
     private String observaciones;
     
+    //<editor-fold defaultstate="collapsed" desc=" Constructores ">
+    
     public Docente() {
     }
-
-    public Docente(int rutPersona, String estado, String observaciones) {
-        this.rutPersona = rutPersona;
-        this.estado = estado;
-        this.observaciones = observaciones;
-    }
-
-    public Docente(int rutPersona, String estado, String observaciones,
-            int rut, String nombreCompleto, Date fechaNacimiento,
-            String domicilio, String ciudad, String pais, String correo,
-            String telefono, String tipo) {
-        
-        super(rut, nombreCompleto, fechaNacimiento, domicilio, ciudad, pais,
-                correo, telefono, tipo);
-        this.rutPersona = rutPersona;
+    
+    public Docente(String estado, String observaciones) {
         this.estado = estado;
         this.observaciones = observaciones;
     }
     
-    public int getRutPersona() {
-        return rutPersona;
+    public Docente(String estado, String observaciones, int rutPersona,
+            String nombreCompleto, Date fechaNacimiento, String domicilio,
+            String ciudad, String pais, String correo, String telefono,
+            String tipo) {
+        
+        super(rutPersona, nombreCompleto, fechaNacimiento, domicilio, ciudad,
+                pais, correo, telefono, tipo);
+        this.estado = estado;
+        this.observaciones = observaciones;
     }
-
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Accesadores ">
+    
     public String getEstado() {
         return estado;
     }
-
+    
     public String getObservaciones() {
         return observaciones;
     }
-
-    public void setRutPersona(int rutPersona) {
-        this.rutPersona = rutPersona;
-    }
-
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Mutadores ">
+    
     public void setEstado(String estado) {
         this.estado = estado;
     }
-
+    
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
     
+    //</editor-fold>
+    
+    @Override
+    public String toString() {
+        return
+                super.toString() +
+                "Estado              : " + estado + "\n" +
+                "Observaciones       : " + observaciones + "\n";
+    }
     
 }

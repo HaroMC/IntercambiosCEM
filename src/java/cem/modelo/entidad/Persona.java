@@ -13,14 +13,17 @@ public abstract class Persona {
     private String correo;
     private String telefono;
     private String tipo;
-
+    private Usuario usuario;
+    
+    //<editor-fold defaultstate="collapsed" desc=" Constructores ">
+    
     public Persona() {
     }
-
+        
     public Persona(int rut, String nombreCompleto, String domicilio,
             String ciudad, String pais, String correo, String telefono,
             String tipo) {
-
+        
         this.rut = rut;
         this.nombreCompleto = nombreCompleto;
         this.domicilio = domicilio;
@@ -29,12 +32,13 @@ public abstract class Persona {
         this.correo = correo;
         this.telefono = telefono;
         this.tipo = tipo;
+        this.usuario = null;
     }
     
     public Persona(int rut, String nombreCompleto, Date fechaNacimiento,
             String domicilio, String ciudad, String pais, String correo,
             String telefono, String tipo) {
-
+        
         this.rut = rut;
         this.nombreCompleto = nombreCompleto;
         this.fechaNacimiento = fechaNacimiento;
@@ -44,79 +48,101 @@ public abstract class Persona {
         this.correo = correo;
         this.telefono = telefono;
         this.tipo = tipo;
+        this.usuario = null;
     }
-
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Accesadores ">
+    
     public int getRut() {
         return rut;
     }
-
+    
     public String getNombreCompleto() {
         return nombreCompleto;
     }
-
+    
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
-
+    
     public String getDomicilio() {
         return domicilio;
     }
-
+    
     public String getCiudad() {
         return ciudad;
     }
-
+    
     public String getPais() {
         return pais;
     }
-
+    
     public String getCorreo() {
         return correo;
     }
-
+    
     public String getTelefono() {
         return telefono;
     }
-
+    
     public String getTipo() {
         return tipo;
     }
 
-    public void setRut(int rut) {
-        this.rut = rut;
+    public Usuario getUsuario() {
+        return usuario;
     }
-
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Mutadores ">
+    
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
+    
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
     }
-
+    
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
-
+    
     public void setPais(String pais) {
         this.pais = pais;
     }
-
+    
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
+    
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
+    
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     
+    //</editor-fold>
+    
+    @Override
+    public String toString() {
+        return
+                "Rut                 : " + rut + "\n" +
+                "Nombre completo     : " + nombreCompleto + "\n" +
+                "Fecha de nacimiento : " + fechaNacimiento + "\n" +
+                "Domicilio           : " + domicilio + "\n"+
+                "Ciudad              : " + ciudad + "\n"+
+                "País                : " + pais + "\n"+
+                "E-mail              : " + correo + "\n"+
+                "Teléfono            : " + telefono + "\n";
+    }
     
 }

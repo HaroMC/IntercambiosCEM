@@ -1,46 +1,48 @@
 package cem.modelo.entidad;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class Calificacion {
     
-    private BigDecimal codigo;
+    private long codigo;
     private Date fechaCalificacion;
-    private BigDecimal nota;
-
+    private double nota;
+    
+    //<editor-fold defaultstate="collapsed" desc=" Constructores ">
+    
     public Calificacion() {
     }
-
-    public Calificacion(BigDecimal codigo, Date fechaCalificacion, BigDecimal nota) {
+    
+    public Calificacion(long codigo, Date fechaCalificacion, double nota) {
         this.codigo = codigo;
         this.fechaCalificacion = fechaCalificacion;
-        this.nota = nota;
-    }
-
-    public BigDecimal getCodigo() {
-        return codigo;
-    }
-
-    public Date getFechaCalificacion() {
-        return fechaCalificacion;
-    }
-
-    public BigDecimal getNota() {
-        return nota;
-    }
-
-    public void setCodigo(BigDecimal codigo) {
-        this.codigo = codigo;
-    }
-
-    public void setFechaCalificacion(Date fechaCalificacion) {
-        this.fechaCalificacion = fechaCalificacion;
-    }
-
-    public void setNota(BigDecimal nota) {
         this.nota = nota;
     }
     
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Accesadores ">
+    
+    public long getCodigo() {
+        return codigo;
+    }
+    
+    public Date getFechaCalificacion() {
+        return fechaCalificacion;
+    }
+    
+    public double getNota() {
+        return nota;
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Mutadores ">
+    
+    public void setNota(double nota) {
+        this.nota = nota;
+    }
+    
+    //</editor-fold>
     
 }

@@ -1,48 +1,75 @@
 package cem.modelo.entidad;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class PostulacionesAlumnos {
     
-    private BigDecimal codigo;
+    private long codigo;
     private Date fechaInscripcion;
     private String estado;
-
+    private Programa programa;
+    private ArrayList<Alumno> alumnos = new ArrayList<>();
+    
+    //<editor-fold defaultstate="collapsed" desc=" Constructores ">
+    
     public PostulacionesAlumnos() {
     }
-
-    public PostulacionesAlumnos(BigDecimal codigo, Date fechaInscripcion,
+    
+    public PostulacionesAlumnos(long codigo, Date fechaInscripcion,
             String estado) {
         
         this.codigo = codigo;
         this.fechaInscripcion = fechaInscripcion;
         this.estado = estado;
+        this.programa = null;
     }
-
-    public BigDecimal getCodigo() {
+    
+    public PostulacionesAlumnos(long codigo, Date fechaInscripcion,
+            String estado, Programa programa) {
+        
+        this.codigo = codigo;
+        this.fechaInscripcion = fechaInscripcion;
+        this.estado = estado;
+        this.programa = programa;
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Accesadores ">
+    
+    public long getCodigo() {
         return codigo;
     }
-
+    
     public Date getFechaInscripcion() {
         return fechaInscripcion;
     }
-
+    
     public String getEstado() {
         return estado;
     }
-
-    public void setCodigo(BigDecimal codigo) {
-        this.codigo = codigo;
+    
+    public Programa getPrograma() {
+        return programa;
     }
-
-    public void setFechaInscripcion(Date fechaInscripcion) {
-        this.fechaInscripcion = fechaInscripcion;
+    
+    public ArrayList<Alumno> getAlumnos() {
+        return alumnos;
     }
-
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Mutadores ">
+    
     public void setEstado(String estado) {
         this.estado = estado;
     }
     
+    public void setAlumnos(ArrayList<Alumno> alumnos) {
+        this.alumnos = alumnos;
+    }
+    
+    //</editor-fold>
     
 }

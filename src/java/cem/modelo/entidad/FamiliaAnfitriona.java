@@ -1,63 +1,80 @@
 package cem.modelo.entidad;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class FamiliaAnfitriona extends Persona {
     
-    private Short cantidadIntegrantes;
+    private short cantidadIntegrantes;
     private String estado;
-
+    // Falta implementar HashMap para acceder más ráidamente a los elementos
+    // del ArrayList.
+    private ArrayList<Antecedente> antecedentes = new ArrayList<>();
+    
+    //<editor-fold defaultstate="collapsed" desc=" Constructores ">
+    
     public FamiliaAnfitriona() {
     }
-
-    public FamiliaAnfitriona(Short cantidadIntegrantes,
-            String estado) {
+    
+    public FamiliaAnfitriona(short cantidadIntegrantes, String estado) {
         
         this.cantidadIntegrantes = cantidadIntegrantes;
         this.estado = estado;
+        this.antecedentes = null;
     }
-
-    public FamiliaAnfitriona(Short cantidadIntegrantes, String estado,
+    
+    public FamiliaAnfitriona(short cantidadIntegrantes, String estado,
             int rutPersona, String nombreCompleto, Date fechaNacimiento,
             String domicilio, String ciudad, String pais, String correo,
-            String telefono, String tipo) {
+            String telefono, String tipo, ArrayList<Antecedente> antecedentes) {
         
         super(rutPersona, nombreCompleto, fechaNacimiento, domicilio, ciudad,
                 pais, correo, telefono, tipo);
         this.cantidadIntegrantes = cantidadIntegrantes;
         this.estado = estado;
+        this.antecedentes = antecedentes;
     }
-
-    public Short getCantidadIntegrantes() {
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Accesadores ">
+    
+    public short getCantidadIntegrantes() {
         return cantidadIntegrantes;
     }
-
+    
     public String getEstado() {
         return estado;
     }
-
-    public void setCantidadIntegrantes(Short cantidadIntegrantes) {
+    
+    public ArrayList<Antecedente> getAntecedentes() {
+        return antecedentes;
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc=" Mutadores ">
+    
+    public void setCantidadIntegrantes(short cantidadIntegrantes) {
         this.cantidadIntegrantes = cantidadIntegrantes;
     }
-
+    
     public void setEstado(String estado) {
         this.estado = estado;
     }
     
+    public void setAntecedentes(ArrayList<Antecedente> antecedentes) {
+        this.antecedentes = antecedentes;
+    }
+    
+    //</editor-fold>
+    
     @Override
     public String toString() {
         return
-                "Rut                     : " + getRut() + "\n" +
-                "Jefe de familia         : " + getNombreCompleto() + "\n" +
-                "Fecha de nacimiento     : " + getFechaNacimiento() + "\n" +
-                "Domicilio               : " + getDomicilio() + "\n"+
-                "Ciudad                  : " + getCiudad() + "\n"+
-                "País                    : " + getPais() + "\n"+
-                "E-mail                  : " + getCorreo() + "\n"+
-                "Teléfono                : " + getTelefono() + "\n"+
+                super.toString() +
                 "Cantidad de integrantes : " + cantidadIntegrantes + "\n" +
                 "Estado de inscripción   : " + estado + "\n";
     }
-    
     
 }

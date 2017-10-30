@@ -110,7 +110,8 @@ public class Servlet extends HttpServlet {
                             request.getParameter("pais"),
                             request.getParameter("correo"),
                             request.getParameter("telefono"),
-                            "Alumno"
+                            "Alumno",
+                            null
                     );
                     // El método de insertar alumno retorna 4 niveles de
                     // alertas diferentes.

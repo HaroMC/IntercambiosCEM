@@ -43,8 +43,8 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Consultar Postulaciones
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">CEL's</a></li>
-                            <li><a href="#">Alumnos</a></li>
+                            <li><a href="CEM_postulasiones_CEL.jsp">CEL's</a></li>
+                            <li><a href="CEM_postulasiones_alumnos.jsp">Alumnos</a></li>
                         </ul>
                     </li>
                 </ul>

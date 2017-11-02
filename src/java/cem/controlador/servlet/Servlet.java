@@ -5,7 +5,6 @@ import cem.modelo.entidad.Alumno;
 import cem.modelo.entidad.Programa;
 import cem.modelo.entidad.Usuario;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

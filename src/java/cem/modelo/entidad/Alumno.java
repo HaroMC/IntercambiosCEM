@@ -15,13 +15,6 @@ public class Alumno extends Persona {
     public Alumno() {
     }
     
-    public Alumno(long numeroMatricula, Date fechaMatricula) {
-        this.numeroMatricula = numeroMatricula;
-        this.fechaMatricula = fechaMatricula;
-        this.certificados = null;
-        this.calificaciones = null;
-    }
-    
     public Alumno(long numeroMatricula, Date fechaMatricula, int rutPersona,
             String nombreCompleto, Date fechaNacimiento, String domicilio,
             String ciudad, String pais, String correo, String telefono,

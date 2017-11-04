@@ -5,7 +5,6 @@ import cem.modelo.entidad.Alumno;
 import cem.modelo.entidad.Programa;
 import cem.modelo.entidad.Usuario;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -86,6 +85,7 @@ public class Servlet extends HttpServlet {
             //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc=" Agregar alumno ">
+                
             case "agregarAlumno":
                 try {
                     String nombres = request.getParameter("nombres");
@@ -116,35 +116,37 @@ public class Servlet extends HttpServlet {
                         case -2:
                             request.setAttribute("mensaje", "El rut ingresado "
                                     + "ya existe en la base de datos.");
-                            request.getRequestDispatcher("agregarAlumno.jsp")
+                            request.getRequestDispatcher("CEM_agregarAlumno.jsp")
                                     .forward(request, response);
                             break;
 
                         case -1:
                             request.setAttribute("mensaje", "Error al insertar "
                                     + "los datos de la persona.");
-                            request.getRequestDispatcher("agregarAlumno.jsp")
+                            request.getRequestDispatcher("CEM_agregarAlumno.jsp")
                                     .forward(request, response);
                             break;
 
                         case 0:
                             request.setAttribute("mensaje", "Error al insertar "
                                     + "los datos del alumno.");
-                            request.getRequestDispatcher("agregarAlumno.jsp")
+                            request.getRequestDispatcher("CEM_agregarAlumno.jsp")
                                     .forward(request, response);
                             break;
 
                         case 1:
                             request.setAttribute("mensaje", "Alumno insertado "
                                     + "correctamente.");
-                            request.getRequestDispatcher("agregarAlumno.jsp")
+                            request.getRequestDispatcher("CEM_agregarAlumno.jsp")
                                     .forward(request, response);
                     }
-                } catch (ParseException se) {
+                }
+                catch (ParseException se) {
                     Logger.getLogger(Servlet.class.getName())
                             .log(Level.SEVERE, null, se);
                 }
                 break;
+                
             //</editor-fold>
 
             //<editor-fold defaultstate="collapsed" desc=" Agregar Usuario ">
@@ -199,4 +201,5 @@ public class Servlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
     }
+    
 }

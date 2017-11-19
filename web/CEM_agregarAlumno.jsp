@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Fecha Matricula</label>
                     <div class="col-sm-5">
-                        <input type="date" class="form-control" name="fechaMatricula" required=""> 
+                        <input type="date" class="form-control" name="fechaMatricula" required="">  
                     </div>
                 </div>
                 <div class="form-group">

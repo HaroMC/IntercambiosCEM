@@ -54,63 +54,6 @@
                 </ul>
             </div>
         </nav>
-        <!-- <div class="panel panel-default">
-
-            <div class="container">
-                <h2>tablas con Programas a los cuales puede postular </h2>           
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Nombre del Programa</th>
-                            <th>Asignatura</th>
-                            <th>Docente que la imparte</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>Mary</td>
-                            <td>Moe</td>
-                            <td>mary@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>July</td>
-                            <td>Dooley</td>
-                            <td>july@example.com</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-primary">
-                    Postular
-                </button>
-            </div>
-            <div class="container">
-                <h2>Programas a los que estas postulando</h2>           
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Nombre del Programa</th>
-                            <th>Asignatura</th>
-                            <th>Docente que la imparte</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-primary">
-                    Eliminar Postulación
-                </button>
-            </div> -->
+           
     </body>
 </html>

@@ -16,12 +16,12 @@ public class Alumno extends Persona {
     }
     
     public Alumno(long numeroMatricula, Date fechaMatricula, int rutPersona,
-            String nombreCompleto, Date fechaNacimiento, String domicilio,
-            String ciudad, String pais, String correo, String telefono,
-            String tipo) {
+            String verificador, String nombreCompleto, Date fechaNacimiento,
+            String domicilio, String ciudad, String pais, String correo,
+            String telefono, String tipo) {
         
-        super (rutPersona, nombreCompleto, fechaNacimiento, domicilio, ciudad,
-                pais, correo, telefono, tipo);
+        super (rutPersona, verificador, nombreCompleto, fechaNacimiento,
+                domicilio, ciudad, pais, correo, telefono, tipo);
         
         this.numeroMatricula = numeroMatricula;
         this.fechaMatricula = fechaMatricula;

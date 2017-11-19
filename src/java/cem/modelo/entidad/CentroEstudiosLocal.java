@@ -15,12 +15,13 @@ public class CentroEstudiosLocal extends Persona {
         this.estaAcreditada = estaAcreditada;
     }
     
-    public CentroEstudiosLocal(int rutPersona, byte estaAcreditada, int rut,
-            String nombreCompleto, String domicilio, String ciudad,
-            String pais, String correo, String telefono, String tipo) {
+    public CentroEstudiosLocal(int rutPersona, String verificador,
+            byte estaAcreditada, int rut, String nombreCompleto,
+            String domicilio, String ciudad, String pais, String correo,
+            String telefono, String tipo) {
         
-        super (rut, nombreCompleto, domicilio, ciudad, pais, correo, telefono,
-                tipo);
+        super (rut, verificador, nombreCompleto, domicilio, ciudad, pais,
+                correo, telefono, tipo);
         
         this.rutPersona = rutPersona;
         this.estaAcreditada = estaAcreditada;

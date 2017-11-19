@@ -35,6 +35,7 @@ public class Usuario {
     }
 
     //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc=" Accesadores ">
     public long getCodigo() {
         return codigo;
@@ -57,6 +58,7 @@ public class Usuario {
     }
 
     //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc=" Mutadores ">
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -75,4 +77,5 @@ public class Usuario {
     }
 
     //</editor-fold>
+    
 }

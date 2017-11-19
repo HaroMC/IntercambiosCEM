@@ -22,12 +22,12 @@ public class FamiliaAnfitriona extends Persona {
     }
     
     public FamiliaAnfitriona(short cantidadIntegrantes, String estado,
-            int rutPersona, String nombreCompleto, Date fechaNacimiento,
-            String domicilio, String ciudad, String pais, String correo,
-            String telefono, String tipo) {
+            int rutPersona, String verificador, String nombreCompleto,
+            Date fechaNacimiento, String domicilio, String ciudad, String pais,
+            String correo, String telefono, String tipo) {
         
-        super(rutPersona, nombreCompleto, fechaNacimiento, domicilio, ciudad,
-                pais, correo, telefono, tipo);
+        super (rutPersona, verificador, nombreCompleto, fechaNacimiento,
+                domicilio, ciudad, pais, correo, telefono, tipo);
         
         this.cantidadIntegrantes = cantidadIntegrantes;
         this.estado = estado;

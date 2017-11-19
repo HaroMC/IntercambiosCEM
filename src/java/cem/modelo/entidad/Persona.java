@@ -5,6 +5,7 @@ import java.util.Date;
 public abstract class Persona {
 
     private int rut;
+    private String verificador;
     private String nombreCompleto;
     private Date fechaNacimiento;
     private String domicilio;
@@ -20,11 +21,12 @@ public abstract class Persona {
     public Persona() {
     }
         
-    public Persona(int rut, String nombreCompleto, String domicilio,
-            String ciudad, String pais, String correo, String telefono,
-            String tipo) {
+    public Persona(int rut, String verificador, String nombreCompleto,
+            String domicilio, String ciudad, String pais, String correo,
+            String telefono, String tipo) {
         
         this.rut = rut;
+        this.verificador = verificador;
         this.nombreCompleto = nombreCompleto;
         this.domicilio = domicilio;
         this.ciudad = ciudad;
@@ -35,11 +37,12 @@ public abstract class Persona {
         this.usuario = null;
     }
     
-    public Persona(int rut, String nombreCompleto, Date fechaNacimiento,
-            String domicilio, String ciudad, String pais, String correo,
-            String telefono, String tipo) {
+    public Persona(int rut, String verificador, String nombreCompleto,
+            Date fechaNacimiento, String domicilio, String ciudad, String pais,
+            String correo, String telefono, String tipo) {
         
         this.rut = rut;
+        this.verificador = verificador;
         this.nombreCompleto = nombreCompleto;
         this.fechaNacimiento = fechaNacimiento;
         this.domicilio = domicilio;
@@ -136,7 +139,7 @@ public abstract class Persona {
     @Override
     public String toString() {
         return
-                "Rut                 : " + rut + "\n" +
+                "Rut                 : " + rut + "-" + verificador + "\n" +
                 "Nombre completo     : " + nombreCompleto + "\n" +
                 "Fecha de nacimiento : " + fechaNacimiento + "\n" +
                 "Domicilio           : " + domicilio + "\n"+

@@ -99,7 +99,7 @@ public class Servlet extends HttpServlet {
                                     request.getParameter("fechaMatricula")),
                             Integer.parseInt(
                                     request.getParameter("rutPersona")),
-                            //Asi recibo por formulario el nombre ordenado
+                            request.getParameter("verificador"),
                             nombreCompleto,
                             format.parse(
                                     request.getParameter("fechaNacimiento")),

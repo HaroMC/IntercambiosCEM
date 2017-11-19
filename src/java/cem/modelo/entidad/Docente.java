@@ -18,12 +18,12 @@ public class Docente extends Persona {
     }
     
     public Docente(String estado, String observaciones, int rutPersona,
-            String nombreCompleto, Date fechaNacimiento, String domicilio,
-            String ciudad, String pais, String correo, String telefono,
-            String tipo) {
+            String verificador, String nombreCompleto, Date fechaNacimiento,
+            String domicilio, String ciudad, String pais, String correo,
+            String telefono, String tipo) {
         
-        super(rutPersona, nombreCompleto, fechaNacimiento, domicilio, ciudad,
-                pais, correo, telefono, tipo);
+        super (rutPersona, verificador, nombreCompleto, fechaNacimiento,
+                domicilio, ciudad, pais, correo, telefono, tipo);
         
         this.estado = estado;
         this.observaciones = observaciones;

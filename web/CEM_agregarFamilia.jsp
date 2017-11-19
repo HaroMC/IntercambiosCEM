@@ -31,6 +31,13 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="col-sm-2 control-label">Digito verificador</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="digito" 
+                           placeholder="digito verificador" required="">
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="col-sm-2 control-label">Rut </label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="rutPersona" 

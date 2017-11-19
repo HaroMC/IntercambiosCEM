@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include  file="menuCEM.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,44 +18,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">WebSiteName</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="CEM_home.jsp">Home</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administracion de Usuarios
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="CEM_administracion_alumnos.jsp">Alumnos</a></li>
-                            <li class="active"><a href="CEM_administracion_familia.jsp">Familia</a></li>
-                        </ul>
-                    </li>
-                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administracion de programas
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="CEM_administrar_programas.jsp">Ver listado de Programas</a></li>
-                            <li><a href="CEM_agregarPrograma.jsp">Agregar Programas</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Consultar Postulaciones
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="CEM_postulasiones_CEL.jsp">CEL's</a></li>
-                            <li><a href="CEM_postulasiones_alumnos.jsp">Alumnos</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </div>
-        </nav>
+        
         <div class="container">
             <h2>Familias</h2>      
             <p>Buscar una familia puedes hacerlo aqui:</p>

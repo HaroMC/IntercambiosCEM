@@ -5,10 +5,11 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
-         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Link Bootstrap CSS -->
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
         <!--Link J.S.-->
@@ -18,97 +19,81 @@
     </head>
     <body>
         <h1>Formulario de familia</h1>
+        <h5>Los datos ingresados corresponden al jefe de familia</h5>
+        <br/>
         <form action="Servlet" method="post" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Numero Matricula</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="numeroMatricula" 
-                               placeholder="Ingrese numero de matricula" required="">
-                    </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Fecha de nacimiento</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="numeroMatricula" 
+                           placeholder="fecha de nacimiento" required="">
                 </div>
-                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Fecha Matricula</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="numeroMatricula" 
-                               placeholder="Ingrese numero de matricula" required="">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Rut </label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="rutPersona" 
+                           placeholder="Ingrese el Rut jefe de familia" required="">
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Rut Alumno</label>
-                    <div class="col-sm-5">
-                        <input type="number" class="form-control" name="rutPersona" 
-                               placeholder="Ingrese el Rut del Alumno" required="">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Nombre completo</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="nombres" 
+                           placeholder="Ingrese Nombre completo" required="">
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Nombres</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="nombres" 
-                               placeholder="Ingrese Nombres" required="">
-                    </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Domicilio</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="domicilio" required=""
+                           placeholder="Ingrese el domicilio"> 
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Apellido Paterno</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="apellidoPaterno" 
-                               placeholder="Ingrese Apellido Päterno" required="">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Ciudad</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="ciudad" required=""
+                           placeholder="Ingrese la ciudad"> 
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Apellido Materno</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="apellidoPaterno" 
-                               placeholder="Ingrese Apellido Mäterno" required="">
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Pais</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="pais" required=""
+                           placeholder="Ingrese el pais"> 
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Fecha Nacimiento</label>
-                    <div class="col-sm-5">
-                        <input type="date" class="form-control" name="fechaNacimiento" required=""> 
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Correo</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="correo" required=""
+                           placeholder="Ingrese el Correo"> 
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Domicilio</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="domicilio" required=""
-                               placeholder="Ingrese el domicilio"> 
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Telefono</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="telefono" required=""
+                           placeholder="Ingrese el telefono"> 
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Ciudad</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="ciudad" required=""
-                               placeholder="Ingrese la ciudad"> 
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Cantidad de integrantes</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="ingrese cantidad de integrantes " required=""
+                           placeholder="Ingrese el telefono"> 
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Pais</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="pais" required=""
-                               placeholder="Ingrese el pais"> 
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">${mensaje}</label>
+                <div class="col-sm-5 control-label">
+                    <button type="submit" class="btn btn-default">Agregar</button>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Correo</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="correo" required=""
-                               placeholder="Ingrese el Correo"> 
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Telefono</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="telefono" required=""
-                               placeholder="Ingrese el telefono"> 
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">${mensaje}</label>
-                    <div class="col-sm-5 control-label">
-                        <button type="submit" class="btn btn-default">Agregar</button>
-                    </div>
-                </div>
-                <input type="text" name="accion" value="agregarAlumno" hidden="true" />
-            </form>
+            </div>
+            <input type="text" name="accion" value="agregarAlumno" hidden="true" />
+        </form>
     </body>
 </html>

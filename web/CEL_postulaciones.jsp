@@ -17,27 +17,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">WebSiteName</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="CEL_home.jsp">Home</a></li>
-                    <li><a href="CEL_calificaciones.jsp">Calificaciones</a></li>
-                    <li class="active"><a href="CEL_postulaciones.jsp">Postulaciones</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </div>
-        </nav>
+        <%@include file="menuCEM.jsp" %>
         <div class="container">
             <h2>Programas a los cuales puede postular </h2>      
             <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput" type="text" placeholder="Escribe aca lo que buscas..">
-            <br>
+            <br/>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>

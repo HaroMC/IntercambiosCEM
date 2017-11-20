@@ -17,27 +17,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">WebSiteName</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="CEL_home.jsp">Home</a></li>
-                    <li><a href="CEL_calificaciones.jsp">Calificaciones</a></li>
-                    <li class="active"><a href="CEL_postulaciones.jsp">Postulaciones</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </div>
-        </nav>
+        <%@include file="menuCEL.jsp" %>
         <div class="container">
             <h2>Programas a los cuales puede postular </h2>      
             <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput" type="text" placeholder="Escribe aca lo que buscas..">
-            <br>
+            <br/>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -103,32 +88,33 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Email</th>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha de Termino</th>
+                        <th>Valor</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
+
                 <tbody id="myTable2">
                     <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
+                        <td>001</td>>
+                        <td>Ingles</td>
+                        <td>11/06/1017</td>
+                        <td>11/07/1017</td>
+                        <td>$1.800.000</td>
+                        <td>En Espera</td>
                     </tr>
                     <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@mail.com</td>
+                        <td>002</td>>
+                        <td>Recursos Humanos</td>
+                        <td>11/06/1017</td>
+                        <td>11/07/1017</td>
+                        <td>$1.400.000</td>
+                        <td>Aceptado</td>
                     </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@greatstuff.com</td>
-                    </tr>
-                    <tr>
-                        <td>Anja</td>
-                        <td>Ravendale</td>
-                        <td>a_r@test.com</td>
-                    </tr>
+                   
                 </tbody>
             </table>
             <button type="button" class="btn btn-primary">

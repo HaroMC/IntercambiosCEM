@@ -6,7 +6,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include  file="menuCEM.jsp" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +18,7 @@
         <title>Agregar Programa</title>
     </head>
     <body>
+       
         <div class="container-fluid">
             <h1>Agregar Programa</h1>
             <form action="Servlet" method="post" class="form-horizontal">

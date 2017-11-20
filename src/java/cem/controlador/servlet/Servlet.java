@@ -206,10 +206,11 @@ public class Servlet extends HttpServlet {
             case "agregarFamilia":
                 
                 try {
-                    String nombreCompleto =
+                    /*String nombreCompleto =
                             request.getParameter("nombres") + " " +
                             request.getParameter("apellidoPaterno") + " " +
-                            request.getParameter("apellidoMaterno");
+                            request.getParameter("apellidoMaterno");*/
+                    String nombreCompleto = request.getParameter("nombres");
                     FamiliaAnfitriona objFamilia = new FamiliaAnfitriona(
                             Short.parseShort(
                                     request.getParameter("cantidadIntegrantes")),

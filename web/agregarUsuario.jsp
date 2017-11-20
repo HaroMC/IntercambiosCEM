@@ -30,7 +30,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Contraseña</label>
                     <div class="col-sm-5">
-                        <input type="password" class="form-control" name="contrasenna" 
+                        <input type="password" class="form-control" name="contrasena" 
                                placeholder="Ingrese la contraseña" required="">
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Contraseña</label>
                     <div class="col-sm-5">
-                        <input type="password" class="form-control" name="contrasenna" 
+                        <input type="password" class="form-control" name="contrasena" 
                                placeholder="Ingrese la contraseña" required="">
                     </div>
                 </div>

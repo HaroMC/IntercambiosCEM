@@ -2,6 +2,7 @@ package cem.controlador.servlet;
 
 import cem.controlador.dao.DaoEntidades;
 import cem.modelo.entidad.Alumno;
+import cem.modelo.entidad.FamiliaAnfitriona;
 import cem.modelo.entidad.Programa;
 import cem.modelo.entidad.Usuario;
 import java.io.IOException;
@@ -40,12 +41,13 @@ public class Servlet extends HttpServlet {
 
         switch (accion) {
 
-            //<editor-fold defaultstate="collapsed" desc=" Agregar programa ">
+            //<editor-fold defaultstate="collapsed" desc=" Agregar programa (Harold) ">
+            
             case "agregarPrograma":
                 try {
                     // Instanciamos un programa utilizando el constructor con
                     // parámetros.
-                    Programa p = new Programa(
+                    Programa objPrograma = new Programa(
                             // Código:
                             dao.ultimoCodigoIncremental("PROGRAMA") + 1,
                             // Nombre del programa:
@@ -61,7 +63,7 @@ public class Servlet extends HttpServlet {
                     );
                     // Llamamos a la funcion de agregar un programa, la cual
                     // requiere de un Programa (p).
-                    if (dao.insertarPrograma(p)) {
+                    if (dao.insertarPrograma(objPrograma)) {
                         // Si el método, luego de realizar la inserción,
                         // retorna true, editamos el mensaje en el formulario
                         // de agregar programa.
@@ -69,7 +71,8 @@ public class Servlet extends HttpServlet {
                                 + "correctamente.");
                         request.getRequestDispatcher("agregarPrograma.jsp")
                                 .forward(request, response);
-                    } else {
+                    }
+                    else {
                         // Si el método retorna false, informamos que el
                         // problema se encuentra en el DAO.
                         request.setAttribute("mensaje", "Se ha producido un "
@@ -77,21 +80,23 @@ public class Servlet extends HttpServlet {
                         request.getRequestDispatcher("agregarPrograma.jsp")
                                 .forward(request, response);
                     }
-                } catch (ParseException ex) {
+                }
+                catch (ParseException ex) {
                     Logger.getLogger(Servlet.class.getName())
                             .log(Level.SEVERE, null, ex);
                 }
                 break;
+                
             //</editor-fold>
 
-            //<editor-fold defaultstate="collapsed" desc=" Agregar alumno ">
+            //<editor-fold defaultstate="collapsed" desc=" Agregar alumno (Harold) ">
                 
             case "agregarAlumno":
                 try {
-                    String nombres = request.getParameter("nombres");
-                    String appP = request.getParameter("apellidoPaterno");
-                    String appM = request.getParameter("apellidoMaterno");
-                    String nombreCompleto = nombres + " " + appM + " " + appM;
+                    String nombreCompleto =
+                            request.getParameter("nombres") + " " +
+                            request.getParameter("apellidoPaterno") + " " +
+                            request.getParameter("apellidoMaterno");
                     Alumno alumno = new Alumno(
                             Long.parseLong(
                                     request.getParameter("numeroMatricula")),
@@ -149,29 +154,28 @@ public class Servlet extends HttpServlet {
                 
             //</editor-fold>
 
-            //<editor-fold defaultstate="collapsed" desc=" Agregar Usuario ">
+            //<editor-fold defaultstate="collapsed" desc=" Agregar Usuario (David) ">
+                
             case "agregarUsuario":
                 try {
                     // Instanciamos un programa utilizando el constructor con
                     // parámetros.
-                    Usuario u = new Usuario(
+                    Usuario objUsuario = new Usuario(
                             // Código:
-                            //AQUI VA LA BUSQUEDA DEL ULTIMO CODIGO Y AGREGAR 1
-                            // Codigo
-                            123456789,
+                            dao.ultimoCodigoIncremental("USUARIO") + 1,
                             // Nombre Usuario:
                             request.getParameter("nombreUsuario"),
                             // Contraseña:
-                            request.getParameter("contrasenna"),
+                            request.getParameter("contrasena"),
                             // Fecha de inicio:
-                            format.parse(request.getParameter("fechaRegisro")),
+                            format.parse(request.getParameter("fechaRegistro")),
                             // Tipo Usuario
                             request.getParameter("perfil")
                     );
                     // Llamamos a la funcion de agregar un usuario, la cual
                     // requiere de un Usuario (u).
-                    //<!--dao.insertarUsuario(p)-->
-                    if (dao.registrarUsuario(u,12345,u.getContrasena())) {
+                    if (dao.registrarUsuario(
+                            objUsuario, 12345, objUsuario.getContrasena())) {
                         // Si el método, luego de realizar la inserción,
                         // retorna true, editamos el mensaje en el formulario
                         // de agregar programa.
@@ -179,7 +183,8 @@ public class Servlet extends HttpServlet {
                                 + "correctamente.");
                         request.getRequestDispatcher("agregarUsuario.jsp")
                                 .forward(request, response);
-                    } else {
+                    }
+                    else {
                         // Si el método retorna false, informamos que el
                         // problema se encuentra en el DAO.
                         request.setAttribute("mensaje", "Se ha producido un "
@@ -187,12 +192,78 @@ public class Servlet extends HttpServlet {
                         request.getRequestDispatcher("agregarUsuario.jsp")
                                 .forward(request, response);
                     }
-                } catch (ParseException ex) {
+                }
+                catch (ParseException ex) {
                     Logger.getLogger(Servlet.class.getName())
                             .log(Level.SEVERE, null, ex);
                 }
                 break;
+                
             //</editor-fold>
+                
+            //<editor-fold defaultstate="Collapsed" desc=" Agregar familia (Harold) ">
+                
+            case "agregarFamilia":
+                
+                try {
+                    String nombreCompleto =
+                            request.getParameter("nombres") + " " +
+                            request.getParameter("apellidoPaterno") + " " +
+                            request.getParameter("apellidoMaterno");
+                    FamiliaAnfitriona objFamilia = new FamiliaAnfitriona(
+                            Short.parseShort(
+                                    request.getParameter("cantidadIntegrantes")),
+                            "Aprobación pendiente",
+                            Integer.parseInt(
+                                    request.getParameter("rutPersona")),
+                            request.getParameter("verificador"),
+                            nombreCompleto,
+                            format.parse(
+                                    request.getParameter("fechaNacimiento")),
+                            request.getParameter("domicilio"),
+                            request.getParameter("ciudad"),
+                            request.getParameter("pais"),
+                            request.getParameter("correo"),
+                            request.getParameter("telefono"),
+                            "Familia"
+                    );
+                    switch (dao.insertarFamilia(objFamilia)) {
+                        case -2:
+                            request.setAttribute("mensaje", "El rut ingresado "
+                                    + "ya existe en la base de datos.");
+                            request.getRequestDispatcher("CEM_agregarFamilia.jsp")
+                                    .forward(request, response);
+                            break;
+
+                        case -1:
+                            request.setAttribute("mensaje", "Error al insertar "
+                                    + "los datos de la persona.");
+                            request.getRequestDispatcher("CEM_agregarFamilia.jsp")
+                                    .forward(request, response);
+                            break;
+
+                        case 0:
+                            request.setAttribute("mensaje", "Error al insertar "
+                                    + "los datos de la familia.");
+                            request.getRequestDispatcher("CEM_agregarFamilia.jsp")
+                                    .forward(request, response);
+                            break;
+
+                        case 1:
+                            request.setAttribute("mensaje", "Familia insertada "
+                                    + "correctamente.");
+                            request.getRequestDispatcher("CEM_agregarFamilia.jsp")
+                                    .forward(request, response);
+                    }
+                }
+                catch (ParseException ex) {
+                    Logger.getLogger(Servlet.class.getName())
+                            .log(Level.SEVERE, null, ex);
+                }
+                
+            //</editor-fold>
+                
+                
         }
     }
 
@@ -200,6 +271,7 @@ public class Servlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
+        
     }
     
 }

@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class Servlet extends HttpServlet {
 
@@ -41,7 +42,47 @@ public class Servlet extends HttpServlet {
 
         switch (accion) {
 
-            //<editor-fold defaultstate="collapsed" desc=" Agregar programa (Harold) ">
+            case "ingresarAlSistema":
+                
+                Usuario objUsuario = dao.buscarUsuario(
+                        request.getParameter("nombreUsuario"),
+                        request.getParameter("contrasena"));
+                
+                // Ingresar el usuario ingresado en la sesión.
+                //HttpSession sesion = request.getSession(true);
+                //sesion.setAttribute("usuarioEnSesion", objUsuario);
+                
+                if (objUsuario != null) {
+                    // Se redirije cada ususario según su perfil a la página
+                    // que le corresponda.
+                    switch (objUsuario.getPerfil()) {
+                        case "Administrador":
+                            response.sendRedirect(
+                                    "/IntercambiosCEM/menuCEM.jsp");
+                            break;
+                        case "CEL":
+                            response.sendRedirect(
+                                    "/IntercambiosCEM/menuCEL.jsp");
+                            break;
+                        case "Alumno":
+                            response.sendRedirect(
+                                    "/IntercambiosCEM/index.jsp");
+                            break;
+                        case "Familia":
+                            response.sendRedirect(
+                                    "/IntercambiosCEM/index.jsp");
+                    }
+                }
+                else {
+                    request.setAttribute("mensaje", "Sus credenciales no son "
+                            + "válidas.");
+                    request.getRequestDispatcher("login.jsp")
+                            .forward(request, response);
+                }
+                
+                break;
+            
+            //<editor-fold defaultstate="collapsed" desc=" Agregar programa ">
             
             case "agregarPrograma":
                 try {
@@ -89,7 +130,7 @@ public class Servlet extends HttpServlet {
                 
             //</editor-fold>
 
-            //<editor-fold defaultstate="collapsed" desc=" Agregar alumno (Harold) ">
+            //<editor-fold defaultstate="collapsed" desc=" Agregar alumno ">
                 
             case "agregarAlumno":
                 try {
@@ -154,8 +195,8 @@ public class Servlet extends HttpServlet {
                 
             //</editor-fold>
 
-            //<editor-fold defaultstate="collapsed" desc=" Agregar Usuario (David) ">
-                
+            //<editor-fold defaultstate="collapsed" desc=" Agregar Usuario ">
+            /*
             case "agregarUsuario":
                 try {
                     // Instanciamos un programa utilizando el constructor con
@@ -198,10 +239,10 @@ public class Servlet extends HttpServlet {
                             .log(Level.SEVERE, null, ex);
                 }
                 break;
-                
+                */
             //</editor-fold>
                 
-            //<editor-fold defaultstate="Collapsed" desc=" Agregar familia (Harold) ">
+            //<editor-fold defaultstate="Collapsed" desc=" Agregar familia ">
                 
             case "agregarFamilia":
                 
@@ -261,10 +302,10 @@ public class Servlet extends HttpServlet {
                     Logger.getLogger(Servlet.class.getName())
                             .log(Level.SEVERE, null, ex);
                 }
+                break;
                 
             //</editor-fold>
-                
-                
+            
         }
     }
 
@@ -272,6 +313,7 @@ public class Servlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
+        
         
     }
     

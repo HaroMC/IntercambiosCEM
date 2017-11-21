@@ -9,16 +9,19 @@ import java.util.logging.Logger;
 public class Conexion {
 
     private Connection conexion = null;
-    
+    /*
     private String driver = "oracle.jdbc.OracleDriver";
     private String dbName = "jdbc:oracle:thin:@localhost:1521:XE";
     private String user = "cem";
-    private String password = "portafolioCaso1";
+    private String password = "portafolioCaso1";*/
 
     public Conexion() {
         try {
-            Class.forName(driver).newInstance();
-            conexion = DriverManager.getConnection(dbName, user, password);
+            Class.forName("oracle.jdbc.OracleDriver").newInstance();
+            conexion = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@localhost:1521:XE",
+                    "cem",
+                    "portafolioCaso1");
         }
         catch (ClassNotFoundException | SQLException | InstantiationException
                 | IllegalAccessException ex) {

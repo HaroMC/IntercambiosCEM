@@ -8,29 +8,39 @@ public class Usuario {
     private String nombre;
     private String contrasena;
     private Date fechaRegistro;
+    private int rut;
     private String perfil;
 
     //<editor-fold defaultstate="collapsed" desc=" Constructores ">
     public Usuario() {
     }
 
-    public Usuario(long codigo, String nombre, Date fechaRegistro,
+    public Usuario(long codigo, String nombre, String contrasena) {
+
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.contrasena = "";
+    }
+    
+    public Usuario(long codigo, String nombre, Date fechaRegistro, int rut,
             String perfil) {
 
         this.codigo = codigo;
         this.nombre = nombre;
         this.contrasena = "";
         this.fechaRegistro = fechaRegistro;
+        this.rut = rut;
         this.perfil = perfil;
     }
 
     public Usuario(long codigo, String nombre, String contrasena,
-            Date fechaRegistro, String perfil) {
+            Date fechaRegistro, int rut, String perfil) {
 
         this.codigo = codigo;
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.fechaRegistro = fechaRegistro;
+        this.rut = rut;
         this.perfil = perfil;
     }
 
@@ -53,6 +63,10 @@ public class Usuario {
         return fechaRegistro;
     }
 
+    public int getRut() {
+        return rut;
+    }
+    
     public String getPerfil() {
         return perfil;
     }

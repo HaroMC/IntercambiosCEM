@@ -26,21 +26,21 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Fecha de nacimiento</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="numeroMatricula" 
-                           placeholder="fecha de nacimiento" required="">
+                    <input type="date" class="form-control" name="fechaNacimiento" 
+                           placeholder="fecha de nacimiento" required="true">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Digito verificador</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="digito" 
-                           placeholder="digito verificador" required="">
+                           placeholder="digito verificador" required="true">
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">Rut </label>
+                <label class="col-sm-2 control-label">Rut</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="rutPersona" 
+                    <input type="number" class="form-control" name="rutPersona" 
                            placeholder="Ingrese el Rut jefe de familia" required="">
                 </div>
             </div>
@@ -48,50 +48,50 @@
                 <label class="col-sm-2 control-label">Nombre completo</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="nombres" 
-                           placeholder="Ingrese Nombre completo" required="">
+                           placeholder="Ingrese Nombre completo" required="true">
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Domicilio</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="domicilio" required=""
+                    <input type="text" class="form-control" name="domicilio" required="true"
                            placeholder="Ingrese el domicilio"> 
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Ciudad</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="ciudad" required=""
+                    <input type="text" class="form-control" name="ciudad" required="true"
                            placeholder="Ingrese la ciudad"> 
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Pais</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="pais" required=""
-                           placeholder="Ingrese el pais"> 
+                    <input type="text" class="form-control" name="pais" required="true"
+                           placeholder="Ingrese el país"> 
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Correo</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="correo" required=""
+                    <input type="email" class="form-control" name="correo" required="true"
                            placeholder="Ingrese el Correo"> 
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Telefono</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="telefono" required=""
+                    <input type="text" class="form-control" name="telefono" required="true"
                            placeholder="Ingrese el telefono"> 
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Cantidad de integrantes</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="ingrese cantidad de integrantes " required=""
-                           placeholder="Ingrese el telefono"> 
+                    <input type="number" class="form-control" name="ingrese cantidad de integrantes " required="true"
+                           placeholder="Cantidad de integrantes"> 
                 </div>
             </div>
             <div class="form-group">
@@ -100,7 +100,7 @@
                     <button type="submit" class="btn btn-default">Agregar</button>
                 </div>
             </div>
-            <input type="text" name="accion" value="agregarAlumno" hidden="true" />
+            <input type="text" name="accion" value="agregarFamilia" hidden="true" />
         </form>
     </body>
 </html>

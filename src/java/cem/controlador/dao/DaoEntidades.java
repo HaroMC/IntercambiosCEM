@@ -169,6 +169,28 @@ public class DaoEntidades {
         return resultado;
     }
     
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    /*private ArrayList<Persona> listadoPersonas() {
+        
+        ArrayList<Persona> listado = null;
+        String sql = "SELECT * FROM CEM.PERSONA";
+        try {
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            while (rs.next()) {
+                listado.add()
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+        return listado;
+    }*/
+    
+    
     //</editor-fold>
         
     //<editor-fold defaultstate="collapsed" desc=" Alumno : Completo ">

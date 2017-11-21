@@ -1,30 +1,27 @@
 package cem.modelo.conexion;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Conexion {
 
-    //<editor-fold defaultstate="collapsed" desc=" Método de conexión 1 ">
     private Connection conexion = null;
+    
+    private String driver = "oracle.jdbc.OracleDriver";
+    private String dbName = "jdbc:oracle:thin:@localhost:1521:XE";
+    private String user = "cem";
+    private String password = "portafolioCaso1";
 
     public Conexion() {
         try {
-            Class.forName("oracle.jdbc.OracleDriver").newInstance();
-            conexion = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@localhost:1521:XE",
-                    "cem",
-                    "portafolioCaso1"
-            );
-        } catch (ClassNotFoundException | SQLException
-                | InstantiationException | IllegalAccessException ex) {
+            Class.forName(driver).newInstance();
+            conexion = DriverManager.getConnection(dbName, user, password);
+        }
+        catch (ClassNotFoundException | SQLException | InstantiationException
+                | IllegalAccessException ex) {
             Logger.getLogger(Conexion.class.getName())
                     .log(Level.SEVERE, null, ex);
         }
@@ -37,7 +34,5 @@ public class Conexion {
     public void cerrar() throws SQLException {
         conexion.close();
     }
-
-    //</editor-fold>
     
 }

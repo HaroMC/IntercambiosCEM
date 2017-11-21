@@ -169,6 +169,28 @@ public class DaoEntidades {
         return resultado;
     }
     
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    /*private ArrayList<Persona> listadoPersonas() {
+        
+        ArrayList<Persona> listado = null;
+        String sql = "SELECT * FROM CEM.PERSONA";
+        try {
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            while (rs.next()) {
+                listado.add()
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, ex);
+        }
+        return listado;
+    }*/
+    
+    
     //</editor-fold>
         
     //<editor-fold defaultstate="collapsed" desc=" Alumno : Completo ">
@@ -316,7 +338,7 @@ public class DaoEntidades {
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
             ps.setInt(1, rutPersona);
-            rs = ps.executeQuery(sql);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 alumno = new Alumno(
                         rs.getLong(1),
@@ -482,6 +504,7 @@ public class DaoEntidades {
             Conexion conexion = new Conexion();
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
+            ps.setString(1, String.valueOf(codigo));
             rs = ps.executeQuery(sql);
             while (rs.next()) {
                 programa = new Programa(
@@ -1070,38 +1093,39 @@ public class DaoEntidades {
         return resultado;
     }
     
-    public Usuario buscarUsuario(int rutPersona) {
+    public Usuario buscarUsuario(String nU, String c) {
+        
         Usuario objUsuario = null;
-        if (comprobarRutExistente(rutPersona)) {
-            
-            String sql = "SELECT CODIGO, NOMBRE, FECHA_REGISTRO, PERFIL "
-                    + "FROM USUARIO WHERE RUT_PERSONA = ?";
-            try {
-                Conexion conexion = new Conexion();
-                c = conexion.abrir();
-                ps = c.prepareStatement(sql);
-                ps.setInt(1, rutPersona);
-                rs = ps.executeQuery(sql);
-                while (rs.next()) {
-                    objUsuario = new Usuario(
-                            rs.getLong(1),
-                            rs.getString(2),
-                            rs.getDate(3),
-                            rs.getString(4)
-                    );
-                }
-                rs.close();
-                ps.close();
-                c.close();
-                conexion.cerrar();
+        String sql = "SELECT CODIGO, FECHA_REGISTRO, RUT_PERSONA, PERFIL "
+                + "FROM CEM.USUARIO WHERE NOMBRE = ? AND CONTRASENA = ?";
+        try {
+            Conexion conexion = new Conexion();
+            this.c = conexion.abrir();
+            ps = this.c.prepareStatement(sql);
+            ps.setString(1, nU);
+            ps.setString(2, c);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                objUsuario = new Usuario(
+                        rs.getLong(1),
+                        nU,
+                        rs.getDate(2),
+                        rs.getInt(3),
+                        rs.getString(4)
+                );
             }
-            catch (SQLException se) {
-                Logger.getLogger(DaoEntidades.class.getName())
-                        .log(Level.SEVERE, null, se);
-            }
+            rs.close();
+            ps.close();
+            this.c.close();
+            conexion.cerrar();
+        }
+        catch (SQLException se) {
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
         }
         return objUsuario;
     }
+    
     
 //</editor-fold>
     

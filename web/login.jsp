@@ -13,7 +13,7 @@
             Centro de Estudios Montreal
         </h1>
         
-        <form action="Servlet" method="post">
+        <form action="SesionServlet" method="post">
             <table>
                 <tr>
                     <td> Nombre de usuario </td>

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : menuCEM
-    Created on : 16-10-2017, 02:26:39 AM
-    Author     : 
---%>
 
 <%@ page contentType="text/html"
          pageEncoding="UTF-8"
@@ -51,18 +46,23 @@
                         </ul>
                     </li>
                 </ul>
-                
-                
-                <!-- MODIFICAR ESTA SECCIÓN PARA QUE LOS BOTONES SIGN UP Y LOGIN SE OCULTEN CUANDO HAYA UN USUARIO EN SESIÓN -->
-                <p style="color: white">
-                    Bienvenido, <%= ((Usuario)(session.getAttribute("usuarioActual"))).getNombre() %>
-                </p>
+                                
                 <!-- ------------------------------------------------------------------------------------------------------- -->
+                <label class="nav navbar-nav navbar-right" style="color: white">
+                    Bienvenido, <%= ((Usuario)(session.getAttribute("usuarioActual"))).getNombre() %>
+                    <br />
+                    <form action="SesionServlet" method="get">
+                        <input type="submit" value="Cerrar sesión" />
+                    </form>
+                </label>
+                <!-- ------------------------------------------------------------------------------------------------------- -->
+                
+                <!--
                 <ul class="nav navbar-nav navbar-right">
                     <li> <a href="#"> <span class="glyphicon glyphicon-user"> </span> Sign Up </a> </li>
                     <li> <a href="#"> <span class="glyphicon glyphicon-log-in"> </span> Login </a> </li>
                 </ul>
-                
+                -->
             </div>
         </nav>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

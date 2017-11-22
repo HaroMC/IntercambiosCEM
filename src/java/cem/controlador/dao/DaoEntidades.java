@@ -23,7 +23,6 @@ public class DaoEntidades {
         this.rs = null;
     }
     
-    
     public long ultimoCodigoIncremental(String nombreTabla) {
         long codigo = -1;
         String sql = "SELECT MAX(CODIGO) FROM CEM." + nombreTabla;

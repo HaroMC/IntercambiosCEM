@@ -4,12 +4,10 @@ import cem.controlador.dao.DaoEntidades;
 import cem.modelo.entidad.Alumno;
 import cem.modelo.entidad.FamiliaAnfitriona;
 import cem.modelo.entidad.Programa;
-import cem.modelo.entidad.Usuario;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -18,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class Servlet extends HttpServlet {
+public class EntidadServlet extends HttpServlet {
 
     // Como el dao es una clase que se requiere para todo el servlet, es
     // más conveniente declararla como un atributo de la clase...
@@ -31,6 +29,7 @@ public class Servlet extends HttpServlet {
         // ... E instanciarlo cada vez que se llame al servlet desde el
         // método de inicialización.
         dao = new DaoEntidades();
+        sesion = null;
     }
 
     @Override
@@ -42,57 +41,8 @@ public class Servlet extends HttpServlet {
         // puede ser declarado desde aquí y reutilizar la variable.
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String accion = request.getParameter("accion");
-
+        
         switch (accion) {
-
-            case "ingresarAlSistema":
-                
-                Usuario objUsuario = dao.buscarUsuario(
-                        request.getParameter("nombreUsuario"),
-                        request.getParameter("contrasena"));
-                
-                if (objUsuario != null) {
-                    
-                    // Añadir el usuario ingresado a la sesión.
-                    sesion = request.getSession(true);
-                    //serializable = new ArrayList<>();
-                    //serializable.add(objUsuario);
-                    sesion.setAttribute("usuarioActual", objUsuario);
-                    
-                    
-                    
-                    // Se redirije cada ususario según su perfil a la página
-                    // que le corresponda.
-                    switch (objUsuario.getPerfil()) {
-                        
-                        case "Administrador":
-                            response.sendRedirect(
-                                    "/IntercambiosCEM/menuCEM.jsp");
-                            break;
-                            
-                        case "CEL":
-                            response.sendRedirect(
-                                    "/IntercambiosCEM/menuCEL.jsp");
-                            break;
-                            
-                        case "Alumno":
-                            response.sendRedirect(
-                                    "/IntercambiosCEM/index.jsp");
-                            break;
-                            
-                        case "Familia":
-                            response.sendRedirect(
-                                    "/IntercambiosCEM/index.jsp");
-                    }
-                }
-                else {
-                    request.setAttribute("mensaje", "Sus credenciales no son "
-                            + "válidas.");
-                    request.getRequestDispatcher("login.jsp")
-                            .forward(request, response);
-                }
-                
-                break;
             
             //<editor-fold defaultstate="collapsed" desc=" Agregar programa ">
             
@@ -135,7 +85,7 @@ public class Servlet extends HttpServlet {
                     }
                 }
                 catch (ParseException ex) {
-                    Logger.getLogger(Servlet.class.getName())
+                    Logger.getLogger(EntidadServlet.class.getName())
                             .log(Level.SEVERE, null, ex);
                 }
                 break;
@@ -200,7 +150,7 @@ public class Servlet extends HttpServlet {
                     }
                 }
                 catch (ParseException se) {
-                    Logger.getLogger(Servlet.class.getName())
+                    Logger.getLogger(EntidadServlet.class.getName())
                             .log(Level.SEVERE, null, se);
                 }
                 break;
@@ -247,7 +197,7 @@ public class Servlet extends HttpServlet {
                     }
                 }
                 catch (ParseException ex) {
-                    Logger.getLogger(Servlet.class.getName())
+                    Logger.getLogger(EntidadServlet.class.getName())
                             .log(Level.SEVERE, null, ex);
                 }
                 break;
@@ -311,7 +261,7 @@ public class Servlet extends HttpServlet {
                     }
                 }
                 catch (ParseException ex) {
-                    Logger.getLogger(Servlet.class.getName())
+                    Logger.getLogger(EntidadServlet.class.getName())
                             .log(Level.SEVERE, null, ex);
                 }
                 break;

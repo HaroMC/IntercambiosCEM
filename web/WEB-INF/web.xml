@@ -14,11 +14,11 @@
     </servlet>
     <servlet>
         <servlet-name>Servlet</servlet-name>
-        <servlet-class>cem.controlador.servlet.Servlet</servlet-class>
+        <servlet-class>cem.controlador.servlet.EntidadServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Consultas</servlet-name>
-        <servlet-class>cem.controlador.servlet.Consultas</servlet-class>
+        <servlet-name>SesionServlet</servlet-name>
+        <servlet-class>cem.controlador.servlet.SesionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
@@ -29,8 +29,8 @@
         <url-pattern>/Servlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Consultas</servlet-name>
-        <url-pattern>/Consultas</url-pattern>
+        <servlet-name>SesionServlet</servlet-name>
+        <url-pattern>/SesionServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

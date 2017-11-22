@@ -7,10 +7,12 @@
         <title> Bienvenido </title>
     </head>
     <body>
+        
         <h1>
             Sistema de intercambios estudiantiles <br>
             Centro de Estudios Montreal
         </h1>
+        
         <form action="Servlet" method="post">
             <table>
                 <tr>
@@ -18,7 +20,8 @@
                 </tr>
                 
                 <tr>
-                    <td> <input type="text" name="nombreUsuario" /> </td>
+                    <td> <input type="text" name="nombreUsuario"
+                                required="true" /> </td>
                 </tr>
                 
                 <tr>
@@ -31,8 +34,7 @@
                 </tr>
                 
                 <tr>
-                    <td> <input type="submit" value="Ingresar"
-                                required="true" /> </td>
+                    <td> <input type="submit" value="Ingresar" /> </td>
                 </tr>
             </table>
             <label> ${mensaje} </label>

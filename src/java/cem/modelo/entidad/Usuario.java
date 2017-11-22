@@ -1,8 +1,9 @@
 package cem.modelo.entidad;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Usuario {
+public class Usuario implements Serializable {
 
     private long codigo;
     private String nombre;

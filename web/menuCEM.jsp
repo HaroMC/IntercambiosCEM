@@ -1,10 +1,13 @@
 <%-- 
     Document   : menuCEM
     Created on : 16-10-2017, 02:26:39 AM
-    Author     : David
+    Author     : 
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html"
+         pageEncoding="UTF-8"
+         import="cem.modelo.entidad.Usuario" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,6 +52,14 @@
                         </ul>
                     </li>
                 </ul>
+                
+                <!-- MODIFICAR ESTA SECCIÓN PARA QUE LOS BOTONES SIGN UP Y LOGIN SE OCULTEN CUANDO HAYA UN USUARIO EN SESIÓN -->
+                
+                <p style="color: white">
+                    Bienvenido, <%= ((Usuario)(session.getAttribute("usuarioActual"))).getNombre() %>
+                </p>
+                <!-- ------------------------------------------------------------------------------------------------------- -->
+                
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

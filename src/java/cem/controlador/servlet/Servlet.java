@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,6 +23,8 @@ public class Servlet extends HttpServlet {
     // Como el dao es una clase que se requiere para todo el servlet, es
     // más conveniente declararla como un atributo de la clase...
     private DaoEntidades dao;
+    private HttpSession sesion;
+    //private ArrayList<Object> serializable;
 
     @Override
     public void init() {
@@ -48,26 +51,35 @@ public class Servlet extends HttpServlet {
                         request.getParameter("nombreUsuario"),
                         request.getParameter("contrasena"));
                 
-                // Ingresar el usuario ingresado en la sesión.
-                //HttpSession sesion = request.getSession(true);
-                //sesion.setAttribute("usuarioEnSesion", objUsuario);
-                
                 if (objUsuario != null) {
+                    
+                    // Añadir el usuario ingresado a la sesión.
+                    sesion = request.getSession(true);
+                    //serializable = new ArrayList<>();
+                    //serializable.add(objUsuario);
+                    sesion.setAttribute("usuarioActual", objUsuario);
+                    
+                    
+                    
                     // Se redirije cada ususario según su perfil a la página
                     // que le corresponda.
                     switch (objUsuario.getPerfil()) {
+                        
                         case "Administrador":
                             response.sendRedirect(
                                     "/IntercambiosCEM/menuCEM.jsp");
                             break;
+                            
                         case "CEL":
                             response.sendRedirect(
                                     "/IntercambiosCEM/menuCEL.jsp");
                             break;
+                            
                         case "Alumno":
                             response.sendRedirect(
                                     "/IntercambiosCEM/index.jsp");
                             break;
+                            
                         case "Familia":
                             response.sendRedirect(
                                     "/IntercambiosCEM/index.jsp");

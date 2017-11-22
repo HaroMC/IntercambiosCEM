@@ -20,6 +20,10 @@
         <servlet-name>SesionServlet</servlet-name>
         <servlet-class>cem.controlador.servlet.SesionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Consultas</servlet-name>
+        <servlet-class>cem.controlador.servlet.Consultas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>SesionServlet</servlet-name>
         <url-pattern>/SesionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Consultas</servlet-name>
+        <url-pattern>/Consultas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

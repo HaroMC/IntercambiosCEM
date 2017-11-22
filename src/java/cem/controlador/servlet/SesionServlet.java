@@ -70,6 +70,7 @@ public class SesionServlet extends HttpServlet {
         
         sesion = request.getSession();
         sesion.invalidate();
+        
         response.sendRedirect("login.jsp");
     }
 }

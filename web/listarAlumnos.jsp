@@ -1,12 +1,13 @@
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%-- 
-    Document   : listadoDocentes
-    Created on : 18-oct-2017, 13:40:31
-    Author     : HaroMC
---%>
+<%@ page contentType="text/html"
+         pageEncoding="UTF-8"
+         import="cem.modelo.entidad.Usuario" %>
 
-<%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%  if (session.getAttribute("usuarioActual") == null) {
+       response.sendRedirect("no-autorizado.html");
+    }
+%>
 
 <!DOCTYPE html>
 <html>
@@ -15,12 +16,11 @@
         <title> Listado de alumnos </title>
     </head>
     <body>
-        
         <table>
-            <c:forEach items="${listadoAlumnos}" var="a">
+            <c:forEach var="a" items="${listadoAlumnos}">
             <tr>
-                <td> <c:out value="${p.nombreCompleto}" /> </td>
-                <td> <c:out value="${p.rut}" /> </td>
+                <td> <c:out value="${a.nombreCompleto}" /> </td>
+                <td> <c:out value="${a.rut}" /> </td>
             </tr>
             </c:forEach>
         </table>

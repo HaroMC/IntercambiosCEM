@@ -3,6 +3,8 @@
          pageEncoding="UTF-8"
          import="cem.modelo.entidad.Usuario" %>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,7 +49,7 @@
                     </li>
                 </ul>
                                 
-                <!-- ------------------------------------------------------------------------------------------------------- -->
+                <!-- ------------------------------------------------------- -->
                 <label class="nav navbar-nav navbar-right" style="color: white">
                     Bienvenido, <%= ((Usuario)(session.getAttribute("usuarioActual"))).getNombre() %>
                     <br />
@@ -55,8 +57,7 @@
                         <input type="submit" value="Cerrar sesión" />
                     </form>
                 </label>
-                <!-- ------------------------------------------------------------------------------------------------------- -->
-                
+                <!-- ------------------------------------------------------- -->
                 <!--
                 <ul class="nav navbar-nav navbar-right">
                     <li> <a href="#"> <span class="glyphicon glyphicon-user"> </span> Sign Up </a> </li>

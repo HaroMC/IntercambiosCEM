@@ -23,8 +23,8 @@
                         <a class="navbar-brand" href="#">WebSiteName</a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="Alumno_perfil.jsp">Perfil</a></li>                    
-                        <li><a href="Alumno_postulaciones.jsp">Postulaciones</a></li>
+                        <li><a href="Alumno_perfil.jsp">Perfil</a></li>                    
+                        <li><a href="programas.htm">Postulaciones</a></li>
                     </ul>                  
                 </div>
             </nav>

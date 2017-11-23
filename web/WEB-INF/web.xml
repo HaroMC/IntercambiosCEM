@@ -38,11 +38,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SesionServlet</servlet-name>
-        <url-pattern>/SesionServlet</url-pattern>
+        <url-pattern>/sesion.htm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Consultas</servlet-name>
-        <url-pattern>/Consultas</url-pattern>
+        <url-pattern>/consultas.htm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProgramasServlet</servlet-name>

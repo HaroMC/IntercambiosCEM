@@ -59,7 +59,7 @@
                 <label class="nav navbar-nav navbar-right" style="color: white">
                     Bienvenido, <%= ((Usuario)(session.getAttribute("usuarioActual"))).getNombre() %>
                     <br />
-                    <form action="SesionServlet" method="get">
+                    <form action="sesion.htm" method="get">
                         <input type="submit" value="Cerrar sesión" />
                     </form>
                 </label>

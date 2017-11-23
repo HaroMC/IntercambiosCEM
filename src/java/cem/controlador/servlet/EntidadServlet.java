@@ -14,22 +14,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 public class EntidadServlet extends HttpServlet {
 
     // Como el dao es una clase que se requiere para todo el servlet, es
     // más conveniente declararla como un atributo de la clase...
     private DaoEntidades dao;
-    private HttpSession sesion;
-    //private ArrayList<Object> serializable;
 
     @Override
     public void init() {
         // ... E instanciarlo cada vez que se llame al servlet desde el
         // método de inicialización.
         dao = new DaoEntidades();
-        sesion = null;
     }
 
     @Override

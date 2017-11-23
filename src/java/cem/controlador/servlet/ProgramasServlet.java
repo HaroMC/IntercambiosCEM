@@ -38,13 +38,13 @@ public class ProgramasServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+                
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String accion = request.getParameter("accion");
+        String mensaje;
         
         switch (accion) {
-            case "agregarPrograma":
+            case "agregar":
                 try {
                     Programa objPrograma = new Programa(
                             dao.ultimoCodigoIncremental("PROGRAMA") + 1,
@@ -55,15 +55,17 @@ public class ProgramasServlet extends HttpServlet {
                             "Sin CEL asignado"
                     );
                     if (dao.insertarPrograma(objPrograma)) {
-                        request.setAttribute("mensaje", "Programa agregado "
-                                + "correctamente.");
+                        
+                        mensaje = "Programa agregado.";
+                        request.setAttribute("mensaje", mensaje);
                         request.getRequestDispatcher("agregarPrograma.jsp")
                                 .forward(request, response);
                     }
                     else {
-                        request.setAttribute("mensaje", "Se ha producido un "
-                                + "error al registrar.");
-                        request.getRequestDispatcher("agregarPrograma.jsp")
+                        mensaje = "Error de registro.";
+                        request.setAttribute("mensaje", mensaje);
+                        request.getRequestDispatcher(
+                                "agregarPrograma.jsp?mensaje=" + mensaje)
                                 .forward(request, response);
                     }
                 }
@@ -71,6 +73,10 @@ public class ProgramasServlet extends HttpServlet {
                     Logger.getLogger(EntidadServlet.class.getName())
                             .log(Level.SEVERE, null, ex);
                 }
+                response.sendRedirect("      ");
+                break;
+                
+            case "modificar":
                 break;
         }
         

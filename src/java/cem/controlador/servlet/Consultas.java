@@ -23,10 +23,6 @@ public class Consultas extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        
-        
     }
     
     @Override
@@ -36,8 +32,8 @@ public class Consultas extends HttpServlet {
         
         ArrayList<Alumno> listadoAlumnos = dao.listarAlumnos();
         
-        request.setAttribute("listadoAlumnos", listadoAlumnos);
-        
+        request.getSession().setAttribute("listadoAlumnos", listadoAlumnos);
+                
         request.getRequestDispatcher("listarAlumnos.jsp")
                 .forward(request, response);
         

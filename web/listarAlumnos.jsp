@@ -16,14 +16,21 @@
         <title> Listado de alumnos </title>
     </head>
     <body>
-        <table>
-            <c:forEach var="a" items="${listadoAlumnos}">
-            <tr>
-                <td> <c:out value="${a.nombreCompleto}" /> </td>
-                <td> <c:out value="${a.rut}" /> </td>
-            </tr>
-            </c:forEach>
-        </table>
+        
+        <form action="Consultas" method="post">
+            <table>
+                <h1> Listado de alumnos </h1>
+                
+                <c:forEach var="a" items="${listadoAlumnos}" >
+                <tr>
+                    <td> <c:out value="${a.nombreCompleto}" /> </td>
+                    <td> <c:out value="${a.rut}" /> </td>
+                </tr>
+                </c:forEach>
+                
+            </table>
+            <input type="submit" value="Recargar" />
+        </form>
         
     </body>
 </html>

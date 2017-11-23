@@ -47,8 +47,7 @@
                             <li> <a href="CEM_postulasiones_alumnos.jsp"> Alumnos </a> </li>
                         </ul>
                     </li>
-                </ul>
-                                
+                </ul>   
                 <!-- ------------------------------------------------------- -->
                 <label class="nav navbar-nav navbar-right" style="color: white">
                     Bienvenido, <%= ((Usuario)(session.getAttribute("usuarioActual"))).getNombre() %>

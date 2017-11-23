@@ -2,7 +2,6 @@ package cem.modelo.entidad;
 
 public class CentroEstudiosLocal extends Persona {
     
-    private int rutPersona;
     private byte estaAcreditada;
     
     //<editor-fold defaultstate="collapsed" desc=" Constructores ">
@@ -11,30 +10,23 @@ public class CentroEstudiosLocal extends Persona {
     }
     
     public CentroEstudiosLocal(int rutPersona, byte estaAcreditada) {
-        this.rutPersona = rutPersona;
         this.estaAcreditada = estaAcreditada;
     }
     
-    public CentroEstudiosLocal(int rutPersona, String verificador,
-            byte estaAcreditada, int rut, String nombreCompleto,
-            String domicilio, String ciudad, String pais, String correo,
-            String telefono, String tipo) {
+    public CentroEstudiosLocal(byte estaAcreditada, String rutPersona,
+            String nombreCompleto, String domicilio, String ciudad, String pais,
+            String correo, String telefono, String tipo) {
         
-        super (rut, verificador, nombreCompleto, domicilio, ciudad, pais,
-                correo, telefono, tipo);
+        super (rutPersona, nombreCompleto, domicilio, ciudad, pais, correo,
+                telefono, tipo);
         
-        this.rutPersona = rutPersona;
         this.estaAcreditada = estaAcreditada;
     }
     
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc=" Accesadores ">
-    
-    public int getRutPersona() {
-        return rutPersona;
-    }
-    
+        
     public byte getEstaAcreditada() {
         return estaAcreditada;
     }

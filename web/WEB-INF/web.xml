@@ -24,6 +24,10 @@
         <servlet-name>Consultas</servlet-name>
         <servlet-class>cem.controlador.servlet.Consultas</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProgramasServlet</servlet-name>
+        <servlet-class>cem.controlador.servlet.ProgramasServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>Consultas</servlet-name>
         <url-pattern>/Consultas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProgramasServlet</servlet-name>
+        <url-pattern>/programas.htm</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

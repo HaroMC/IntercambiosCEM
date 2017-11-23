@@ -17,13 +17,13 @@ public class Docente extends Persona {
         this.observaciones = observaciones;
     }
     
-    public Docente(String estado, String observaciones, int rutPersona,
-            String verificador, String nombreCompleto, Date fechaNacimiento,
-            String domicilio, String ciudad, String pais, String correo,
-            String telefono, String tipo) {
+    public Docente(String estado, String observaciones, String rutPersona,
+            String nombreCompleto, Date fechaNacimiento, String domicilio,
+            String ciudad, String pais, String correo, String telefono,
+            String tipo) {
         
-        super (rutPersona, verificador, nombreCompleto, fechaNacimiento,
-                domicilio, ciudad, pais, correo, telefono, tipo);
+        super (rutPersona, nombreCompleto, fechaNacimiento, domicilio, ciudad,
+                pais, correo, telefono, tipo);
         
         this.estado = estado;
         this.observaciones = observaciones;

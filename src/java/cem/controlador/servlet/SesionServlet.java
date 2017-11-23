@@ -39,19 +39,19 @@ public class SesionServlet extends HttpServlet {
             switch (objUsuario.getPerfil()) {
                 
                 case "Administrador":
-                    response.sendRedirect("/IntercambiosCEM/menuCEM.jsp");
+                    response.sendRedirect("menuCEM.jsp");
                     break;
 
                 case "CEL":
-                    response.sendRedirect("/IntercambiosCEM/menuCEL.jsp");
+                    response.sendRedirect("menuCEL.jsp");
                     break;
 
                 case "Alumno":
-                    response.sendRedirect("/IntercambiosCEM/index.jsp");
+                    response.sendRedirect("index.jsp");
                     break;
 
                 case "Familia":
-                    response.sendRedirect("/IntercambiosCEM/index.jsp");
+                    response.sendRedirect("index.jsp");
             }
         }
         else {

@@ -105,9 +105,9 @@ public class EntidadServlet extends HttpServlet {
                                     request.getParameter("numeroMatricula")),
                             format.parse(
                                     request.getParameter("fechaMatricula")),
-                            Integer.parseInt(
-                                    request.getParameter("rutPersona")),
-                            request.getParameter("verificador"),
+                            Byte.parseByte(
+                                    request.getParameter("esMoroso")),
+                            request.getParameter("rutPersona"),
                             nombreCompleto,
                             format.parse(
                                     request.getParameter("fechaNacimiento")),
@@ -218,9 +218,7 @@ public class EntidadServlet extends HttpServlet {
                             Short.parseShort(
                                     request.getParameter("cantidadIntegrantes")),
                             "Aprobación pendiente",
-                            Integer.parseInt(
-                                    request.getParameter("rutPersona")),
-                            request.getParameter("verificador"),
+                            request.getParameter("rutPersona"),
                             nombreCompleto,
                             format.parse(
                                     request.getParameter("fechaNacimiento")),

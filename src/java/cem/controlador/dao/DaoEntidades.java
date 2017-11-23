@@ -55,7 +55,7 @@ public class DaoEntidades {
     
     //<editor-fold defaultstate="collapsed" desc=" Persona : Completo ">
     
-    private boolean insertarPersona(int rut, String nombreCompleto,
+    private boolean insertarPersona(String rut, String nombreCompleto,
             Date fechaNacimiento, String domicilio, String ciudad, String pais,
             String correo, String telefono, String tipo) {
         
@@ -67,7 +67,7 @@ public class DaoEntidades {
             Conexion conexion = new Conexion();
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
-            ps.setInt   (1, rut);
+            ps.setString(1, rut);
             ps.setString(2, nombreCompleto);
             ps.setDate  (3, fechaNacimiento);
             ps.setString(4, domicilio);
@@ -89,14 +89,14 @@ public class DaoEntidades {
         return resultado;
     }
     
-    private boolean comprobarRutExistente(int rut) {
+    private boolean comprobarRutExistente(String rut) {
         boolean resultado = false;
         String sql = "SELECT * FROM CEM.PERSONA WHERE RUT = ?";
         try {
             Conexion conexion = new Conexion();
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
-            ps.setInt(1, rut);
+            ps.setString(1, rut);
             rs = ps.executeQuery(sql);
             if (rs.getRow() > 0) {
                 resultado = true;
@@ -113,14 +113,14 @@ public class DaoEntidades {
         return resultado;
     }
     
-    public boolean eliminarPersona(int rut) {
+    public boolean eliminarPersona(String rut) {
         boolean resultado = false;
         String sql = "DELETE FROM CEM.PERSONA WHERE RUT = ?";
         try {
             Conexion conexion = new Conexion();
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
-            ps.setInt(1, rut);
+            ps.setString(1, rut);
             ps.executeUpdate();
             ps.close();
             c.close();
@@ -134,7 +134,7 @@ public class DaoEntidades {
         return resultado;
     }
     
-    private boolean modificarPersona(int rut, String nombreCompleto,
+    private boolean modificarPersona(String rut, String nombreCompleto,
             Date fechaNacimiento, String domicilio, String ciudad, String pais,
             String correo, String telefono, String tipo) {
         
@@ -154,7 +154,7 @@ public class DaoEntidades {
             ps.setString(6, correo);
             ps.setString(7, telefono);
             ps.setString(8, tipo);
-            ps.setInt   (9, rut);
+            ps.setString(9, rut);
             ps.executeUpdate();
             ps.close();
             c.close();
@@ -196,8 +196,8 @@ public class DaoEntidades {
     
     public ArrayList<Alumno> listarAlumnos() {
         ArrayList<Alumno> listado = new ArrayList<>();
-        String sql = "SELECT NUMERO_MATRICULA, FECHA_MATRICULA, RUT_PERSONA, "
-                + "VERIFICADOR, NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, "
+        String sql = "SELECT NUMERO_MATRICULA, FECHA_MATRICULA, ES_MOROSO, "
+                + "RUT_PERSONA, NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, "
                 + "CIUDAD, PAIS, CORREO, TELEFONO, TIPO FROM CEM.ALUMNO "
                 + "INNER JOIN CEM.PERSONA ON ALUMNO.RUT_PERSONA = PERSONA.RUT";
         try {
@@ -210,8 +210,8 @@ public class DaoEntidades {
                         // Datos de alumno:
                         rs.getLong(1),
                         rs.getDate(2),
+                        rs.getByte(3),
                         // Datos de persona:
-                        rs.getInt(3),
                         rs.getString(4),
                         rs.getString(5),
                         rs.getDate(6),
@@ -274,7 +274,7 @@ public class DaoEntidades {
                     ps = c.prepareStatement(sql);
                     Date fechaMatricula = new java.sql.Date(
                             objAlumno.getFechaNacimiento().getTime());
-                    ps.setInt (1, objAlumno.getRut());
+                    ps.setString(1, objAlumno.getRut());
                     ps.setLong(2, objAlumno.getNumeroMatricula());
                     ps.setDate(3, fechaMatricula);
                     ps.executeUpdate();
@@ -325,10 +325,10 @@ public class DaoEntidades {
         return resultado;
     }
     
-    public Alumno buscarAlumno(int rutPersona) {
+    public Alumno buscarAlumno(String rutPersona) {
         Alumno alumno = null;
-        String sql = "SELECT NUMERO_MATRICULA, FECHA_MATRICULA, RUT_PERSONA, "
-                + "VERIFICADOR, NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, "
+        String sql = "SELECT NUMERO_MATRICULA, FECHA_MATRICULA, ES_MOROSO, "
+                + "RUT_PERSONA, NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, "
                 + "CIUDAD, PAIS, CORREO, TELEFONO, TIPO FROM CEM.ALUMNO "
                 + "INNER JOIN CEM.PERSONA ON ALUMNO.RUT_PERSONA = PERSONA.RUT "
                 + "WHERE RUT = ?";
@@ -336,13 +336,13 @@ public class DaoEntidades {
             Conexion conexion = new Conexion();
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
-            ps.setInt(1, rutPersona);
+            ps.setString(1, rutPersona);
             rs = ps.executeQuery();
             while (rs.next()) {
                 alumno = new Alumno(
                         rs.getLong(1),
                         rs.getDate(2),
-                        rs.getInt(3),
+                        rs.getByte(3),
                         rs.getString(4),
                         rs.getString(5),
                         rs.getDate(6),
@@ -553,7 +553,7 @@ public class DaoEntidades {
                     Conexion conexion = new Conexion();
                     c = conexion.abrir();
                     ps = c.prepareStatement(sql);
-                    ps.setInt   (1, objFamilia.getRut());
+                    ps.setString(1, objFamilia.getRut());
                     ps.setShort (2, objFamilia.getCantidadIntegrantes());
                     ps.setString(3, objFamilia.getEstado());
                     ps.executeUpdate();
@@ -602,7 +602,7 @@ public class DaoEntidades {
                     ps = c.prepareStatement(sql);
                     ps.setShort (1, objFamilia.getCantidadIntegrantes());
                     ps.setString(2, objFamilia.getEstado());
-                    ps.setInt   (3, objFamilia.getRut());
+                    ps.setString(3, objFamilia.getRut());
                     ps.executeUpdate();
                     ps.close();
                     c.close();
@@ -628,7 +628,7 @@ public class DaoEntidades {
         
         ArrayList<FamiliaAnfitriona> listado = new ArrayList<>();
         String sql = "SELECT CANTIDAD_INTEGRANTES, ESTADO, RUT_PERSONA, "
-                + "VERIFICADOR, NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, "
+                + "NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, "
                 + "CIUDAD, PAIS,  CORREO, TELEFONO, TIPO "
                 + "FROM CEM.FAMILIA_ANFITRIONA INNER JOIN CEM.PERSONA "
                 + "ON FAMILIA_ANFITRIONA.RUT_PERSONA = PERSONA.RUT";
@@ -644,16 +644,15 @@ public class DaoEntidades {
                         rs.getShort(1),
                         rs.getString(2),
                         // Datos de persona:
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getString(4),
-                        rs.getString(5),
-                        rs.getDate(6),
+                        rs.getDate(5),
+                        rs.getString(6),
                         rs.getString(7),
                         rs.getString(8),
                         rs.getString(9),
                         rs.getString(10),
-                        rs.getString(11),
-                        rs.getString(12)
+                        rs.getString(11)
                 ));
             }
             rs.close();
@@ -671,7 +670,7 @@ public class DaoEntidades {
     public FamiliaAnfitriona buscarFamilia(int rutPersona) {
         FamiliaAnfitriona familia = null;
         String sql = "SELECT CANTIDAD_INTEGRANTES, ESTADO, RUT_PERSONA, "
-                + "VERIFICADOR, NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, "
+                + "NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, "
                 + "CIUDAD, PAIS, CORREO, TELEFONO, TIPO "
                 + "FROM CEM.FAMILIA_ANFITRIONA INNER JOIN CEM.PERSONA "
                 + "ON FAMILIA_ANFITRIONA.RUT_PERSONA = PERSONA.RUT"
@@ -688,16 +687,15 @@ public class DaoEntidades {
                         rs.getShort(1),
                         rs.getString(2),
                         // Datos de persona:
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getString(4),
-                        rs.getString(5),
-                        rs.getDate(6),
+                        rs.getDate(5),
+                        rs.getString(6),
                         rs.getString(7),
                         rs.getString(8),
                         rs.getString(9),
                         rs.getString(10),
-                        rs.getString(11),
-                        rs.getString(12)
+                        rs.getString(11)
                 );
             }
             rs.close();
@@ -726,9 +724,7 @@ public class DaoEntidades {
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
             ps.setLong  (1, objAsignatura.getCodigo());
-            
-            ps.setInt   (2, objAsignatura.getDocente().getRut());
-            
+            ps.setString(2, objAsignatura.getDocente().getRut());
             ps.setString(3, objAsignatura.getNombreAsignatura());
             ps.setString(4, objAsignatura.getDescripcion());
             ps.setLong  (5, objAsignatura.getCupos());
@@ -774,7 +770,7 @@ public class DaoEntidades {
                     Conexion conexion = new Conexion();
                     c = conexion.abrir();
                     ps = c.prepareStatement(sql);
-                    ps.setLong  (1, objDocente.getRut());
+                    ps.setString(1, objDocente.getRut());
                     ps.setString(2, objDocente.getEstado());
                     ps.setString(3, objDocente.getObservaciones());
                     ps.executeUpdate();
@@ -800,10 +796,10 @@ public class DaoEntidades {
     
     public Docente buscarDocente(int rutPersona) {
         Docente objDocente = null;
-        String sql = "SELECT ESTADO, OBSERVACIONES, RUT_PERSONA, VERIFICADOR, "
-                + "NOMBRE_COMPLETO, DOMICILIO, CIUDAD, PAIS, CORREO, TELEFONO, "
-                + "TIPO FROM CEM.DOCENTE INNER JOIN CEM.PERSONA "
-                + "ON DOCENTE.RUT_PERSONA = PERSONA.RUT"
+        String sql = "SELECT ESTADO, OBSERVACIONES, RUT_PERSONA, "
+                + "NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, CIUDAD, PAIS,"
+                + "CORREO, TELEFONO, TIPO FROM CEM.DOCENTE "
+                + "INNER JOIN CEM.PERSONA ON DOCENTE.RUT_PERSONA = PERSONA.RUT"
                 + "WHERE RUT = ?";
         try {
             Conexion conexion = new Conexion();
@@ -817,16 +813,16 @@ public class DaoEntidades {
                         rs.getString(1),
                         rs.getString(2),
                         // Datos de persona:
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getString(4),
-                        rs.getString(5),
-                        rs.getDate(6),
+                        rs.getDate(5),
+                        rs.getString(6),
                         rs.getString(7),
                         rs.getString(8),
                         rs.getString(9),
                         rs.getString(10),
-                        rs.getString(11),
-                        rs.getString(12));
+                        rs.getString(11)
+                );
             }
             rs.close();
             ps.close();
@@ -840,12 +836,18 @@ public class DaoEntidades {
         return objDocente;
     }
     
+    /*
+    public Docente(String estado, String observaciones, String rutPersona,
+            String nombreCompleto, Date fechaNacimiento, String domicilio,
+            String ciudad, String pais, String correo, String telefono,
+            String tipo) {*/
+    
     public ArrayList<Docente> listarDocentes() {
         ArrayList<Docente> listado = new ArrayList<>();
-        String sql = "SELECT ESTADO, OBSERVACIONES, RUT_PERSONA, VERIFICADOR, "
-                + "NOMBRE_COMPLETO, DOMICILIO, CIUDAD, PAIS, CORREO, TELEFONO, "
-                + "TIPO FROM CEM.DOCENTE INNER JOIN CEM.PERSONA "
-                + "ON DOCENTE.RUT_PERSONA = PERSONA.RUT";
+        String sql = "SELECT ESTADO, OBSERVACIONES, RUT_PERSONA, "
+                + "NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, CIUDAD, PAIS, "
+                + "CORREO, TELEFONO, TIPO FROM CEM.DOCENTE "
+                + "INNER JOIN CEM.PERSONA ON DOCENTE.RUT_PERSONA = PERSONA.RUT";
         try {
             Conexion conexion = new Conexion();
             c = conexion.abrir();
@@ -857,16 +859,15 @@ public class DaoEntidades {
                         rs.getString(1),
                         rs.getString(2),
                         // Datos de persona:
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getString(4),
-                        rs.getString(5),
-                        rs.getDate(6),
+                        rs.getDate(5),
+                        rs.getString(6),
                         rs.getString(7),
                         rs.getString(8),
                         rs.getString(9),
                         rs.getString(10),
-                        rs.getString(11),
-                        rs.getString(12)
+                        rs.getString(11)
                 ));
             }
             rs.close();
@@ -909,7 +910,7 @@ public class DaoEntidades {
                     ps = c.prepareStatement(sql);
                     ps.setString(1, objDocente.getEstado());
                     ps.setString(2, objDocente.getObservaciones());
-                    ps.setInt   (3, objDocente.getRut());
+                    ps.setString(3, objDocente.getRut());
                     ps.executeUpdate();
                     ps.close();
                     c.close();
@@ -936,7 +937,7 @@ public class DaoEntidades {
     //<editor-fold defaultstate="collapsed" desc=" Antecedente : ">
     
     public boolean ingresarAntecedente(Antecedente objAntecedente,
-            int rutPersona) {
+            String rutPersona) {
         
         boolean resultado = false;
         if (comprobarRutExistente(rutPersona)) {
@@ -956,7 +957,7 @@ public class DaoEntidades {
                 ps.setString(2, objAntecedente.getDescripcion());
                 ps.setDate  (3, fechaCaducidad);
                 ps.setBlob  (4, objAntecedente.getDocumento());
-                ps.setInt   (5, rutPersona);
+                ps.setString(5, rutPersona);
                 
                 ps.executeUpdate();
                 
@@ -1006,7 +1007,7 @@ public class DaoEntidades {
         return resultado;
     }
     
-    public boolean registrarUsuario(Usuario objUsuario, int rutPersona,
+    public boolean registrarUsuario(Usuario objUsuario, String rutPersona,
             String c) {
         boolean resultado = false;
         if (comprobarRutExistente(rutPersona)) {
@@ -1026,7 +1027,7 @@ public class DaoEntidades {
                 ps.setString(2, objUsuario.getNombre());
                 ps.setString(3, c);
                 ps.setDate  (4, fechaRegistro);
-                ps.setInt   (5, rutPersona);
+                ps.setString(5, rutPersona);
                 ps.setString(6, objUsuario.getPerfil());
                 
                 ps.executeUpdate();
@@ -1042,7 +1043,7 @@ public class DaoEntidades {
         return resultado;
     }
     
-    public boolean modificarUsuario(Usuario objUsuario, int rutPersona,
+    public boolean modificarUsuario(Usuario objUsuario, String rutPersona,
             String c) {
         boolean resultado = false;
         if (comprobarRutExistente(rutPersona)) {
@@ -1069,7 +1070,7 @@ public class DaoEntidades {
         return resultado;
     }
     
-    public boolean eliminarUsuario(int rutPersona) {
+    public boolean eliminarUsuario(String rutPersona) {
         boolean resultado = false;
         if (comprobarRutExistente(rutPersona)) {
             
@@ -1101,18 +1102,21 @@ public class DaoEntidades {
             Conexion conexion = new Conexion();
             this.c = conexion.abrir();
             ps = this.c.prepareStatement(sql);
+            
             ps.setString(1, nU);
             ps.setString(2, c);
             rs = ps.executeQuery();
+            
             while (rs.next()) {
                 objUsuario = new Usuario(
                         rs.getLong(1),
                         nU,
                         rs.getDate(2),
-                        rs.getInt(3),
+                        rs.getString(3),
                         rs.getString(4)
                 );
             }
+            
             rs.close();
             ps.close();
             this.c.close();
@@ -1123,6 +1127,37 @@ public class DaoEntidades {
                     .log(Level.SEVERE, null, se);
         }
         return objUsuario;
+    }
+    
+    public ArrayList<Usuario> listarUsuarios() {
+        
+        ArrayList<Usuario> listado = new ArrayList<>();
+        String sql = "SELECT * FROM CEM.USUARIO";
+        try {
+            Conexion conexion = new Conexion();
+            this.c = conexion.abrir();
+            ps = this.c.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listado.add(new Usuario(
+                        rs.getLong(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDate(4),
+                        rs.getString(5),
+                        rs.getString(6)
+                ));
+            }
+            rs.close();
+            ps.close();
+            this.c.close();
+            conexion.cerrar();
+        }
+        catch (SQLException se) {
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
+        }
+        return listado;
     }
     
     

@@ -9,7 +9,7 @@ public class Usuario implements Serializable {
     private String nombre;
     private String contrasena;
     private Date fechaRegistro;
-    private int rut;
+    private String rut;
     private String perfil;
 
     //<editor-fold defaultstate="collapsed" desc=" Constructores ">
@@ -23,7 +23,7 @@ public class Usuario implements Serializable {
         this.contrasena = "";
     }
     
-    public Usuario(long codigo, String nombre, Date fechaRegistro, int rut,
+    public Usuario(long codigo, String nombre, Date fechaRegistro, String rut,
             String perfil) {
 
         this.codigo = codigo;
@@ -35,7 +35,7 @@ public class Usuario implements Serializable {
     }
 
     public Usuario(long codigo, String nombre, String contrasena,
-            Date fechaRegistro, int rut, String perfil) {
+            Date fechaRegistro, String rut, String perfil) {
 
         this.codigo = codigo;
         this.nombre = nombre;
@@ -64,7 +64,7 @@ public class Usuario implements Serializable {
         return fechaRegistro;
     }
 
-    public int getRut() {
+    public String getRut() {
         return rut;
     }
     

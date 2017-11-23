@@ -16,7 +16,7 @@ public class DaoEntidades {
     private Connection c;
     private PreparedStatement ps;
     private ResultSet rs;
-
+    
     public DaoEntidades() {
         this.c = null;
         this.ps = null;

@@ -4,7 +4,13 @@
     Author     : Bugueño
 --%>
 
+<%  if (session.getAttribute("usuarioActual") == null) {
+       response.sendRedirect("no-autorizado.html");
+    }
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,11 +26,11 @@
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">WebSiteName</a>
+                        <a class="navbar-brand" href="#"> WebSiteName </a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li><a href="Alumno_perfil.jsp">Perfil</a></li>                    
-                        <li><a href="programas.htm">Postulaciones</a></li>
+                        <li><a href="Alumno_perfil.jsp"> Perfil </a></li>                    
+                        <li><a href="programas.htm?accion=listar"> Postulaciones </a></li>
                     </ul>                  
                 </div>
             </nav>

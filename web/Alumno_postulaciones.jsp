@@ -5,69 +5,41 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <!-- Link Bootstrap CSS -->
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
+        <!--Link J.S.-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
     </head>
     <body>
         <%@include file="menuAlumno.jsp" %>
-        <h2>Programas a los cuales puede postular </h2>      
-        <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
-        <div class="container">
 
-            <input class="form-control" id="myInput" type="text" placeholder="Escribe aca lo que buscas..">
+
+        <div class="container">
+            <h2>Programas a los cuales puede postular </h2>      
+            <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
+            <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
             <br/>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Codigo</th>
-                        <th>Nombre</th>
-                        <th>Fecha de Inicio</th>
-                        <th>Fecha de Termino</th>
-                        <th>Valor</th>
-                        <th>Estado</th>
-                        <th>Codigo_asignatura</th>
+                        <th>Nombre</th>            
                     </tr>
                 </thead>
-                <tbody id="myTable">
-                    <tr>
-                        <td>001</td>>
-                        <td>Ingles</td>
-                        <td>11/06/1017</td>
-                        <td>11/07/1017</td>
-                        <td>$1.800.000</td>
-                        <td>Estado</td>
-                        <td>002</td>
-                    </tr>
-                    <tr>
-                        <td>002</td>>
-                        <td>Recursos Humanos</td>
-                        <td>11/06/1017</td>
-                        <td>11/07/1017</td>
-                        <td>$1.400.000</td>
-                        <td>Estado</td>
-                        <td>003</td>
-                    </tr>
-                    <tr>
-                        <td>003</td>>
-                        <td>Desarrollo en MEAN</td>
-                        <td>11/06/1017</td>
-                        <td>11/07/1017</td>
-                        <td>$1.900.000</td>
-                        <td>Estado</td>
-                        <td>004</td>
-                    </tr>
-                    <tr>
-                        <td>004</td>>
-                        <td>Desarrollo Full Stack</td>
-                        <td>11/06/1017</td>
-                        <td>11/07/1017</td>
-                        <td>$1.900.000</td>
-                        <td>Estado</td>
-                        <td>005</td>
-                    </tr>
+                <tbody id="myTable2">
+                    <c:forEach var="p" items="${listadoProgramas}" >
+                        <tr>
+                            <td> <c:out value="${p.codigo}" /> </td>
+                            <td> <c:out value="${p.nombre}" /> </td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
             <button type="button" class="btn btn-primary">
@@ -76,17 +48,17 @@
         </div>
 
 
-        
+
         <script>
             $(document).ready(function () {
-                $("#myInput").on("keyup", function () {
+                $("#myInput2").on("keyup", function () {
                     var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function () {
+                    $("#myTable2 tr").filter(function () {
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
                 });
             });
         </script>
-        
+
     </body>
 </html>

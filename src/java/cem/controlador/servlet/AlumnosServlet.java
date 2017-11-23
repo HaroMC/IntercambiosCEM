@@ -27,21 +27,18 @@ public class AlumnosServlet extends HttpServlet {
         
         switch (accion) {
             
-            case "listar":
+            case "eliminar":
+                break;
                 
+            default:
                 ArrayList<Alumno> listadoAlumnos = dao.listarAlumnos();
-                
                 request.getSession().setAttribute(
                         "listadoAlumnos",
                         listadoAlumnos);
-                
                 request.getRequestDispatcher("Administ.jsp")
                         .forward(request, response);
-                
                 break;
                 
-            case "eliminar":
-                break;
         }
     }
 
@@ -50,6 +47,16 @@ public class AlumnosServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         
+        String accion = request.getParameter("accion");
+        
+        switch (accion) {
+            
+            case "agregar":
+                break;
+                
+            case "modificar":
+                break;
+        }
     }
 
 }

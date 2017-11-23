@@ -29,7 +29,6 @@ public class ProgramasServlet extends HttpServlet {
             throws ServletException, IOException {
                 
         String accion = request.getParameter("accion");
-        String mensaje;
         
         switch (accion) {
             
@@ -41,7 +40,7 @@ public class ProgramasServlet extends HttpServlet {
                 }
                 break;
                 
-            case "listar":
+            default:
                 ArrayList<Programa> listadoProgramas = dao.listarProgramas();
                 request.getSession().setAttribute(
                         "listadoProgramas", listadoProgramas);

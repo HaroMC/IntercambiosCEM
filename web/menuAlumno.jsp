@@ -30,7 +30,7 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li><a href="Alumno_perfil.jsp"> Perfil </a></li>                    
-                        <li><a href="programas.htm?accion=listar"> Postulaciones </a></li>
+                        <li><a href="programas.htm"> Postulaciones </a></li>
                     </ul>                  
                 </div>
             </nav>

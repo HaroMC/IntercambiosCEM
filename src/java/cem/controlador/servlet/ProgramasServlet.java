@@ -27,11 +27,28 @@ public class ProgramasServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
+                
+        String accion = request.getParameter("accion");
+        String mensaje;
         
-        ArrayList<Programa> listadoProgramas = dao.listarProgramas();
-        request.getSession().setAttribute("listadoProgramas", listadoProgramas);
-        request.getRequestDispatcher("Alumno_postulaciones.jsp")
-                .forward(request, response);
+        switch (accion) {
+            
+            case "eliminar":
+                Long codigo = Long.parseLong(request.getParameter("codigo"));
+                request.getParameter("codigo");
+                if (dao.eliminarPrograma(codigo)) {
+                    
+                }
+                break;
+                
+            case "listar":
+                ArrayList<Programa> listadoProgramas = dao.listarProgramas();
+                request.getSession().setAttribute(
+                        "listadoProgramas", listadoProgramas);
+                request.getRequestDispatcher("Alumno_postulaciones.jsp")
+                        .forward(request, response);
+                break;
+        }
     }
 
     @Override
@@ -44,6 +61,7 @@ public class ProgramasServlet extends HttpServlet {
         String mensaje;
         
         switch (accion) {
+            
             case "agregar":
                 try {
                     Programa objPrograma = new Programa(
@@ -55,7 +73,6 @@ public class ProgramasServlet extends HttpServlet {
                             "Sin CEL asignado"
                     );
                     if (dao.insertarPrograma(objPrograma)) {
-                        
                         mensaje = "Programa agregado.";
                         request.setAttribute("mensaje", mensaje);
                         request.getRequestDispatcher("agregarPrograma.jsp")

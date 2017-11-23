@@ -28,6 +28,10 @@
         <servlet-name>ProgramasServlet</servlet-name>
         <servlet-class>cem.controlador.servlet.ProgramasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlumnosServlet</servlet-name>
+        <servlet-class>cem.controlador.servlet.AlumnosServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ProgramasServlet</servlet-name>
         <url-pattern>/programas.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlumnosServlet</servlet-name>
+        <url-pattern>/alumnos.htm</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -39,7 +39,7 @@ public class SesionServlet extends HttpServlet {
             switch (objUsuario.getPerfil()) {
                 
                 case "Administrador":
-                    response.sendRedirect("menuCEM.jsp");
+                    response.sendRedirect("index.jsp");
                     break;
 
                 case "CEL":

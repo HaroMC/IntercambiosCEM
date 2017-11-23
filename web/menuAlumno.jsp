@@ -25,11 +25,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="Alumno_perfil.jsp">Perfil</a></li>                    
                         <li><a href="Alumno_postulaciones.jsp">Postulaciones</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Iniciar Sesion</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Registrarse</a></li>
-                    </ul>
+                    </ul>                  
                 </div>
             </nav>
     </body>

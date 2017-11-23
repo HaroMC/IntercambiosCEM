@@ -1,6 +1,8 @@
+
 <%@ page contentType="text/html"
          pageEncoding="UTF-8"
-         import="cem.modelo.entidad.Usuario" %>
+         import="cem.modelo.entidad.Usuario"
+         session="true" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -16,21 +18,15 @@
         <title> Listado de alumnos </title>
     </head>
     <body>
-        
-        <form action="Consultas" method="post">
-            <table>
-                <h1> Listado de alumnos </h1>
-                
-                <c:forEach var="a" items="${listadoAlumnos}" >
+        <table>
+            <h1> Listado de alumnos </h1>
+            <c:forEach var="a" items="${listadoAlumnos}" >
                 <tr>
                     <td> <c:out value="${a.nombreCompleto}" /> </td>
+                    <td>:</td>
                     <td> <c:out value="${a.rut}" /> </td>
                 </tr>
-                </c:forEach>
-                
-            </table>
-            <input type="submit" value="Recargar" />
-        </form>
-        
+            </c:forEach>
+        </table>
     </body>
 </html>

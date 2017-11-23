@@ -3,7 +3,13 @@
          pageEncoding="UTF-8"
          import="cem.modelo.entidad.Usuario" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"
+           prefix="c" %>
+
+<%  if (session.getAttribute("usuarioActual") == null) {
+       response.sendRedirect("no-autorizado.html");
+    }
+%>
 
 <!DOCTYPE html>
 <html>
@@ -57,12 +63,7 @@
                     </form>
                 </label>
                 <!-- ------------------------------------------------------- -->
-                <!--
-                <ul class="nav navbar-nav navbar-right">
-                    <li> <a href="#"> <span class="glyphicon glyphicon-user"> </span> Sign Up </a> </li>
-                    <li> <a href="#"> <span class="glyphicon glyphicon-log-in"> </span> Login </a> </li>
-                </ul>
-                -->
+                <a href="Consultas">Consultar alumnos</a>
             </div>
         </nav>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

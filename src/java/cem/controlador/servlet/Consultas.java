@@ -23,12 +23,6 @@ public class Consultas extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-    }
-    
-    @Override
-    protected void doPost(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
         
         ArrayList<Alumno> listadoAlumnos = dao.listarAlumnos();
         
@@ -36,6 +30,13 @@ public class Consultas extends HttpServlet {
                 
         request.getRequestDispatcher("listarAlumnos.jsp")
                 .forward(request, response);
+        
+    }
+    
+    @Override
+    protected void doPost(HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
         
     }
     

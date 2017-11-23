@@ -25,12 +25,16 @@
         <servlet-class>cem.controlador.servlet.Consultas</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ProgramasServlet</servlet-name>
-        <servlet-class>cem.controlador.servlet.ProgramasServlet</servlet-class>
+        <servlet-name>ProgramaServlet</servlet-name>
+        <servlet-class>cem.controlador.servlet.ProgramaServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AlumnosServlet</servlet-name>
-        <servlet-class>cem.controlador.servlet.AlumnosServlet</servlet-class>
+        <servlet-name>AlumnoServlet</servlet-name>
+        <servlet-class>cem.controlador.servlet.AlumnoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FamiliaServlet</servlet-name>
+        <servlet-class>cem.controlador.servlet.FamiliaServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
@@ -49,12 +53,16 @@
         <url-pattern>/consultas.htm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ProgramasServlet</servlet-name>
+        <servlet-name>ProgramaServlet</servlet-name>
         <url-pattern>/programas.htm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AlumnosServlet</servlet-name>
+        <servlet-name>AlumnoServlet</servlet-name>
         <url-pattern>/alumnos.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FamiliaServlet</servlet-name>
+        <url-pattern>/familias.htm</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

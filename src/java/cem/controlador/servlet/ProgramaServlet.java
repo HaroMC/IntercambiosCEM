@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ProgramasServlet extends HttpServlet {
+public class ProgramaServlet extends HttpServlet {
 
     private DaoEntidades dao;
 
@@ -30,23 +30,21 @@ public class ProgramasServlet extends HttpServlet {
                 
         String accion = request.getParameter("accion");
         
-        switch (accion) {
-            
-            case "eliminar":
+        if (accion != null) {
+            if (accion.compareToIgnoreCase("eliminar") == 0) {
                 Long codigo = Long.parseLong(request.getParameter("codigo"));
                 request.getParameter("codigo");
                 if (dao.eliminarPrograma(codigo)) {
                     
                 }
-                break;
-                
-            default:
-                ArrayList<Programa> listadoProgramas = dao.listarProgramas();
-                request.getSession().setAttribute(
-                        "listadoProgramas", listadoProgramas);
-                request.getRequestDispatcher("Alumno_postulaciones.jsp")
-                        .forward(request, response);
-                break;
+            }
+        }
+        else {
+            ArrayList<Programa> listadoProgramas = dao.listarProgramas();
+            request.getSession().setAttribute(
+                    "listadoProgramas", listadoProgramas);
+            request.getRequestDispatcher("Alumno_postulaciones.jsp")
+                    .forward(request, response);
         }
     }
 

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AlumnosServlet extends HttpServlet {
+public class AlumnoServlet extends HttpServlet {
 
     private DaoEntidades dao;
     

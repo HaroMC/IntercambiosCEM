@@ -57,14 +57,14 @@
                 </ul>   
                 <!-- ------------------------------------------------------- -->
                 <label class="nav navbar-nav navbar-right" style="color: white">
-                    Bienvenido, <%= ((Usuario)(session.getAttribute("usuarioActual"))).getNombre() %>
+                    Bienvenido, <%= ((Usuario)(session
+                            .getAttribute("usuarioActual"))).getNombre() %>
                     <br />
-                    <form action="sesion.htm" method="get">
+                    <form action="salir" method="get">
                         <input type="submit" value="Cerrar sesión" />
                     </form>
                 </label>
                 <!-- ------------------------------------------------------- -->
-                <a href="Consultas">Consultar alumnos</a>
             </div>
         </nav>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

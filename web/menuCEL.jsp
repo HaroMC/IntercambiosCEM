@@ -4,7 +4,18 @@
     Author     : David
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html"
+         pageEncoding="UTF-8"
+         import="cem.modelo.entidad.Usuario" 
+         session="true" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%  if (session.getAttribute("usuarioActual") == null) {
+       response.sendRedirect("no-autorizado.html");
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,10 +38,16 @@
                     <li><a href="CEL_calificaciones.jsp">Calificaciones</a></li>
                     <li><a href="CEL_postulaciones.jsp">Postulaciones</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Iniciar Sesion</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Registrarse</a></li>
-                </ul>
+                <!-- ------------------------------------------------------- -->
+                <label class="nav navbar-nav navbar-right" style="color: white">
+                    Bienvenido, <%= ((Usuario)(session
+                            .getAttribute("usuarioActual"))).getNombre() %>
+                    <br />
+                    <form action="salir" method="get">
+                        <input type="submit" value="Cerrar sesión" />
+                    </form>
+                </label>
+                <!-- ------------------------------------------------------- -->
             </div>
         </nav>
         

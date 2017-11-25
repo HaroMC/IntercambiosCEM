@@ -36,6 +36,14 @@
         <servlet-name>AlumnoProgramaServlet</servlet-name>
         <servlet-class>cem.controlador.servlet.AlumnoProgramaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>cem.controlador.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>cem.controlador.servlet.LogoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -46,7 +54,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SesionServlet</servlet-name>
-        <url-pattern>/sesion.htm</url-pattern>
+        <url-pattern>/sesion</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CemProgramaServlet</servlet-name>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>AlumnoProgramaServlet</servlet-name>
         <url-pattern>/alumnos-programas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/ingresar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/salir</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

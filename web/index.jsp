@@ -27,7 +27,7 @@
                 <div class="col-md-1"><a href="CEL_home.jsp" class="label label-primary">Menu Usuario CEL</a></div>
             </div>
             <div class="row">
-                <div class="col-md-1"><a href=".jsp" class="label label-primary">Menu Familia</a></div>
+                <div class="col-md-1"><a href="menuFamilia.jsp" class="label label-primary">Menu Familia</a></div>
             </div>
             <div class="row">
                 <div class="col-md-1"><a href="menuAlumno.jsp" class="label label-primary">Menu Alumno</a></div>

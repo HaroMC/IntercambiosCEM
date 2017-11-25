@@ -4,12 +4,26 @@
     Author     : Bugueño
 --%>
 
+<%@ page contentType="text/html"
+         pageEncoding="UTF-8"
+         language="java"
+         session="true"
+         import="cem.modelo.entidad.Usuario" %>
+
+<!--
+    Scriptlet que verifica el permiso de visualización de la página según el
+    perfil del usuario.
+-->
 <%  if (session.getAttribute("usuarioActual") == null) {
        response.sendRedirect("no-autorizado.html");
     }
+    else {
+        if (((Usuario) session.getAttribute("usuarioActual"))
+                .getPerfil().compareToIgnoreCase("Alumno") != 0) {
+            response.sendRedirect("no-autorizado.html");
+        }
+    }
 %>
-
-<%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html>
@@ -22,16 +36,16 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#"> WebSiteName </a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                        <li><a href="Alumno_perfil.jsp"> Perfil </a></li>                    
-                        <li><a href="alumnos-programas"> Postulaciones </a></li>
-                    </ul>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"> WebSiteName </a>
                 </div>
-            </nav>
+                <ul class="nav navbar-nav">
+                    <li><a href="Alumno_perfil.jsp"> Perfil </a></li>                    
+                    <li><a href="alumnos-programas"> Postulaciones </a></li>
+                </ul>
+            </div>
+        </nav>
     </body>
 </html>

@@ -4,7 +4,13 @@
     Author     : Bugueño
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" session="true" %>
+
+<%  if (session.getAttribute("usuarioActual") == null) {
+       response.sendRedirect("no-autorizado.html");
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>

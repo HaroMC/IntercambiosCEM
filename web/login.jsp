@@ -1,7 +1,35 @@
+
 <%@ page contentType="text/html"
          pageEncoding="UTF-8"
          language="java"
-         session="true" %>
+         session="true"
+         import="cem.modelo.entidad.Usuario" %>
+
+<!--
+    Scriptlet que verifica el permiso de visualización de la página según el
+    perfil del usuario.
+-->
+<%  if (session.isNew()) {
+        /*response.sendRedirect("index.jsp");
+    }
+    /*if (session.getAttribute("usuarioActual") != null) {*/
+
+        switch (((Usuario) session.getAttribute("usuarioActual")).getPerfil()) {
+            case "Administrador":
+                response.sendRedirect("menuCEM.jsp");
+                break;
+            case "CEL":
+                response.sendRedirect("menuCEL.jsp");
+                break;
+            case "Alumno":
+                response.sendRedirect("menuAlumno.jsp");
+                break;
+            case "Familia":
+                response.sendRedirect("menuFamilia.jsp");
+                break;
+        }
+    }
+%>
 
 <!DOCTYPE html>
 <html>

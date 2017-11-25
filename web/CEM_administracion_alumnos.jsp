@@ -52,10 +52,7 @@
                         </tr>
                     </c:forEach>
                 </tbody>
-            </table>
-            <button type="button" class="btn btn-primary">
-                Postular
-            </button>
+            </table>          
         </div>
         
         

@@ -28,6 +28,9 @@
             <br/>
             <div class="form-group">
                 <label class="col-sm-2 control-label">${mensaje}</label>
+                 <div class="col-sm-5 control-label">
+                    <button type="submit" class="btn btn-default">Agregar</button>
+                </div>
             </div>
             <table class="table table-bordered table-striped">
                 <thead>

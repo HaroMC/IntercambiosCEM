@@ -31,7 +31,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="Alumno_perfil.jsp"> Perfil </a></li>                    
                         <li><a href="programas.htm"> Postulaciones </a></li>
-                    </ul>                  
+                    </ul>
                 </div>
             </nav>
     </body>

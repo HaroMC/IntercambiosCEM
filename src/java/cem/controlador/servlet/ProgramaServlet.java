@@ -82,7 +82,6 @@ public class ProgramaServlet extends HttpServlet {
         String mensaje;
         
         switch (accion) {
-            
             case "agregar":
                 try {
                     Programa objPrograma = new Programa(
@@ -98,23 +97,17 @@ public class ProgramaServlet extends HttpServlet {
                         request.getSession().setAttribute("mensaje", mensaje);
                         cargarLista(request, response);
                         response.sendRedirect("CEM_ver_programas.jsp");
-                        /*request.getRequestDispatcher("CEM_agregarPrograma.jsp")
-                                .forward(request, response);*/
                     }
                     else {
                         mensaje = "Error de registro.";
                         request.getSession().setAttribute("mensaje", mensaje);
                         response.sendRedirect("CEM_agregarPrograma.jsp");
-                        /*request.getRequestDispatcher(
-                                "CEM_agregarPrograma.jsp?mensaje=" + mensaje)
-                                .forward(request, response);*/
                     }
                 }
                 catch (ParseException ex) {
                     Logger.getLogger(EntidadServlet.class.getName())
                             .log(Level.SEVERE, null, ex);
                 }
-                //response.sendRedirect("CEM_agregarPrograma.jsp");
                 break;
                 
             case "modificar":

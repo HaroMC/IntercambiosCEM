@@ -43,8 +43,7 @@ public class AlumnoServlet extends HttpServlet {
             
             ArrayList<Alumno> listadoAlumnos = dao.listarAlumnos();
             
-            request.getSession().setAttribute(
-                    "listadoAlumnos", listadoAlumnos);
+            request.getSession().setAttribute("listadoAlumnos", listadoAlumnos);
             
             switch (perfil) {
                 

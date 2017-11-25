@@ -204,7 +204,7 @@ public class DaoEntidades {
             Conexion conexion = new Conexion();
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
-            rs = ps.executeQuery(sql);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 listado.add(new Alumno(
                         // Datos de alumno:

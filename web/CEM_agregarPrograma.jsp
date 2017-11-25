@@ -21,7 +21,7 @@
        
         <div class="container-fluid">
             <h1>Agregar Programa</h1>
-            <form action="Servlet" method="post" class="form-horizontal">
+            <form action="programas.htm?accion=agregar" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Nombre Programa</label>
                     <div class="col-sm-5">
@@ -56,7 +56,7 @@
                         <button type="submit" class="btn btn-default">Agregar</button>
                     </div>
                 </div>
-                <input type="text" name="accion" value="agregarPrograma" hidden="true" />
+                <!--<input type="text" name="accion" value="agregarPrograma" hidden="true" />-->
             </form>
         </div>
     </body>

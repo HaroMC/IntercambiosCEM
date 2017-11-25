@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <!-- Link Bootstrap CSS -->
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
@@ -22,7 +22,7 @@
     <body>
         <%@include file="menuCEM.jsp" %>
         <div class="container">
-            <h2>Programas a los cuales puede postular </h2>      
+            <h2>Programas </h2>      
             <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
             <br/>
@@ -36,7 +36,9 @@
                 <thead>
                     <tr>
                         <th>Codigo</th>
-                        <th>Nombre</th>            
+                        <th>Nombre</th>   
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
@@ -44,14 +46,26 @@
                         <tr>
                             <td> <c:out value="${p.codigo}" /> </td>
                             <td> <c:out value="${p.nombre}" /> </td>
+                            <td><button type="button" class="btn btn-primary">
+                                    <i cl   ass="glyphicon glyphicon-minus"></i>
+                                </button></td>
+                            <td><button type="button" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </button></td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-primary">
-                Postular
-            </button>
         </div>
-
+        <script>
+            $(document).ready(function () {
+                $("#myInput2").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable2 tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

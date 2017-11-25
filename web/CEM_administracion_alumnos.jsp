@@ -4,7 +4,7 @@
     Author     : Bugueño
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -19,96 +19,29 @@
     </head>
     <body>
         <%@include  file="menuCEM.jsp" %>
-        <div class="container">
-            <h2>Alumnos</h2>      
-            <p>Buscar un alumno puedes hacerlo aqui:</p>
-            <input class="form-control" id="myInput" type="text" placeholder="Escribe aca lo que buscas..">
-            <br>
-            <table class="table table-bordered table-striped">
-                <thead>
-
-
-                    <tr>
-                        <th>Nombre del alumno</th>
-                        <th>ID</th>
-                        <th>Programa que cursa</th>
-                        <th>Carrera que cursa</th>
-                        <th>Numero de matricula</th>
-                        <th>Eliminar</th>
-                        <th>Editar</th>
-                    </tr>
-                </thead>
-                <tbody id="myTable">
-                    <tr>
-                        <td>John</td>
-                        <td>0083</td>
-                        <td>Desarrollo en MEAN</td>
-                        <td>Ingenieria en informatica</td>
-                        <td>7548569</td>
-                        <td><button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-minus"></i>
-                            </button></td>
-                        <td><button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </button></td>
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>0088</td>
-                        <td>Desarrollo Full Stack</td>
-                        <td>Ingenieria en Informatica</td>
-                        <td>78545412</td>
-                        <td><button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-minus"></i>
-                            </button></td>
-                        <td><button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </button></td>
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>0090</td>
-                        <td>Gestion de Personas</td>
-                        <td>Recursos Humanos</td>
-                        <td>785545489</td>
-                        <td><button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-minus"></i>
-                            </button></td>
-                        <td><button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </button></td>
-                    <tr>
-                        <td>Anja</td>
-                        <td>0091</td>
-                        <td>Pasteleria internacional</td>
-                        <td>COcina</td>              
-                        <td>456232871</td>
-                        <td><button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-minus"></i>
-                            </button></td>
-                        <td><button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </button></td>
-                    </tr>
-                </tbody>
-            </table>
-            <!--  EJEMPLO DE COMO DARLE UNA CLASE A UN BOTON, aveces lo olvido :V
+     
+         <!--  EJEMPLO DE COMO DARLE UNA CLASE A UN BOTON, aveces lo olvido :V
             <a href="CEM_agregarAlumno.jsp" class="btn btn-primary">agregar alumno</a>
             -->
-        </div>
         
         <!--tabla que representa el listado de alumnos-->
         <br/>
         <div class="container">
             <h2>Alumnos existentes</h2>      
-            <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
+            <p>Si necesitas buscar un Alumno en especifico puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
             <br/>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Rut</th>
-                        <th>Nombre Completo</th>            
+                        <th>Nombre Completo</th>
+                        <td><button type="button" class="btn btn-primary">
+                                <i class="glyphicon glyphicon-minus"></i>
+                            </button></td>
+                        <td><button type="button" class="btn btn-primary">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </button></td>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
@@ -119,10 +52,7 @@
                         </tr>
                     </c:forEach>
                 </tbody>
-            </table>
-            <button type="button" class="btn btn-primary">
-                Postular
-            </button>
+            </table>          
         </div>
         
         

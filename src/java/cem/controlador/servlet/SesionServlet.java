@@ -10,48 +10,46 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class SesionServlet extends HttpServlet {
-
+    
     private DaoEntidades dao;
     private HttpSession sesion;
-
+    
     @Override
     public void init() {
         dao = new DaoEntidades();
         sesion = null;
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         request.getRequestDispatcher("login.jsp").include(request, response);
 
         Usuario objUsuario = dao.buscarUsuario(
                 request.getParameter("nombreUsuario"),
-                request.getParameter("contrasena"));
+                request.getParameter("contrasena")
+        );
 
         if (objUsuario != null) {
-            
             sesion = request.getSession(true);
             sesion.setAttribute("usuarioActual", objUsuario);
-            
             switch (objUsuario.getPerfil()) {
-                
                 case "Administrador":
                     response.sendRedirect("index.jsp");
                     break;
-
                 case "CEL":
                     response.sendRedirect("menuCEL.jsp");
                     break;
-
                 case "Alumno":
                     response.sendRedirect("index.jsp");
                     break;
-
                 case "Familia":
                     response.sendRedirect("index.jsp");
+                    break;
+                default:
+                    response.sendRedirect("no-autorizado.html");
             }
         }
         else {
@@ -67,10 +65,9 @@ public class SesionServlet extends HttpServlet {
             throws ServletException, IOException {
         
         request.getRequestDispatcher("menuCEM.jsp");
-        
         sesion = request.getSession();
         sesion.invalidate();
-        
         response.sendRedirect("login.jsp");
     }
+    
 }

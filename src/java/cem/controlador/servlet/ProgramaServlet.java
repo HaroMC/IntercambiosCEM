@@ -2,6 +2,7 @@ package cem.controlador.servlet;
 
 import cem.controlador.dao.DaoEntidades;
 import cem.modelo.entidad.Programa;
+import cem.modelo.entidad.Usuario;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -14,15 +15,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Servlet encargado de mediar entre las acciones en pantalla con el acceso a
+ * datos desde el DAO de los objetos <code>Programa</code>.
+ * @author Harold Maureira.
+ * @version 1.0
+ */
 public class ProgramaServlet extends HttpServlet {
-
+    
+    /**
+     * Instancia del DAO a cargo de controlar las consultas de los objetos
+     * <code>Programa</code> a la base de datos.
+     */
     private DaoEntidades dao;
-
+    
+    /**
+     * Método que inicializa la instancia del DAO al momento de la carga de la
+     * página.
+     */
     @Override
     public void init() {
         dao = new DaoEntidades();
     }
     
+    /**
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
@@ -32,22 +54,59 @@ public class ProgramaServlet extends HttpServlet {
         
         if (accion != null) {
             if (accion.compareToIgnoreCase("eliminar") == 0) {
-                Long codigo = Long.parseLong(request.getParameter("codigo"));
-                request.getParameter("codigo");
+                long codigo = Long.parseLong(request.getParameter("codigo"));
                 if (dao.eliminarPrograma(codigo)) {
                     
                 }
             }
         }
         else {
+            
+            // Definir que tipo de usuario es para redfireccionarlo a la página
+            // que corresponda.
+            
+            String perfil = 
+                    ((Usuario) request.getSession()
+                    .getAttribute("usuarioActual")).getPerfil();
+            
             ArrayList<Programa> listadoProgramas = dao.listarProgramas();
+            
             request.getSession().setAttribute(
                     "listadoProgramas", listadoProgramas);
-            request.getRequestDispatcher("Alumno_postulaciones.jsp")
-                    .forward(request, response);
+            
+            switch (perfil) {
+                
+                case "Administrador":
+                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
+                            .forward(request, response);
+                break;
+                
+                case "CEL":
+                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
+                            .forward(request, response);
+                    break;
+                    
+                case "Alumno":
+                    request.getRequestDispatcher("Alumno_postulaciones.jsp")
+                            .forward(request, response);
+                    break;
+                    
+                case "Familia":
+                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
+                            .forward(request, response);
+                    break;
+                    
+            }
         }
     }
-
+    
+    /**
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -93,7 +152,5 @@ public class ProgramaServlet extends HttpServlet {
             case "modificar":
                 break;
         }
-        
     }
-    
 }

@@ -61,18 +61,7 @@ public class ProgramaServlet extends HttpServlet {
             }
         }
         else {
-            ArrayList<Programa> listadoProgramas = dao.listarProgramas();
-            request.getSession().setAttribute(
-                    "listadoProgramas", listadoProgramas);
-                        
-            // Definir que tipo de usuario es para redfireccionarlo a la página
-            // que corresponda.
-            
-            String perfil = 
-                    ((Usuario) request.getSession()
-                    .getAttribute("usuarioActual")).getPerfil();
-            
-            diferenciarPerfil(request, response, perfil);
+            cargarLista(request, response);
         }
     }
     
@@ -106,30 +95,32 @@ public class ProgramaServlet extends HttpServlet {
                     );
                     if (dao.insertarPrograma(objPrograma)) {
                         mensaje = "Programa agregado.";
-                        request.setAttribute("mensaje", mensaje);
-                        request.getRequestDispatcher("CEM_agregarPrograma.jsp")
-                                .forward(request, response);
+                        request.getSession().setAttribute("mensaje", mensaje);
+                        cargarLista(request, response);
+                        response.sendRedirect("CEM_ver_programas.jsp");
+                        /*request.getRequestDispatcher("CEM_agregarPrograma.jsp")
+                                .forward(request, response);*/
                     }
                     else {
                         mensaje = "Error de registro.";
-                        request.setAttribute("mensaje", mensaje);
-                        request.getRequestDispatcher(
+                        request.getSession().setAttribute("mensaje", mensaje);
+                        response.sendRedirect("CEM_agregarPrograma.jsp");
+                        /*request.getRequestDispatcher(
                                 "CEM_agregarPrograma.jsp?mensaje=" + mensaje)
-                                .forward(request, response);
+                                .forward(request, response);*/
                     }
                 }
                 catch (ParseException ex) {
                     Logger.getLogger(EntidadServlet.class.getName())
                             .log(Level.SEVERE, null, ex);
                 }
-                response.sendRedirect("CEM_agregarPrograma.jsp");
+                //response.sendRedirect("CEM_agregarPrograma.jsp");
                 break;
                 
             case "modificar":
                 break;
         }
     }
-    
     
     private void diferenciarPerfil(HttpServletRequest request,
             HttpServletResponse response, String perfil)
@@ -154,45 +145,22 @@ public class ProgramaServlet extends HttpServlet {
             }
     }
     
+    private void cargarLista(HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        ArrayList<Programa> listadoProgramas = dao.listarProgramas();
+        request.getSession().setAttribute(
+                "listadoProgramas", listadoProgramas);
+                        
+        // Definir que tipo de usuario es para redfireccionarlo a la página
+        // que corresponda.
+            
+        String perfil = 
+                ((Usuario) request.getSession()
+                        .getAttribute("usuarioActual")).getPerfil();
+        
+        diferenciarPerfil(request, response, perfil);
+    }
+    
 }
-
-
-/*
-if (accion != null) {
-            if (accion.compareToIgnoreCase("agregar") == 0) {
-                try {
-                    Programa objPrograma = new Programa(
-                            dao.ultimoCodigoIncremental("PROGRAMA") + 1,
-                            request.getParameter("nombrePrograma"),
-                            format.parse(request.getParameter("fechaInicio")),
-                            format.parse(request.getParameter("fechaTermino")),
-                            Integer.parseInt(request.getParameter("valor")),
-                            "Sin CEL asignado"
-                    );
-                    if (dao.insertarPrograma(objPrograma)) {
-                        mensaje = "Programa agregado.";
-                        request.setAttribute("mensaje", mensaje);
-                        request.getRequestDispatcher("agregarPrograma.jsp")
-                                .forward(request, response);
-                    }
-                    else {
-                        mensaje = "Error de registro.";
-                        request.setAttribute("mensaje", mensaje);
-                        request.getRequestDispatcher(
-                                "agregarPrograma.jsp?mensaje=" + mensaje)
-                                .forward(request, response);
-                    }
-                }
-                catch (ParseException ex) {
-                    Logger.getLogger(EntidadServlet.class.getName())
-                            .log(Level.SEVERE, null, ex);
-                }
-                response.sendRedirect("      ");
-            }
-            else {
-                if (accion.compareToIgnoreCase("modificar") == 0) {
-                    
-                }
-            }
-        }
-*/

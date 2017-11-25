@@ -4,7 +4,7 @@
     Author     : Bugueño
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -26,6 +26,9 @@
             <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
             <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
             <br/>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">${mensaje}</label>
+            </div>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>

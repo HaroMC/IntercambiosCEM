@@ -23,8 +23,8 @@
                         <a class="navbar-brand" href="#"> WebSiteName </a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li><a href=""> Perfil </a></li>                    
-                        <li><a href=""> Antecedentes </a></li>
+                        <li><a href="Familia_perfil.jsp"> Perfil </a></li>                    
+                        <li><a href="Familia_antecedentes.jsp"> Antecedentes </a></li>
                     </ul>
                 </div>
             </nav>

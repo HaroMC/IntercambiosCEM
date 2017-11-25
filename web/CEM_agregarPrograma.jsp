@@ -18,9 +18,10 @@
         <title>Agregar Programa</title>
     </head>
     <body>
-       
-        <div class="container-fluid">
+        <%@include file="menuCEM.jsp" %>
+        <div class="container">
             <h1>Agregar Programa</h1>
+            <br/>
             <form action="programas.htm?accion=agregar" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Nombre Programa</label>

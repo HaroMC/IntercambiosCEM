@@ -28,9 +28,7 @@
             <br/>
             <div class="form-group">
                 <label class="col-sm-2 control-label">${mensaje}</label>
-                 <div class="col-sm-5 control-label">
-                    <button type="submit" class="btn btn-default">Agregar</button>
-                </div>
+                 
             </div>
             <table class="table table-bordered table-striped">
                 <thead>
@@ -47,7 +45,7 @@
                             <td> <c:out value="${p.codigo}" /> </td>
                             <td> <c:out value="${p.nombre}" /> </td>
                             <td><button type="button" class="btn btn-primary">
-                                    <i cl   ass="glyphicon glyphicon-minus"></i>
+                                    <i class="glyphicon glyphicon-minus"></i>
                                 </button></td>
                             <td><button type="button" class="btn btn-primary">
                                     <i class="glyphicon glyphicon-pencil"></i>
@@ -56,6 +54,7 @@
                     </c:forEach>
                 </tbody>
             </table>
+            
         </div>
         <script>
             $(document).ready(function () {

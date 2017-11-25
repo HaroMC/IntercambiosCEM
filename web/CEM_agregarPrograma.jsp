@@ -22,7 +22,7 @@
         <div class="container">
             <h1>Agregar Programa</h1>
             <br/>
-            <form action="programas.htm?accion=agregar" method="post" class="form-horizontal">
+            <form action="cem-programas?accion=agregar" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Nombre Programa</label>
                     <div class="col-sm-5">

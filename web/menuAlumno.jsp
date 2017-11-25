@@ -9,7 +9,7 @@
     }
 %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     </head>
     <body>
             <nav class="navbar navbar-inverse">
@@ -30,7 +29,7 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li><a href="Alumno_perfil.jsp"> Perfil </a></li>                    
-                        <li><a href="programas.htm"> Postulaciones </a></li>
+                        <li><a href="alumnos-programas"> Postulaciones </a></li>
                     </ul>
                 </div>
             </nav>

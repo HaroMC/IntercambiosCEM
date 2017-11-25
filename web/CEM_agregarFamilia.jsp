@@ -21,7 +21,7 @@
         <h1>Formulario de familia</h1>
         <h5>Los datos ingresados corresponden al jefe de familia</h5>
         <br/>
-        <form action="Servlet" method="post" class="form-horizontal">
+        <form action="cem-familias?accion=agregar" method="post" class="form-horizontal">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Fecha de nacimiento</label>

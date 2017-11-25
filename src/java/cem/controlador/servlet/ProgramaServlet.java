@@ -37,7 +37,7 @@ public class ProgramaServlet extends HttpServlet {
     public void init() {
         dao = new DaoEntidades();
     }
-    
+        
     /**
      * 
      * @param request
@@ -61,7 +61,10 @@ public class ProgramaServlet extends HttpServlet {
             }
         }
         else {
-            
+            ArrayList<Programa> listadoProgramas = dao.listarProgramas();
+            request.getSession().setAttribute(
+                    "listadoProgramas", listadoProgramas);
+                        
             // Definir que tipo de usuario es para redfireccionarlo a la página
             // que corresponda.
             
@@ -69,34 +72,7 @@ public class ProgramaServlet extends HttpServlet {
                     ((Usuario) request.getSession()
                     .getAttribute("usuarioActual")).getPerfil();
             
-            ArrayList<Programa> listadoProgramas = dao.listarProgramas();
-            
-            request.getSession().setAttribute(
-                    "listadoProgramas", listadoProgramas);
-            
-            switch (perfil) {
-                
-                case "Administrador":
-                    request.getRequestDispatcher("CEM_ver_programas.jsp")
-                            .forward(request, response);
-                break;
-                
-                case "CEL":
-                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
-                            .forward(request, response);
-                    break;
-                    
-                case "Alumno":
-                    request.getRequestDispatcher("Alumno_postulaciones.jsp")
-                            .forward(request, response);
-                    break;
-                    
-                case "Familia":
-                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
-                            .forward(request, response);
-                    break;
-                    
-            }
+            diferenciarPerfil(request, response, perfil);
         }
     }
     
@@ -131,6 +107,71 @@ public class ProgramaServlet extends HttpServlet {
                     if (dao.insertarPrograma(objPrograma)) {
                         mensaje = "Programa agregado.";
                         request.setAttribute("mensaje", mensaje);
+                        request.getRequestDispatcher("CEM_agregarPrograma.jsp")
+                                .forward(request, response);
+                    }
+                    else {
+                        mensaje = "Error de registro.";
+                        request.setAttribute("mensaje", mensaje);
+                        request.getRequestDispatcher(
+                                "CEM_agregarPrograma.jsp?mensaje=" + mensaje)
+                                .forward(request, response);
+                    }
+                }
+                catch (ParseException ex) {
+                    Logger.getLogger(EntidadServlet.class.getName())
+                            .log(Level.SEVERE, null, ex);
+                }
+                response.sendRedirect("CEM_agregarPrograma.jsp");
+                break;
+                
+            case "modificar":
+                break;
+        }
+    }
+    
+    
+    private void diferenciarPerfil(HttpServletRequest request,
+            HttpServletResponse response, String perfil)
+            throws ServletException, IOException {
+        
+            switch (perfil) {
+                case "Administrador":
+                    request.getRequestDispatcher("CEM_ver_programas.jsp")
+                            .forward(request, response);
+                break;
+                case "CEL":
+                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
+                            .forward(request, response);
+                    break;
+                case "Alumno":
+                    request.getRequestDispatcher("Alumno_postulaciones.jsp")
+                            .forward(request, response);
+                    break;
+                case "Familia":
+                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
+                            .forward(request, response);
+            }
+    }
+    
+}
+
+
+/*
+if (accion != null) {
+            if (accion.compareToIgnoreCase("agregar") == 0) {
+                try {
+                    Programa objPrograma = new Programa(
+                            dao.ultimoCodigoIncremental("PROGRAMA") + 1,
+                            request.getParameter("nombrePrograma"),
+                            format.parse(request.getParameter("fechaInicio")),
+                            format.parse(request.getParameter("fechaTermino")),
+                            Integer.parseInt(request.getParameter("valor")),
+                            "Sin CEL asignado"
+                    );
+                    if (dao.insertarPrograma(objPrograma)) {
+                        mensaje = "Programa agregado.";
+                        request.setAttribute("mensaje", mensaje);
                         request.getRequestDispatcher("agregarPrograma.jsp")
                                 .forward(request, response);
                     }
@@ -147,10 +188,11 @@ public class ProgramaServlet extends HttpServlet {
                             .log(Level.SEVERE, null, ex);
                 }
                 response.sendRedirect("      ");
-                break;
-                
-            case "modificar":
-                break;
+            }
+            else {
+                if (accion.compareToIgnoreCase("modificar") == 0) {
+                    
+                }
+            }
         }
-    }
-}
+*/

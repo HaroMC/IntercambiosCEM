@@ -43,7 +43,7 @@
                             <span class="caret"> </span> </a>
                         <ul class="dropdown-menu">
                             <li> <a href="programas.htm"> Ver listado de Programas </a> </li>
-                            <li> <a href="programas.htm?accion=agregar"> Agregar Programas </a> </li>
+                            <li> <a href="CEM_agregarPrograma.jsp"> Agregar Programas </a> </li>
                         </ul>
                     </li>
                     <li class="dropdown">

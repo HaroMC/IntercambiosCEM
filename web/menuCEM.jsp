@@ -34,8 +34,8 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración de Usuarios
                             <span class="caret"> </span> </a>
                         <ul class="dropdown-menu">
-                            <li> <a href="CEM_administracion_alumnos.jsp"> Alumnos </a> </li>
-                            <li> <a href="CEM_administracion_familia.jsp"> Familia </a> </li>
+                            <li> <a href="alumnos.htm"> Alumnos </a> </li>
+                            <li> <a href="familias.htm"> Familia </a> </li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -43,7 +43,7 @@
                             <span class="caret"> </span> </a>
                         <ul class="dropdown-menu">
                             <li> <a href="programas.htm"> Ver listado de Programas </a> </li>
-                            <li> <a href="CEM_agregarPrograma.jsp"> Agregar Programas </a> </li>
+                            <li> <a href="programas.htm?accion=agregar"> Agregar Programas </a> </li>
                         </ul>
                     </li>
                     <li class="dropdown">

@@ -107,15 +107,15 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Codigo</th>
-                        <th>Nombre</th>            
+                        <th>Rut</th>
+                        <th>Nombre Completo</th>            
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                    <c:forEach var="p" items="${listadoProgramas}" >
+                    <c:forEach var="p" items="${listadoAlumnos}" >
                         <tr>
-                            <td> <c:out value="${p.codigo}" /> </td>
-                            <td> <c:out value="${p.nombre}" /> </td>
+                            <td> <c:out value="${p.rut}" /> </td>
+                            <td> <c:out value="${p.nombreCompleto}" /> </td>
                         </tr>
                     </c:forEach>
                 </tbody>

@@ -77,7 +77,7 @@ public class ProgramaServlet extends HttpServlet {
             switch (perfil) {
                 
                 case "Administrador":
-                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
+                    request.getRequestDispatcher("CEM_ver_programas.jsp")
                             .forward(request, response);
                 break;
                 

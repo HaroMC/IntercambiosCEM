@@ -42,7 +42,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Administración de programas
                             <span class="caret"> </span> </a>
                         <ul class="dropdown-menu">
-                            <li> <a href="CEM_ver_programas.jsp"> Ver listado de Programas </a> </li>
+                            <li> <a href="programas.htm"> Ver listado de Programas </a> </li>
                             <li> <a href="CEM_agregarPrograma.jsp"> Agregar Programas </a> </li>
                         </ul>
                     </li>

@@ -92,7 +92,9 @@
                     </tr>
                 </tbody>
             </table>
+            <!--  EJEMPLO DE COMO DARLE UNA CLASE A UN BOTON, aveces lo olvido :V
             <a href="CEM_agregarAlumno.jsp" class="btn btn-primary">agregar alumno</a>
+            -->
         </div>
         
         <!--tabla que representa el listado de alumnos-->

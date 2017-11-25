@@ -17,52 +17,128 @@
         <title>Agregar Usuario</title>
     </head>
     <body>
+
         <div class="container-fluid">
             <h1>Agregar Usuario</h1>
             <form action="Servlet" method="post" class="form-horizontal">
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">Nombre completo jefe de familia</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="nombreJefeFamilia" 
+                               placeholder="Ingrese el nombre del usuario" required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Rut</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="rut" 
+                               placeholder="17676817-8" required="true">
+                    </div>
+                </div>          
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Fecha de Nacimiento</label>
+                    <div class="col-sm-5">
+                        <input type="date" class="form-control" name="fechaNacimiento" 
+                               required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Domicilio</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="domicilio" 
+                               placeholder="Ingrese la direccion de domicilio" required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Ciudad</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="ciudad" 
+                               placeholder="Ingrese la ciudad de su domicilio" required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Pais</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="pais" 
+                               placeholder="Ingrese su pais de domicilio" required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Correo</label>
+                    <div class="col-sm-5">
+                        <input type="email" class="form-control" name="correo" 
+                               placeholder="harold_developer@gmail.com" required="true">
+                    </div> 
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Telefono</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="telefono" 
+                               placeholder="2289302654" required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Cantidad Integrantes</label>
+                    <div class="col-sm-5">
+                        <input type="int" class="form-control" name="integrantes" 
+                               placeholder="    " required="true">
+                    </div>
+                </div> 
+                <div class="form-group">
                     <label class="col-sm-2 control-label">Nombre Usuario</label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control" name="nombreUsuario" 
-                               placeholder="Ingrese el nombre del usuario" required="">
+                               placeholder="Ingresa un nombre de Usuario" required="true">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Contraseña</label>
                     <div class="col-sm-5">
-                        <input type="password" class="form-control" name="contrasena" 
-                               placeholder="Ingrese la contraseña" required="">
+                        <input type="password" class="form-control" name="clave1" 
+                               placeholder="" required="true">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Fecha Registro</label>
+                    <label class="col-sm-2 control-label">Virificar Contraseña</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" name="clave2" 
+                               placeholder="" required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Fecha de registro</label>
                     <div class="col-sm-5">
                         <input type="date" class="form-control" name="fechaRegistro" 
-                               required="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Contraseña</label>
-                    <div class="col-sm-5">
-                        <input type="password" class="form-control" name="contrasena" 
-                               placeholder="Ingrese la contraseña" required="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Tipo Usuario</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="perfil" 
-                               required="">
+                               placeholder="" required="true">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">${mensaje}</label>
                     <div class="col-sm-5 control-label">
-                        <button type="submit" class="btn btn-default">Agregar</button>
+                        <button type="submit" class="btn btn-default" onClick="comprobarClave()">Agregar</button>
                     </div>
                 </div>
                 <input type="text" name="accion" value="agregarUsuario" hidden="true" />
             </form>
+            <!--
+private long codigo;
+private String nombre;
+private String contrasena;
+private Date fechaRegistro;
+private String rut;
+private String perfil;
+            -->
         </div>
+        <script>
+            function comprobarClave() {
+                clave1 = document.f1.clave1.value;
+                clave2 = document.f1.clave2.value;
+
+                if (clave1 === clave2)
+                    alert("Las dos claves son iguales...\nRealizaríamos las acciones del caso positivo");
+                else
+                    alert("Las dos claves son distintas...\nRealizaríamos las acciones del caso negativo");
+            }
+        </script>
     </body>
 </html>

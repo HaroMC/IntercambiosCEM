@@ -26,35 +26,43 @@
                     </div>
                     <div class="panel-body">
                         <form class="form-horizontal" action="sesion.htm" method="post">
-                            <div class="form-group">
-                                <label for="nombreUsuario" class="col-lg-2 control-label">Nombre de Usuario:</label>
-                                <div class="col-xs-3">
-                                    <input type="text" class="form-control" name="nombreUsuario"
-                                           required="true" id="nombreUsuario"
-                                           placeholder="nombre Usuario">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="nombreUsuario" class="col-lg-2 control-label">Nombre de Usuario:</label>
+                                    <div class="col-xs-3">
+                                        <input type="text" class="form-control" name="nombreUsuario"
+                                               required="true" id="nombreUsuario"
+                                               placeholder="nombre Usuario">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="ejemplo_password_3" class="col-lg-2 control-label" style="size: 50">Contraseña</label>
-                                <div class="col-xs-3">
-                                    <input type="password" class="form-control" name="contrasena"
-                                           required="true" id="ejemplo_password_3" 
-                                           placeholder="Contraseña">
+                                <div class="form-group">
+                                    <label for="ejemplo_password_3" class="col-lg-2 control-label">Contraseña</label>
+                                    <div class="col-xs-3">
+                                        <input type="password" class="form-control" name="contrasena"
+                                               required="true" id="ejemplo_password_3" 
+                                               placeholder="Contraseña">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-lg-offset-2 col-lg-10">
-                                    <button type="submit" class="btn btn-default">Entrar</button>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button type="submit" class="btn btn-default">Entrar</button>
+                                    </div>
+                                </div>   
+                                <h5>Si no estas registrado y eres alumno o familia anfitriona elije una opcion</h5>
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-6 col-md-6">
+                                        <a href="" class="btn btn-lg btn-primary btn-block">Si eres alumno presiona aca</a>
+                                    </div>                                  
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-lg-offset-2 col-lg-10">
-                                    <a href="" class="btn btn-primary"> Si no esta registrado en el sistema presione aqui!! </a>
+                                <br/>   
+                                <div class="row">
+                                    <div class="col-xs-3 col-sm-6 col-md-6">
+                                        <a href="agregarUsuario.jsp" class="btn btn-lg btn-primary btn-block">Si eres familia presiona aca</a>
+                                    </div>   
                                 </div>
-                            </div>                      
-                            <label> ${mensaje} </label>         
-
+                                <label> ${mensaje} </label>         
+                            </fieldset>
                         </form>
                     </div>
                 </div>

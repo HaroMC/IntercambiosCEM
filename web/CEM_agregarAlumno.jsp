@@ -22,7 +22,7 @@
 
             <h1>Agregar Alumno</h1>
 
-            <form action="Servlet" method="post" class="form-horizontal">
+            <form action="cem-alumnos?accion=agregar" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Fecha de nacimiento</label>
                     <div class="col-sm-5">

@@ -15,41 +15,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet encargado de mediar entre las acciones en pantalla con el acceso a
- * datos desde el DAO de los objetos <code>Programa</code>.
- * @author Harold Maureira.
- * @version 1.0
- */
-public class ProgramaServlet extends HttpServlet {
+public class CemProgramaServlet extends HttpServlet {
     
-    /**
-     * Instancia del DAO a cargo de controlar las consultas de los objetos
-     * <code>Programa</code> a la base de datos.
-     */
     private DaoEntidades dao;
     
-    /**
-     * Método que inicializa la instancia del DAO al momento de la carga de la
-     * página.
-     */
     @Override
     public void init() {
         dao = new DaoEntidades();
     }
-        
-    /**
-     * 
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException 
-     */
+    
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-                
+        
         String accion = request.getParameter("accion");
         
         if (accion != null) {
@@ -62,16 +41,11 @@ public class ProgramaServlet extends HttpServlet {
         }
         else {
             cargarLista(request, response);
+            request.getRequestDispatcher("CEM_ver_programas.jsp")
+                    .forward(request, response);
         }
     }
     
-    /**
-     * 
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException 
-     */
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
@@ -82,7 +56,6 @@ public class ProgramaServlet extends HttpServlet {
         String mensaje;
         
         switch (accion) {
-            
             case "agregar":
                 try {
                     Programa objPrograma = new Programa(
@@ -98,53 +71,24 @@ public class ProgramaServlet extends HttpServlet {
                         request.getSession().setAttribute("mensaje", mensaje);
                         cargarLista(request, response);
                         response.sendRedirect("CEM_ver_programas.jsp");
-                        /*request.getRequestDispatcher("CEM_agregarPrograma.jsp")
-                                .forward(request, response);*/
                     }
                     else {
                         mensaje = "Error de registro.";
                         request.getSession().setAttribute("mensaje", mensaje);
                         response.sendRedirect("CEM_agregarPrograma.jsp");
-                        /*request.getRequestDispatcher(
-                                "CEM_agregarPrograma.jsp?mensaje=" + mensaje)
-                                .forward(request, response);*/
                     }
                 }
                 catch (ParseException ex) {
                     Logger.getLogger(EntidadServlet.class.getName())
                             .log(Level.SEVERE, null, ex);
                 }
-                //response.sendRedirect("CEM_agregarPrograma.jsp");
                 break;
                 
             case "modificar":
                 break;
         }
     }
-    
-    private void diferenciarPerfil(HttpServletRequest request,
-            HttpServletResponse response, String perfil)
-            throws ServletException, IOException {
         
-            switch (perfil) {
-                case "Administrador":
-                    request.getRequestDispatcher("CEM_ver_programas.jsp")
-                            .forward(request, response);
-                break;
-                case "CEL":
-                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
-                            .forward(request, response);
-                    break;
-                case "Alumno":
-                    request.getRequestDispatcher("Alumno_postulaciones.jsp")
-                            .forward(request, response);
-                    break;
-                case "Familia":
-                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
-                            .forward(request, response);
-            }
-    }
-    
     private void cargarLista(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
@@ -152,15 +96,14 @@ public class ProgramaServlet extends HttpServlet {
         ArrayList<Programa> listadoProgramas = dao.listarProgramas();
         request.getSession().setAttribute(
                 "listadoProgramas", listadoProgramas);
-                        
+        
+        /*
         // Definir que tipo de usuario es para redfireccionarlo a la página
         // que corresponda.
-            
         String perfil = 
                 ((Usuario) request.getSession()
                         .getAttribute("usuarioActual")).getPerfil();
-        
-        diferenciarPerfil(request, response, perfil);
+        */
     }
     
 }

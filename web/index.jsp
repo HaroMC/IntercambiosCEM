@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%  if (session.getAttribute("usuarioActual") == null) {
+       response.sendRedirect("no-autorizado.html");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>

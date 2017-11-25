@@ -92,8 +92,48 @@
                     </tr>
                 </tbody>
             </table>
+            <!--  EJEMPLO DE COMO DARLE UNA CLASE A UN BOTON, aveces lo olvido :V
             <a href="CEM_agregarAlumno.jsp" class="btn btn-primary">agregar alumno</a>
+            -->
         </div>
+        
+        <!--tabla que representa el listado de alumnos-->
+        <br/>
+        <div class="container">
+            <h2>Alumnos existentes</h2>      
+            <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
+            <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
+            <br/>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>            
+                    </tr>
+                </thead>
+                <tbody id="myTable2">
+                    <c:forEach var="p" items="${listadoProgramas}" >
+                        <tr>
+                            <td> <c:out value="${p.codigo}" /> </td>
+                            <td> <c:out value="${p.nombre}" /> </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary">
+                Postular
+            </button>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <div class="container">
             <h2>Notas por Asignatura</h2>           
             <table class="table table-bordered table-striped">

@@ -35,7 +35,7 @@ public class AlumnoServlet extends HttpServlet {
                 request.getSession().setAttribute(
                         "listadoAlumnos",
                         listadoAlumnos);
-                request.getRequestDispatcher("Administ.jsp")
+                request.getRequestDispatcher("CEM_administracion_alumnos.jsp")
                         .forward(request, response);
                 break;
                 

@@ -2,6 +2,8 @@ package cem.controlador.servlet;
 
 import cem.controlador.dao.DaoEntidades;
 import cem.modelo.entidad.Alumno;
+import cem.modelo.entidad.Programa;
+import cem.modelo.entidad.Usuario;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -25,20 +27,47 @@ public class AlumnoServlet extends HttpServlet {
         
         String accion = request.getParameter("accion");
         
-        switch (accion) {
+        if (accion != null) {
+            if (accion.compareToIgnoreCase("eliminar") == 0) {
+                
+            }
+        }
+        else {
             
-            case "eliminar":
+            // Definir que tipo de usuario es para redfireccionarlo a la página
+            // que corresponda.
+            
+            String perfil = 
+                    ((Usuario) request.getSession()
+                    .getAttribute("usuarioActual")).getPerfil();
+            
+            ArrayList<Alumno> listadoAlumnos = dao.listarAlumnos();
+            
+            request.getSession().setAttribute(
+                    "listadoAlumnos", listadoAlumnos);
+            
+            switch (perfil) {
+                
+                case "Administrador":
+                    request.getRequestDispatcher("CEM_administracion_alumnos.jsp")
+                            .forward(request, response);
                 break;
                 
-            default:
-                ArrayList<Alumno> listadoAlumnos = dao.listarAlumnos();
-                request.getSession().setAttribute(
-                        "listadoAlumnos",
-                        listadoAlumnos);
-                request.getRequestDispatcher("CEM_administracion_alumnos.jsp")
-                        .forward(request, response);
-                break;
-                
+                case "CEL":
+                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
+                            .forward(request, response);
+                    break;
+                    
+                case "Alumno":
+                    request.getRequestDispatcher("Alumno_postulaciones.jsp")
+                            .forward(request, response);
+                    break;
+                    
+                case "Familia":
+                    request.getRequestDispatcher("NO-SE-QUE-PAGINA.jsp")
+                            .forward(request, response);
+                    break;
+            }
         }
     }
 

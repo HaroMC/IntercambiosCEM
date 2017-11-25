@@ -667,7 +667,7 @@ public class DaoEntidades {
         return listado;
     }
     
-    public FamiliaAnfitriona buscarFamilia(int rutPersona) {
+    public FamiliaAnfitriona buscarFamilia(String rutPersona) {
         FamiliaAnfitriona familia = null;
         String sql = "SELECT CANTIDAD_INTEGRANTES, ESTADO, RUT_PERSONA, "
                 + "NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, "
@@ -679,8 +679,8 @@ public class DaoEntidades {
             Conexion conexion = new Conexion();
             c = conexion.abrir();
             ps = c.prepareStatement(sql);
-            ps.setInt(1, rutPersona);
-            rs = ps.executeQuery(sql);
+            ps.setString(1, rutPersona);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 familia = new FamiliaAnfitriona(
                         // Datos de familia:

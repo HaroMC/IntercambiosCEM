@@ -39,7 +39,7 @@
                     <a class="navbar-brand" href="#"> WebSiteName </a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li> <a href="menuCEM.jsp"> Home </a> </li>
+                    <li> <a href="CEM_perfil.jsp"> Perfil </a> </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración de Usuarios
                             <span class="caret"> </span> </a>

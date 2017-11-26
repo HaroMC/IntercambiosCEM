@@ -20,8 +20,8 @@
     <body>
         <%@include file="menuCEL.jsp" %>
         <div class="container">
-            <h2>Programas </h2>      
-            <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
+            <h2>Programas dispnibles para postular</h2>      
+            <p>Si necesitas buscar un programa específico, puedes hacerlo desde aquí</p>
             <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
             <br/>
             <div class="form-group">
@@ -31,23 +31,37 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Codigo</th>
-                        <th>Nombre</th>   
-                        <th></th>
-                        <th></th>
+                        <th> Nobmre </th>
+                        <th> Fecha de inicio </th>   
+                        <th> Fecha de término </th>
+                        <th> Estado </th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                <c:forEach var="p" items="${listadoProgramas}" >
+                <c:forEach var="p" items="${programasDisponiblesCel}" >
                     <tr>
-                        <td> <c:out value="${p.codigo}" /> </td>
-                    <td> <c:out value="${p.nombre}" /> </td>
-                    <td><button type="button" class="btn btn-primary">
-                            <i class="glyphicon glyphicon-minus"></i>
-                        </button></td>
-                    <td><button type="button" class="btn btn-primary">
-                            <i class="glyphicon glyphicon-pencil"></i>
-                        </button></td>
+                        <td>
+                            <c:out value="${p.nombre}" />
+                        </td>
+                        <td>
+                            <c:out value="${p.fechaInicio}" />
+                        </td>
+                        <td>
+                            <c:out value="${p.fechaTermino}" />
+                        </td>
+                        <td>
+                            <c:out value="${p.estado}" />
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary">
+                                <i class="glyphicon glyphicon-minus"> </i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </button>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -68,13 +82,11 @@
             });
         </script>
 
-
-
-
         <div class="container">
             <h2>Programas a los que estas postulando </h2>      
             <p>Si necesitas buscar un programa a los cuales has postulado hazlo aqui:</p>
-            <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
+            <input class="form-control" id="myInput2" type="text"
+                   placeholder="Escribe aca lo que buscas..">
             <br>
             <table class="table table-bordered table-striped">
                 <thead>

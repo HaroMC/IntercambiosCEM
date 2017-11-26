@@ -39,9 +39,10 @@
         %>
         <%@include  file="menuCEM.jsp" %>
         <div class="container">
-            <h2>Familias</h2>      
-            <p>Buscar una familia puedes hacerlo aqui:</p>
-            <input class="form-control" id="myInput" type="text" placeholder="Escribe aca lo que buscas..">
+            <h2>Familias registradas</h2>
+            <p>Filtrar por nombre del jefe de familia</p>
+            <input class="form-control" id="myInput" type="text"
+                   placeholder="Escribe aca lo que buscas..">
             <br>
             <table class="table table-bordered table-striped">
                 <thead>
@@ -96,13 +97,13 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="CEM_agregarFamilia.jsp" class="btn btn-primary">agregar familia...</a>
+            <a href="CEM_agregarFamilia.jsp" class="btn btn-primary">Registrar nueva familia</a>
         </div>
 
 
         <div class="container">
             <h2>Antecedentes</h2>      
-            <p>Si necesitas buscar un programa a los cuales has postulado hazlo aqui:</p>
+            <p>Filtrar por...</p>
             <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
             <br>
             <table class="table table-bordered table-striped">
@@ -137,7 +138,13 @@
                 </tbody>
             </table>
             <button type="button" class="btn btn-primary">
-                Eliminar Postulación
+                Agregar antecedente
+            </button>
+            <button type="button" class="btn btn-primary">
+                Eliminar antecedente
+            </button>
+            <button type="button" class="btn btn-primary">
+                Modificar antecedente
             </button>
         </div>
         <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

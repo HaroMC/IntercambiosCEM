@@ -89,7 +89,7 @@ public class DaoEntidades {
         return resultado;
     }
     
-    private boolean comprobarRutExistente(String rut) {
+    public boolean comprobarRutExistente(String rut) {
         boolean resultado = false;
         String sql = "SELECT * FROM CEM.PERSONA WHERE RUT = ?";
         try {

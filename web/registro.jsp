@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <h1> Formulario de registro de familias </h1>
             <br />
-            <form action="registrar?type=familia" method="post" class="form-horizontal">
+            <form action="registrar?tipo=familia" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         Nombre(s) del jefe de familia

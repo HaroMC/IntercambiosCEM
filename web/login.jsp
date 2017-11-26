@@ -59,7 +59,7 @@
                     </div>
                     -->
                     <div class="panel-body">
-                        <form class="form-horizontal" action="sesion.htm" method="post">
+                        <form class="form-horizontal" action="ingresar" method="post">
                             <fieldset>
                                 <div class="form-group">
                                     <label for="nombreUsuario" class="col-lg-2 control-label">Nombre de Usuario:</label>

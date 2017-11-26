@@ -38,37 +38,30 @@
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                <c:forEach var="p" items="${programasDisponiblesCel}" >
-                    <tr>
-                        <td>
-                            <c:out value="${p.nombre}" />
-                        </td>
-                        <td>
-                            <c:out value="${p.fechaInicio}" />
-                        </td>
-                        <td>
-                            <c:out value="${p.fechaTermino}" />
-                        </td>
-                        <td>
-                            <c:out value="${p.estado}" />
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-minus"> </i>
-                            </button>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </c:forEach>
+                    <c:forEach var="p" items="${programasDisponiblesCel}" >
+                        <tr>
+                            <td>
+                                <c:out value="${p.nombre}" />
+                            </td>
+                            <td>
+                                <c:out value="${p.fechaInicio}" />
+                            </td>
+                            <td>
+                                <c:out value="${p.fechaTermino}" />
+                            </td>
+                            <td>
+                                <c:out value="${p.estado}" />
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary">
+                                    Postular
+                                </button>
+                            </td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
-            <button type="button" class="btn btn-primary">
-                Postular
-            </button>
+            
         </div>
 
         <script>
@@ -76,7 +69,7 @@
                 $("#myInput2").on("keyup", function () {
                     var value = $(this).val().toLowerCase();
                     $("#myTable2 tr").filter(function () {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
                     });
                 });
             });
@@ -123,7 +116,7 @@
                 Eliminar Postulación
             </button>
         </div>
-     
+
         <script>
             $(document).ready(function () {
                 $("#myInput3").on("keyup", function () {

@@ -1,20 +1,25 @@
-<%-- 
-    Document   : menuCEL
-    Created on : 16-10-2017, 02:27:06 AM
-    Author     : David
---%>
+<%@ page contentType="text/html"
+         pageEncoding="UTF-8"
+         language="java"
+         import="cem.modelo.entidad.Usuario" 
+         session="true" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%  if (session.getAttribute("usuarioActual") == null) {
+       response.sendRedirect("no-autorizado.html");
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>CEL Home</title>
+        <title> CEL Home </title>
         <!-- Link Bootstrap CSS -->
-        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
         <!--Link J.S.-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"> </script>
     </head>
     <body>
         <nav class="navbar navbar-inverse">
@@ -27,10 +32,18 @@
                     <li><a href="CEL_calificaciones.jsp">Calificaciones</a></li>
                     <li><a href="CEL_postulaciones.jsp">Postulaciones</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Iniciar Sesion</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Registrarse</a></li>
-                </ul>
+                <!-- ------------------------------------------------------- -->
+                <label class="nav navbar-nav navbar-right" style="color: white">
+                    
+                    Bienvenido, <%/*= ((Usuario)(session
+                            .getAttribute("usuarioActual"))).getNombre() */%>
+                            
+                    <br />
+                    <form action="salir" method="get">
+                        <input type="submit" value="Cerrar sesión" />
+                    </form>
+                </label>
+                <!-- ------------------------------------------------------- -->
             </div>
         </nav>
         

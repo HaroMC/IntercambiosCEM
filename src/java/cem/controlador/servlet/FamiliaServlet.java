@@ -29,7 +29,6 @@ public class FamiliaServlet extends HttpServlet {
         FamiliaAnfitriona objFamilia =
                 dao.buscarFamilia(objUsuario.getRut());
         
-        
     }
 
     @Override

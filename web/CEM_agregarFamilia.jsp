@@ -3,8 +3,10 @@
     Created on : 30-10-2017, 5:18:28
     Author     : Bugueño
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html"
+         pageEncoding="UTF-8"
+         import="cem.modelo.entidad.Usuario" 
+         session="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -13,11 +15,29 @@
         <!-- Link Bootstrap CSS -->
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
         <!--Link J.S.-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-        <title>JSP Page</title>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"> </script>
+        <title> JSP Page </title>
     </head>
     <body>
+        <%
+            /**
+             * Código que verifica si el usuario en sesión puede visitar esta
+             * página. De no tener permiso, se le redirecciona a la página
+             * "no autorizado".
+             */
+            if (session.getAttribute("usuarioActual") == null) {
+                response.sendRedirect("no-autorizado.html");
+            }
+            else {
+                if (((Usuario) session.getAttribute("usuarioActual"))
+                        .getPerfil()
+                        .compareToIgnoreCase("Administrador") != 0) {
+                    response.sendRedirect("no-autorizado.html");
+                }
+            }
+        %>
         <h1>Formulario de familia</h1>
         <h5>Los datos ingresados corresponden al jefe de familia</h5>
         <br/>

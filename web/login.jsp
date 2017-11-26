@@ -1,29 +1,63 @@
+
 <%@ page contentType="text/html"
          pageEncoding="UTF-8"
          language="java"
-         session="true" %>
+         session="true"
+         import="cem.modelo.entidad.Usuario" %>
 
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> Bienvenido </title>
         <!-- Link Bootstrap CSS -->
-        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
         <!--Link J.S.-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"> </script>
     </head>
     <body>
-        <h1>Sistema de intercambios estudiantiles <br>
-            Centro de Estudios Montreal</h1>
+        <%/*
+            if ((Usuario) session.getAttribute("usuarioAcual") != null) {
+                String perfil = ((Usuario) session
+                        .getAttribute("usuarioActual"))
+                        .getPerfil();
 
+                if (perfil.compareToIgnoreCase("Administrador") == 0) {
+                    response.sendRedirect("menuCEM.jsp");
+                }
+                else {
+                    if (perfil.compareToIgnoreCase("CEL") == 0) {
+                        response.sendRedirect("CEL_home.jsp");
+                    }
+                    else {
+                        if (perfil.compareToIgnoreCase("Alumno") == 0) {
+                            response.sendRedirect("Alumno_perfil.jsp");
+                        }
+                        else {
+                            if (perfil.compareToIgnoreCase("Familia") == 0) {
+                                response.sendRedirect("Familia_perfil.jsp");
+                            }
+                        }
+                    }
+                }
+            }*/
+        %>
+        <h1>
+            Sistema de intercambios estudiantiles
+            <br />
+            Centro de Estudios Montreal
+        </h1>
         <div class="container">
             <div class="row vertical-offset-100">
                 <div class="panel panel-default">
+                    <!--
                     <div class="panel-heading">
                         <h3 class="panel-title"> Ingrese al sistema :)</h3>
                     </div>
+                    -->
                     <div class="panel-body">
                         <form class="form-horizontal" action="sesion.htm" method="post">
                             <fieldset>

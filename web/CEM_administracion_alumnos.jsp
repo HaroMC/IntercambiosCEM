@@ -3,10 +3,14 @@
     Created on : 25-10-2017, 19:37:39
     Author     : Bugueño
 --%>
+<%@ page contentType="text/html"
+         pageEncoding="UTF-8"
+         import="cem.modelo.entidad.Usuario" 
+         session="true" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+        
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +22,24 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
+        <%
+            /**
+             * Código que verifica si el usuario en sesión puede visitar esta
+             * página. De no tener permiso, se le redirecciona a la página
+             * "no autorizado".
+             */
+            if (session.getAttribute("usuarioActual") == null) {
+                response.sendRedirect("no-autorizado.html");
+            }
+            else {
+                if (((Usuario) session.getAttribute("usuarioActual"))
+                        .getPerfil()
+                        .compareToIgnoreCase("Administrador") != 0) {
+                    response.sendRedirect("no-autorizado.html");
+                }
+            }
+        %>
+        
         <%@include  file="menuCEM.jsp" %>
 
         <!--  EJEMPLO DE COMO DARLE UNA CLASE A UN BOTON, aveces lo olvido :V

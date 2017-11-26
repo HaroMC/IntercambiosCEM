@@ -28,7 +28,7 @@ public class SesionServlet extends HttpServlet {
             throws ServletException, IOException {
         
         request.getRequestDispatcher("login.jsp").include(request, response);
-
+        
         Usuario objUsuario = dao.buscarUsuario(
                 request.getParameter("nombreUsuario"),
                 request.getParameter("contrasena")
@@ -66,10 +66,7 @@ public class SesionServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.getRequestDispatcher("menuCEM.jsp");
-        sesion = request.getSession();
-        sesion.invalidate();
-        response.sendRedirect("login.jsp");
+        
     }
     
 }

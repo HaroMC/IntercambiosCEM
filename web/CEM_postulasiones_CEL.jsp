@@ -1,10 +1,9 @@
-<%-- 
-    Document   : CEM_postulasiones_CEL
-    Created on : 30-10-2017, 9:30:09
-    Author     : Bugueño
---%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html"
+         pageEncoding="UTF-8"
+         import="cem.modelo.entidad.Usuario" 
+         session="true" %>
+        
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,6 +15,23 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
+        <%
+            /**
+             * Código que verifica si el usuario en sesión puede visitar esta
+             * página. De no tener permiso, se le redirecciona a la página
+             * "no autorizado".
+             */
+            if (session.getAttribute("usuarioActual") == null) {
+                response.sendRedirect("no-autorizado.html");
+            }
+            else {
+                if (((Usuario) session.getAttribute("usuarioActual"))
+                        .getPerfil()
+                        .compareToIgnoreCase("Administrador") != 0) {
+                    response.sendRedirect("no-autorizado.html");
+                }
+            }
+        %>
         <%@include  file="menuCEM.jsp" %>
         <h1>Postulasiones CEL's</h1>
         <div class="container">

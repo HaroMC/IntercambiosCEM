@@ -92,7 +92,7 @@
                                 <br/>   
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-6 col-md-6">
-                                        <a href="agregarUsuario.jsp" class="btn btn-lg btn-primary btn-block">Si eres familia presiona aca</a>
+                                        <a href="registro.jsp" class="btn btn-lg btn-primary btn-block">Si eres familia presiona aca</a>
                                     </div>   
                                 </div>
                                 <label> ${mensaje} </label>         

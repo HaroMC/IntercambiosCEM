@@ -1,10 +1,9 @@
-<%-- 
-    Document   : menuFamilia
-    Created on : 25-11-2017, 13:11:12
-    Author     : Bugueño
---%>
+<%@ page contentType="text/html"
+         pageEncoding="UTF-8"
+         language="java"
+         session="true"
+         import="cem.modelo.entidad.Usuario" %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +13,6 @@
         <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css" >
         <!--Link J.S.-->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
     </head>
     <body>
         <nav class="navbar navbar-inverse">
@@ -26,6 +24,15 @@
                         <li><a href="Familia_perfil.jsp"> Perfil </a></li>                    
                         <li><a href="Familia_antecedentes.jsp"> Antecedentes </a></li>
                     </ul>
+                    <!-- --------------------------------------------------- -->
+                    <label class="nav navbar-nav navbar-right" style="color: white">
+                        Bienvenido(a), <%= ((Usuario)(session.getAttribute("usuarioActual"))).getNombre() %>
+                        <br />
+                        <form action="salir" method="get">
+                            <input type="submit" value="Cerrar sesión" />
+                        </form>
+                    </label>
+                    <!-- --------------------------------------------------- -->
                 </div>
             </nav>
     </body>

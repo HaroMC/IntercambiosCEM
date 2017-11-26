@@ -94,12 +94,13 @@ public class DaoEntidades {
         String sql = "SELECT * FROM CEM.PERSONA WHERE RUT = ?";
         try {
             Conexion conexion = new Conexion();
-            c = conexion.abrir();
-            ps = c.prepareStatement(sql);
+            Connection c = conexion.abrir();
+            PreparedStatement ps = c.prepareStatement(sql);
             ps.setString(1, rut);
-            rs = ps.executeQuery(sql);
-            if (rs.getRow() > 0) {
-                resultado = true;
+            ResultSet rs = ps.executeQuery();            
+            while (rs.next()) {
+                if (rs.getRow() > 0)
+                    resultado = true;
             }
             rs.close();
             ps.close();
@@ -1037,7 +1038,8 @@ public class DaoEntidades {
                 resultado = true;
             }
             catch (SQLException se) {
-                Logger.getLogger(DaoEntidades.class.getName()).log(Level.SEVERE, null, se);
+                Logger.getLogger(DaoEntidades.class.getName())
+                        .log(Level.SEVERE, null, se);
             }
         }
         return resultado;

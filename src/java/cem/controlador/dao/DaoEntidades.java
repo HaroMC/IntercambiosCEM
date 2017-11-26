@@ -437,6 +437,39 @@ public class DaoEntidades {
         return listado;
     }
     
+    public ArrayList<Programa> listarProgramasParaPostularCel() {
+        ArrayList<Programa> listado = null;
+        String sql = "SELECT * FROM CEM.PROGRAMA";
+        try {
+            Conexion conexion = new Conexion();
+            c = conexion.abrir();
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            listado = new ArrayList<>();
+            while (rs.next()) {
+                if (rs.getString(6).equalsIgnoreCase("Sin CEL asignado"))  {
+                    listado.add(new Programa(
+                            rs.getLong(1),
+                            rs.getString(2),
+                            rs.getDate(3),
+                            rs.getDate(4),
+                            rs.getInt(5),
+                            rs.getString(6)
+                    ));
+                }
+            }
+            rs.close();
+            ps.close();
+            c.close();
+            conexion.cerrar();
+        }
+        catch (SQLException se) {
+            Logger.getLogger(DaoEntidades.class.getName())
+                    .log(Level.SEVERE, null, se);
+        }
+        return listado;
+    }
+    
     public boolean eliminarPrograma(long codigo) {
         boolean resultado = false;
         String sql = "DELETE FROM CEM.PROGRAMA WHERE CODIGO = ?";

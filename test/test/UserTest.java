@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
@@ -22,7 +23,7 @@ public class UserTest {
         DaoEntidades dao = new DaoEntidades();
         Usuario objUsuario;
         
-        DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        /*DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         
         Calendar cal = Calendar.getInstance();
         Date fechaRegistro;
@@ -64,6 +65,12 @@ public class UserTest {
         else {
             System.out.println("\nEl rut " + rut + " NO existe en la base de datos.\n");
         }*/
+        
+        ArrayList<Programa> listaProgramasParaCel = dao.listarProgramasParaPostularCel();
+        
+        for (Programa programa : listaProgramasParaCel) {
+            System.out.println("Nombre: " + programa.getNombre() + "\nEstado: " + programa.getEstado());
+        }
     }
     
     public static boolean comprobarRutExistente(String rut) {

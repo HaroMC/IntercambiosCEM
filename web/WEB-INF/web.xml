@@ -52,6 +52,10 @@
         <servlet-name>CemFamiliasServlet</servlet-name>
         <servlet-class>cem.controlador.servlet.CemFamiliasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CelProgramasServlet</servlet-name>
+        <servlet-class>cem.controlador.servlet.CelProgramasServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>CemFamiliasServlet</servlet-name>
         <url-pattern>/cem-familias</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CelProgramasServlet</servlet-name>
+        <url-pattern>/cel-programas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

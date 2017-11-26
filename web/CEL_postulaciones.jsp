@@ -90,7 +90,7 @@
 
                 <tbody id="myTable2">
                     <tr>
-                        <td>001</td>>
+                        <td>001</td>
                         <td>Ingles</td>
                         <td>11/06/1017</td>
                         <td>11/07/1017</td>
@@ -98,7 +98,7 @@
                         <td>En Espera</td>
                     </tr>
                     <tr>
-                        <td>002</td>>
+                        <td>002</td>
                         <td>Recursos Humanos</td>
                         <td>11/06/1017</td>
                         <td>11/07/1017</td>

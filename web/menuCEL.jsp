@@ -28,7 +28,7 @@
                     <a class="navbar-brand" href="#">WebSiteName</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="CEL_home.jsp">Home</a></li>
+                    <li><a href="CEL_home.jsp">Home</a></li>
                     <li><a href="CEL_calificaciones.jsp">Calificaciones</a></li>
                     <li><a href="CEL_postulaciones.jsp">Postulaciones</a></li>
                 </ul>

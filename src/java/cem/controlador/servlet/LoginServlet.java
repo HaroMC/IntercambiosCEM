@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
         
         switch (perfil) {
             case "Administrador":
-                response.sendRedirect("menuCEM.jsp");
+                response.sendRedirect("CEM_perfil.jsp");
                 break;
                 
             case "CEL":

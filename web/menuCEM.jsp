@@ -44,8 +44,8 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración de usuarios
                             <span class="caret"> </span> </a>
                         <ul class="dropdown-menu">
-                            <li> <a href="alumnos.htm"> Alumnos </a> </li>
-                            <li> <a href="familias.htm"> Familias </a> </li>
+                            <li> <a href="cem-alumnos"> Alumnos </a> </li>
+                            <li> <a href="cem-familias"> Familias </a> </li>
                         </ul>
                     </li>
                     <li class="dropdown">

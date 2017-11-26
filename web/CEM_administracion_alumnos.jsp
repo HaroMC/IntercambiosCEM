@@ -19,11 +19,11 @@
     </head>
     <body>
         <%@include  file="menuCEM.jsp" %>
-     
-         <!--  EJEMPLO DE COMO DARLE UNA CLASE A UN BOTON, aveces lo olvido :V
-            <a href="CEM_agregarAlumno.jsp" class="btn btn-primary">agregar alumno</a>
-            -->
-        
+
+        <!--  EJEMPLO DE COMO DARLE UNA CLASE A UN BOTON, aveces lo olvido :V
+           <a href="CEM_agregarAlumno.jsp" class="btn btn-primary">agregar alumno</a>
+        -->
+
         <!--tabla que representa el listado de alumnos-->
         <br/>
         <div class="container">
@@ -36,12 +36,7 @@
                     <tr>
                         <th>Rut</th>
                         <th>Nombre Completo</th>
-                        <td><button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-minus"></i>
-                            </button></td>
-                        <td><button type="button" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-pencil"></i>
-                            </button></td>
+
                     </tr>
                 </thead>
                 <tbody id="myTable2">
@@ -49,21 +44,25 @@
                         <tr>
                             <td> <c:out value="${p.rut}" /> </td>
                             <td> <c:out value="${p.nombreCompleto}" /> </td>
+                            <td><button type="button" class="btn btn-primary">
+                                    <i class="glyphicon glyphicon-minus"></i>
+                                </button></td>
+                           
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>          
         </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
         <div class="container">
             <h2>Notas por Asignatura</h2>           
             <table class="table table-bordered table-striped">

@@ -41,26 +41,26 @@
                 <ul class="nav navbar-nav">
                     <li> <a href="CEM_perfil.jsp"> Perfil </a> </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración de Usuarios
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administración de usuarios
                             <span class="caret"> </span> </a>
                         <ul class="dropdown-menu">
                             <li> <a href="alumnos.htm"> Alumnos </a> </li>
-                            <li> <a href="familias.htm"> Familia </a> </li>
+                            <li> <a href="familias.htm"> Familias </a> </li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Administración de programas
                             <span class="caret"> </span> </a>
                         <ul class="dropdown-menu">
-                            <li> <a href="cem-programas"> Ver listado de Programas </a> </li>
-                            <li> <a href="CEM_agregarPrograma.jsp"> Agregar Programas </a> </li>
+                            <li> <a href="cem-programas"> Ver listado de programas </a> </li>
+                            <li> <a href="CEM_agregarPrograma.jsp"> Agregar programas </a> </li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Consultar Postulaciones
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Consultar postulaciones
                             <span class="caret"> </span> </a>
                         <ul class="dropdown-menu">
-                            <li> <a href="CEM_postulasiones_CEL.jsp"> CEL's </a> </li>
+                            <li> <a href="CEM_postulasiones_CEL.jsp"> Centros de estudio locales </a> </li>
                             <li> <a href="CEM_postulasiones_alumnos.jsp"> Alumnos </a> </li>
                         </ul>
                     </li>

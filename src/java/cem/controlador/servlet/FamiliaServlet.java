@@ -29,6 +29,8 @@ public class FamiliaServlet extends HttpServlet {
         FamiliaAnfitriona objFamilia =
                 dao.buscarFamilia(objUsuario.getRut());
         
+        request.getRequestDispatcher("CEM_administracion_familia.jsp")
+                .forward(request, response);
     }
 
     @Override

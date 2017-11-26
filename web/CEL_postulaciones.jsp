@@ -85,7 +85,7 @@
         <div class="container">
             <h2>Programas a los que estas postulando </h2>      
             <p>Si necesitas buscar un programa a los cuales has postulado hazlo aqui:</p>
-            <input class="form-control" id="myInput2" type="text"
+            <input class="form-control" id="myInput3" type="text"
                    placeholder="Escribe aca lo que buscas..">
             <br>
             <table class="table table-bordered table-striped">
@@ -100,7 +100,7 @@
                     </tr>
                 </thead>
 
-                <tbody id="myTable2">
+                <tbody id="myTable3">
                     <tr>
                         <td>001</td>
                         <td>Ingles</td>
@@ -123,21 +123,12 @@
                 Eliminar Postulación
             </button>
         </div>
+     
         <script>
             $(document).ready(function () {
-                $("#myInput").on("keyup", function () {
+                $("#myInput3").on("keyup", function () {
                     var value = $(this).val().toLowerCase();
-                    $("#myTable tr").filter(function () {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#myInput2").on("keyup", function () {
-                    var value = $(this).val().toLowerCase();
-                    $("#myTable2 tr").filter(function () {
+                    $("#myTable3 tr").filter(function () {
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                     });
                 });

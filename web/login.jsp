@@ -86,13 +86,13 @@
                                 <h5>Si no estas registrado y eres alumno o familia anfitriona elije una opcion</h5>
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-6 col-md-6">
-                                        <a href="" class="btn btn-lg btn-primary btn-block">Si eres alumno presiona aca</a>
+                                        <a href="registro/alumno.jsp" class="btn btn-lg btn-primary btn-block">Si eres alumno matriculado, regístrate aquí</a>
                                     </div>                                  
                                 </div>
                                 <br/>   
                                 <div class="row">
                                     <div class="col-xs-3 col-sm-6 col-md-6">
-                                        <a href="registro.jsp" class="btn btn-lg btn-primary btn-block">Si eres familia presiona aca</a>
+                                        <a href="registro/familia.jsp" class="btn btn-lg btn-primary btn-block">Si deseas ser una familia anfitriona, regístrate aquí</a>
                                     </div>   
                                 </div>
                                 <label> ${mensaje} </label>         

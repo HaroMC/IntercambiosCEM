@@ -22,29 +22,6 @@
             <br />
             <form action="registrar?tipo=alumno" method="post"
                   class="form-horizontal">
-                <!--
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Nombre(s) del jefe de familia
-                    </label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control"
-                               name="nombreJefeFamilia" 
-                               placeholder="Indique su(s) nombre(s)"
-                               required="true" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"> Apellido(s) </label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control"
-                               name="apellidoJefeFamilia" 
-                               placeholder="Indique su(s) apellido(s)"
-                               required="true" />
-                    </div>
-                </div>
-                -->
                 <div class="form-group">
                     <label class="col-sm-2 control-label"> RUN </label>
                     <div class="col-sm-5">
@@ -52,79 +29,6 @@
                                placeholder="12345678-9" required="true">
                     </div>
                 </div>
-                <!--
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Fecha de nacimiento
-                    </label>
-                    <div class="col-sm-5">
-                        <input type="date" class="form-control"
-                               name="fechaNacimiento" 
-                               required="true"
-                               placeholder="Indique su fecha de nacimiento" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"> Domicilio </label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="domicilio" 
-                               placeholder="Calle de ubicación de la vivienda"
-                               required="true" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"> Ciudad </label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="ciudad" 
-                               placeholder="Ciudad de residencia"
-                               required="true" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"> País </label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="pais" 
-                               placeholder="País de residencia"
-                               required="true" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Correo electrónico
-                    </label>
-                    <div class="col-sm-5">
-                        <input type="email" class="form-control" name="correo" 
-                               placeholder="nombre-correo@proveedor-correo.com"
-                               required="true" />
-                    </div> 
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Teléfono de contacto
-                    </label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" name="telefono" 
-                               placeholder="(+56) 2 2123 4567" required="true" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Cantidad de integrantes
-                    </label>
-                    <div class="col-sm-5">
-                        <input type="int" class="form-control"
-                               name="cantidadIntegrantes" 
-                               placeholder="Número de integrantes de su grupo familiar"
-                               required="true" />
-                    </div>
-                </div>
-                -->
                 <div class="form-group">
                     <label class="col-sm-2 control-label">
                         Nombre de usuario

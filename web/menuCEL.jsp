@@ -30,13 +30,13 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="CEL_home.jsp">Home</a></li>
                     <li><a href="CEL_calificaciones.jsp">Calificaciones</a></li>
-                    <li><a href="CEL_postulaciones.jsp">Postulaciones</a></li>
+                    <li><a href="cel-programas"> Postulaciones </a></li>
                 </ul>
                 <!-- ------------------------------------------------------- -->
                 <label class="nav navbar-nav navbar-right" style="color: white">
                     
-                    Bienvenido, <%/*= ((Usuario)(session
-                            .getAttribute("usuarioActual"))).getNombre() */%>
+                    Bienvenido, <%= ((Usuario)(session
+                            .getAttribute("usuarioActual"))).getNombre() %>
                             
                     <br />
                     <form action="salir" method="get">

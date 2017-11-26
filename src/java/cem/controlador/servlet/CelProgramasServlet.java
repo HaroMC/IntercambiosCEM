@@ -29,9 +29,7 @@ public class CelProgramasServlet extends HttpServlet {
         if (accion != null) {
             if (accion.compareToIgnoreCase("eliminar") == 0) {
                 long codigo = Long.parseLong(request.getParameter("codigo"));
-                if (dao.eliminarPrograma(codigo)) {
-                    
-                }
+                
             }
         }
         else {
@@ -51,7 +49,8 @@ public class CelProgramasServlet extends HttpServlet {
     private void cargarLista(HttpServletRequest request)
             throws ServletException, IOException {
         
-        ArrayList<Programa> programasDisponiblesCel = dao.listarProgramas();
+        ArrayList<Programa> programasDisponiblesCel =
+                dao.listarProgramasParaPostularCel();
         request.getSession().setAttribute(
                 "programasDisponiblesCel", programasDisponiblesCel);
     }

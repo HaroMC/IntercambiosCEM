@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,65 +20,55 @@
     <body>
         <%@include file="menuCEL.jsp" %>
         <div class="container">
-            <h2>Programas a los cuales puede postular </h2>      
+            <h2>Programas </h2>      
             <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
-            <input class="form-control" id="myInput" type="text" placeholder="Escribe aca lo que buscas..">
+            <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
             <br/>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">${mensaje}</label>
+
+            </div>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Codigo</th>
-                        <th>Nombre</th>
-                        <th>Fecha de Inicio</th>
-                        <th>Fecha de Termino</th>
-                        <th>Valor</th>
-                        <th>Estado</th>
-                        <th>Codigo_asignatura</th>
+                        <th>Nombre</th>   
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
-                <tbody id="myTable">
+                <tbody id="myTable2">
+                <c:forEach var="p" items="${listadoProgramas}" >
                     <tr>
-                        <td>001</td>>
-                        <td>Ingles</td>
-                        <td>11/06/1017</td>
-                        <td>11/07/1017</td>
-                        <td>$1.800.000</td>
-                        <td>Estado</td>
-                        <td>002</td>
+                        <td> <c:out value="${p.codigo}" /> </td>
+                    <td> <c:out value="${p.nombre}" /> </td>
+                    <td><button type="button" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-minus"></i>
+                        </button></td>
+                    <td><button type="button" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                        </button></td>
                     </tr>
-                    <tr>
-                        <td>002</td>>
-                        <td>Recursos Humanos</td>
-                        <td>11/06/1017</td>
-                        <td>11/07/1017</td>
-                        <td>$1.400.000</td>
-                        <td>Estado</td>
-                        <td>003</td>
-                    </tr>
-                    <tr>
-                        <td>003</td>>
-                        <td>Desarrollo en MEAN</td>
-                        <td>11/06/1017</td>
-                        <td>11/07/1017</td>
-                        <td>$1.900.000</td>
-                        <td>Estado</td>
-                        <td>004</td>
-                    </tr>
-                    <tr>
-                        <td>004</td>>
-                        <td>Desarrollo Full Stack</td>
-                        <td>11/06/1017</td>
-                        <td>11/07/1017</td>
-                        <td>$1.900.000</td>
-                        <td>Estado</td>
-                        <td>005</td>
-                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
             <button type="button" class="btn btn-primary">
                 Postular
             </button>
         </div>
+
+        <script>
+            $(document).ready(function () {
+                $("#myInput2").on("keyup", function () {
+                    var value = $(this).val().toLowerCase();
+                    $("#myTable2 tr").filter(function () {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
+
+
 
 
         <div class="container">

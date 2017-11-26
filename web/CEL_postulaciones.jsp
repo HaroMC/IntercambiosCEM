@@ -20,8 +20,8 @@
     <body>
         <%@include file="menuCEL.jsp" %>
         <div class="container">
-            <h2>Programas </h2>      
-            <p>Si necesitas buscar un programa en especifico puedes hacerlo aqui:</p>
+            <h2>Programas dispnibles para postular</h2>      
+            <p>Si necesitas buscar un programa específico, puedes hacerlo desde aquí</p>
             <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
             <br/>
             <div class="form-group">
@@ -38,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody id="myTable2">
-                <c:forEach var="p" items="${listadoProgramas}" >
+                <c:forEach var="p" items="${programasDisponiblesCel}" >
                     <tr>
                         <td> <c:out value="${p.codigo}" /> </td>
                     <td> <c:out value="${p.nombre}" /> </td>

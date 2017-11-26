@@ -3,16 +3,9 @@
          pageEncoding="UTF-8"
          import="cem.modelo.entidad.Usuario" 
          session="true" %>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"
-           prefix="c" %>
-
-<%  if (session.getAttribute("usuarioActual") == null) {
-       response.sendRedirect("no-autorizado.html");
-    }
-%>
-
+        
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,6 +16,23 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
     </head>
     <body>
+        <%
+            /**
+             * Código que verifica si el usuario en sesión puede visitar esta
+             * página. De no tener permiso, se le redirecciona a la página
+             * "no autorizado".
+             */
+            if (session.getAttribute("usuarioActual") == null) {
+                response.sendRedirect("no-autorizado.html");
+            }
+            else {
+                if (((Usuario) session.getAttribute("usuarioActual"))
+                        .getPerfil()
+                        .compareToIgnoreCase("Administrador") != 0) {
+                    response.sendRedirect("no-autorizado.html");
+                }
+            }
+        %>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -54,17 +64,18 @@
                             <li> <a href="CEM_postulasiones_alumnos.jsp"> Alumnos </a> </li>
                         </ul>
                     </li>
-                </ul>   
+                </ul>
+                
                 <!-- ------------------------------------------------------- -->
                 <label class="nav navbar-nav navbar-right" style="color: white">
-                    Bienvenido, <%= ((Usuario)(session
-                            .getAttribute("usuarioActual"))).getNombre() %>
+                    Bienvenido, <%//= ((Usuario)(session.getAttribute("usuarioActual"))).getNombre() %>
                     <br />
                     <form action="salir" method="get">
                         <input type="submit" value="Cerrar sesión" />
                     </form>
                 </label>
                 <!-- ------------------------------------------------------- -->
+                
             </div>
         </nav>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

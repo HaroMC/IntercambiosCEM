@@ -17,33 +17,28 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void init() {
         dao = new DaoEntidades();
+        //sesion = null;
     }
 
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.getRequestDispatcher("login.jsp")
-                .include(request, response);
-
+        
         Usuario usuarioActual = dao.buscarUsuario(
                 request.getParameter("nombreUsuario"),
                 request.getParameter("contrasena")
         );
 
         if (usuarioActual != null) {
-            
             sesion = request.getSession(true);
-            
             sesion.setAttribute("usuarioActual", usuarioActual);
-            
-            redireccionarPerfil(request, response, usuarioActual.getPerfil());
+            redireccionarPerfil(response, usuarioActual.getPerfil());
         }
         else {
             String mensaje = "Sus credenciales no son válidas.";
             request.setAttribute("mensaje", mensaje);
-            request.getRequestDispatcher("login.jsp")
+            request.getRequestDispatcher("ingresar")
                     .forward(request, response);
         }
     }
@@ -53,21 +48,21 @@ public class LoginServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         
-        sesion = request.getSession();
-        
+        /*sesion = request.getSession();
         if ((Usuario) sesion.getAttribute("usuarioAcual") != null) {
             String perfil = ((Usuario) sesion
                     .getAttribute("usuarioActual"))
                     .getPerfil();
-            redireccionarPerfil(request, response, perfil);
+            redireccionarPerfil(response, perfil);
         }
         else {
             response.sendRedirect("login.jsp");
-        }
+        }*/
+        response.sendRedirect("login.jsp");
     }
 
-    private void redireccionarPerfil(HttpServletRequest request,
-            HttpServletResponse response, String perfil)
+    private void redireccionarPerfil(HttpServletResponse response,
+            String perfil)
             throws ServletException, IOException {
         
         switch (perfil) {
@@ -76,20 +71,20 @@ public class LoginServlet extends HttpServlet {
                 break;
                 
             case "CEL":
-                response.sendRedirect("menuCEL.jsp");
+                response.sendRedirect("CEL_home.jsp");
                 break;
                 
             case "Alumno":
-                response.sendRedirect("menuAlumno.jsp");
+                response.sendRedirect("Alumno_perfil.jsp");
                 break;
                 
             case "Familia":
-                response.sendRedirect("menuFamilia.jsp");
+                response.sendRedirect("Familia_perfil.jsp");
                 break;
                 
             default:
                 response.sendRedirect("no-autorizado.html");
         }
     }
-
+    
 }

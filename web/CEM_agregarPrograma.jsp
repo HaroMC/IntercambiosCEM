@@ -1,12 +1,9 @@
-    
-<%-- 
-    Document   : agregarPrograma
-    Created on : 16-10-2017, 02:25:50 AM
-    Author     : David
---%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ page contentType="text/html"
+         pageEncoding="UTF-8"
+         import="cem.modelo.entidad.Usuario" 
+         session="true" %>
+        
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,6 +15,23 @@
         <title>Agregar Programa</title>
     </head>
     <body>
+        <%
+            /**
+             * Código que verifica si el usuario en sesión puede visitar esta
+             * página. De no tener permiso, se le redirecciona a la página
+             * "no autorizado".
+             */
+            if (session.getAttribute("usuarioActual") == null) {
+                response.sendRedirect("no-autorizado.html");
+            }
+            else {
+                if (((Usuario) session.getAttribute("usuarioActual"))
+                        .getPerfil()
+                        .compareToIgnoreCase("Administrador") != 0) {
+                    response.sendRedirect("no-autorizado.html");
+                }
+            }
+        %>
         <%@include file="menuCEM.jsp" %>
         <div class="container">
             <h1>Agregar Programa</h1>

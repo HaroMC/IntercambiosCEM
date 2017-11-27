@@ -58,7 +58,7 @@
                     <tr>
                         <th>Rut</th>
                         <th>Nombre Completo</th>
-
+                        <th>Nombre de Usuario</th>
                     </tr>
                 </thead>
                 <tbody id="myTable2">
@@ -66,6 +66,7 @@
                         <tr>
                             <td> <c:out value="${p.rut}" /> </td>
                             <td> <c:out value="${p.nombreCompleto}" /> </td>
+                            <td> <c:out value="${p.nombre}" /> </td>
                             <td><button type="button" class="btn btn-primary">
                                     <i class="glyphicon glyphicon-minus"></i>
                                 </button></td>

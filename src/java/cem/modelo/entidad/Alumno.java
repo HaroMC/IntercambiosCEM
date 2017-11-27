@@ -32,6 +32,21 @@ public class Alumno extends Persona {
         this.calificaciones = new ArrayList<>();
     }
     
+    public Alumno(long numeroMatricula, Date fechaMatricula, byte esMoroso,
+            String rutPersona, String nombreCompleto, Date fechaNacimiento,
+            String domicilio, String ciudad, String pais, String correo,
+            String telefono, String tipo, Usuario usuario) {
+        
+        super (rutPersona, nombreCompleto, fechaNacimiento, domicilio, ciudad,
+                pais, correo, telefono, tipo, usuario);
+        
+        this.numeroMatricula = numeroMatricula;
+        this.fechaMatricula = fechaMatricula;
+        this.esMoroso = esMoroso;
+        this.certificados = new ArrayList<>();
+        this.calificaciones = new ArrayList<>();
+    }
+    
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc=" Accesadores ">

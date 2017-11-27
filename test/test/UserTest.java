@@ -23,6 +23,13 @@ public class UserTest {
         DaoEntidades dao = new DaoEntidades();
         Usuario objUsuario;
         
+        ArrayList<Alumno> alumnos = dao.listarAlumnos();
+        for (Alumno alumno : alumnos) {
+            System.out.println(alumno.toString());
+        }
+        
+        
+        
         /*DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         
         Calendar cal = Calendar.getInstance();
@@ -65,36 +72,12 @@ public class UserTest {
         else {
             System.out.println("\nEl rut " + rut + " NO existe en la base de datos.\n");
         }*/
-        
+        /*
         ArrayList<Programa> listaProgramasParaCel = dao.listarProgramasParaPostularCel();
         
         for (Programa programa : listaProgramasParaCel) {
             System.out.println("Nombre: " + programa.getNombre() + "\nEstado: " + programa.getEstado());
-        }
+        }*/
     }
     
-    public static boolean comprobarRutExistente(String rut) {
-        boolean resultado = false;
-        String sql = "SELECT * FROM CEM.PERSONA WHERE RUT = ?";
-        try {
-            Conexion conexion = new Conexion();
-            Connection c = conexion.abrir();
-            PreparedStatement ps = c.prepareStatement(sql);
-            ps.setString(1, rut);
-            ResultSet rs = ps.executeQuery();            
-            while (rs.next()) {
-                if (rs.getRow() > 0)
-                    resultado = true;
-            }
-            rs.close();
-            ps.close();
-            c.close();
-            conexion.cerrar();
-        }
-        catch (SQLException se) {
-            Logger.getLogger(DaoEntidades.class.getName())
-                    .log(Level.SEVERE, null, se);
-        }
-        return resultado;
-    }
 }

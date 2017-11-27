@@ -197,10 +197,11 @@ public class DaoEntidades {
     
     public ArrayList<Alumno> listarAlumnos() {
         ArrayList<Alumno> listado = new ArrayList<>();
-        String sql = "SELECT NUMERO_MATRICULA, FECHA_MATRICULA, ES_MOROSO, "
-                + "RUT_PERSONA, NOMBRE_COMPLETO, FECHA_NACIMIENTO, DOMICILIO, "
-                + "CIUDAD, PAIS, CORREO, TELEFONO, TIPO FROM CEM.ALUMNO "
-                + "INNER JOIN CEM.PERSONA ON ALUMNO.RUT_PERSONA = PERSONA.RUT";
+        
+        String sql = "SELECT * FROM CEM.ALUMNO INNER JOIN CEM.PERSONA "
+                + "ON ALUMNO.RUT_PERSONA = PERSONA.RUT "
+                + "INNER JOIN CEM.USUARIO ON PERSONA.RUT = USUARIO.RUT_PERSONA";
+        
         try {
             Conexion conexion = new Conexion();
             c = conexion.abrir();
@@ -209,19 +210,27 @@ public class DaoEntidades {
             while (rs.next()) {
                 listado.add(new Alumno(
                         // Datos de alumno:
-                        rs.getLong(1),
-                        rs.getDate(2),
-                        rs.getByte(3),
+                        rs.getLong(2),
+                        rs.getDate(3),
+                        rs.getByte(4),
                         // Datos de persona:
-                        rs.getString(4),
                         rs.getString(5),
-                        rs.getDate(6),
-                        rs.getString(7),
+                        rs.getString(6),
+                        rs.getDate(7),
                         rs.getString(8),
                         rs.getString(9),
                         rs.getString(10),
                         rs.getString(11),
-                        rs.getString(12)
+                        rs.getString(12),
+                        rs.getString(13),
+                        new Usuario(
+                                rs.getInt(14),
+                                rs.getString(15),
+                                rs.getString(16),
+                                rs.getDate(17),
+                                rs.getString(18),
+                                rs.getString(19)
+                        )
                 ));
             }
             rs.close();
@@ -235,6 +244,7 @@ public class DaoEntidades {
         }
         return listado;
     }
+    
     
     /**
      * 

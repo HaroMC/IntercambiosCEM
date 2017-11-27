@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class AlumnoServlet extends HttpServlet {
+public class CemAlumnoServlet extends HttpServlet {
 
     private DaoEntidades dao;
     
@@ -41,6 +41,9 @@ public class AlumnoServlet extends HttpServlet {
                     .getAttribute("usuarioActual")).getPerfil();
             
             ArrayList<Alumno> listadoAlumnos = dao.listarAlumnos();
+            
+            //Alumno alumno = new Alumno();
+            //String usuario = alumno.getUsuario().getNombre();
             
             request.getSession().setAttribute("listadoAlumnos", listadoAlumnos);
             

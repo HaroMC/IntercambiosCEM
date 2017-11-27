@@ -16,24 +16,26 @@
     </head>
     <body>
         <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#"> WebSiteName </a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                        <li><a href="Familia_perfil.jsp"> Perfil </a></li>                    
-                        <li><a href="Familia_antecedentes.jsp"> Antecedentes </a></li>
-                    </ul>
-                    <!-- --------------------------------------------------- -->
-                    <label class="nav navbar-nav navbar-right" style="color: white">
-                        Bienvenido(a), <%= ((Usuario)(session.getAttribute("usuarioActual"))).getNombre() %>
-                        <br />
-                        <form action="salir" method="get">
-                            <input type="submit" value="Cerrar sesión" />
-                        </form>
-                    </label>
-                    <!-- --------------------------------------------------- -->
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"> WebSiteName </a>
                 </div>
-            </nav>
+                <ul class="nav navbar-nav">
+                    <li><a href="Familia_perfil.jsp"> Perfil </a></li>                    
+                    <li><a href="Familia_antecedentes.jsp"> Antecedentes </a></li>
+                </ul>
+                <!-- --------------------------------------------------- -->
+                <label class="nav navbar-nav navbar-right label label-default" style="color: white; width: 10%; height: 50px">
+                    <br/>
+                    Bienvenido, <%= ((Usuario) (session.getAttribute("usuarioActual"))).getNombre()%>
+                    <br/>
+                    <br/>
+                    <form  class="label label-default" style="color: #204d74" action="salir" method="get">
+                        <input type="submit" value="Cerrar sesión" />
+                    </form>
+                </label>
+                <!-- --------------------------------------------------- -->
+            </div>
+        </nav>
     </body>
 </html>

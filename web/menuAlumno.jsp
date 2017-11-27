@@ -15,13 +15,10 @@
     perfil del usuario.
 -->
 <%  if (session.getAttribute("usuarioActual") == null) {
-       response.sendRedirect("no-autorizado.html");
-    }
-    else {
-        if (((Usuario) session.getAttribute("usuarioActual"))
-                .getPerfil().compareToIgnoreCase("Alumno") != 0) {
-            response.sendRedirect("no-autorizado.html");
-        }
+        response.sendRedirect("no-autorizado.html");
+    } else if (((Usuario) session.getAttribute("usuarioActual"))
+            .getPerfil().compareToIgnoreCase("Alumno") != 0) {
+        response.sendRedirect("no-autorizado.html");
     }
 %>
 
@@ -45,6 +42,15 @@
                     <li><a href="Alumno_perfil.jsp"> Perfil </a></li>                    
                     <li><a href="alumnos-programas"> Postulaciones </a></li>
                 </ul>
+                <label class="nav navbar-nav navbar-right label label-default" style="color: white; width: 10%; height: 50px">
+                    <br/>
+                    Bienvenido, <%= ((Usuario) (session.getAttribute("usuarioActual"))).getNombre()%>
+                    <br/>
+                    <br/>
+                    <form  class="label label-default" style="color: #204d74" action="salir" method="get">
+                        <input type="submit" value="Cerrar sesión" />
+                    </form>
+                </label>
             </div>
         </nav>
     </body>

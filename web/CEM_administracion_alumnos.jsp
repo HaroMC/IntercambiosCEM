@@ -80,15 +80,6 @@
             </table>          
         </div>
 
-
-
-
-
-
-
-
-
-
         <div class="container">
             <h2>Notas por Asignatura</h2>           
             <table class="table table-bordered table-striped">
@@ -96,6 +87,7 @@
                     <tr>
                         <th>Nombre  Completo</th>
                         <th>Programa</th>
+                        <th>Estado</th>
                         <th>Asignatura</th>
                         <th>Nota 1</th>
                         <th>Nota 2</th>
@@ -106,7 +98,8 @@
                 <tbody>
                     <tr>
                         <td>Cecilia Fernanda Moreno Lira</td>
-                        <td>Programa1</td>
+                        <td>Programa1</td>  
+                        <td>Terminado</td>
                         <td>Asignatura 1</td>
                         <td></td>
                         <td></td>
@@ -115,7 +108,8 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td></td>                        
+                        <td></td>
+                        <td></td>
                         <td>Asignatura 2</td>
                         <td></td>
                         <td></td>
@@ -125,7 +119,38 @@
                     <tr>
                         <td></td>
                         <td></td>
-                        <td>Asignatura 3</td>
+                        <td></td>
+                        <td>Asignatura 3</td> 
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                       <tr>
+                        <td>Cecilia Fernanda Moreno Lira</td>
+                        <td>Programa2</td>  
+                        <td>Cursando</td>
+                        <td>Asignatura 1</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Asignatura 2</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Asignatura 3</td> 
                         <td></td>
                         <td></td>
                         <td></td>

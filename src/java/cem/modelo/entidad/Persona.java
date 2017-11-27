@@ -51,6 +51,22 @@ public abstract class Persona {
         this.usuario = null;
     }
     
+    public Persona(String rut, String nombreCompleto, Date fechaNacimiento,
+            String domicilio, String ciudad, String pais, String correo,
+            String telefono, String tipo, Usuario usuario) {
+        
+        this.rut = rut;
+        this.nombreCompleto = nombreCompleto;
+        this.fechaNacimiento = fechaNacimiento;
+        this.domicilio = domicilio;
+        this.ciudad = ciudad;
+        this.pais = pais;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.tipo = tipo;
+        this.usuario = usuario;
+    }
+    
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc=" Accesadores ">
@@ -143,7 +159,9 @@ public abstract class Persona {
                 "Ciudad              : " + ciudad + "\n"+
                 "País                : " + pais + "\n"+
                 "E-mail              : " + correo + "\n"+
-                "Teléfono            : " + telefono + "\n";
+                "Teléfono            : " + telefono + "\n" +
+                "Tipo                : " + tipo + "\n" +
+                "Nombre usuario      : " + usuario.getNombre() + "\n";
     }
     
 }

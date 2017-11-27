@@ -26,7 +26,7 @@
     </servlet>
     <servlet>
         <servlet-name>AlumnoServlet</servlet-name>
-        <servlet-class>cem.controlador.servlet.AlumnoServlet</servlet-class>
+        <servlet-class>cem.controlador.servlet.CemAlumnoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FamiliaServlet</servlet-name>

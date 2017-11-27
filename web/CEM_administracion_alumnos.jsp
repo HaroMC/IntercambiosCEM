@@ -10,7 +10,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-        
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,21 +25,18 @@
         <%
             /**
              * Código que verifica si el usuario en sesión puede visitar esta
-             * página. De no tener permiso, se le redirecciona a la página
-             * "no autorizado".
+             * página. De no tener permiso, se le redirecciona a la página "no
+             * autorizado".
              */
             if (session.getAttribute("usuarioActual") == null) {
                 response.sendRedirect("no-autorizado.html");
-            }
-            else {
-                if (((Usuario) session.getAttribute("usuarioActual"))
-                        .getPerfil()
-                        .compareToIgnoreCase("Administrador") != 0) {
-                    response.sendRedirect("no-autorizado.html");
-                }
+            } else if (((Usuario) session.getAttribute("usuarioActual"))
+                    .getPerfil()
+                    .compareToIgnoreCase("Administrador") != 0) {
+                response.sendRedirect("no-autorizado.html");
             }
         %>
-        
+
         <%@include  file="menuCEM.jsp" %>
 
         <!--  EJEMPLO DE COMO DARLE UNA CLASE A UN BOTON, aveces lo olvido :V
@@ -59,8 +56,9 @@
                         <th>Rut</th>
                         <th>Nombre Completo</th>
                         <th>Nombre de Usuario</th>
-                        <th>Telefono</th>
+                        <th>Telefono</th>                       
                         <th>Eliminar</th>
+                        <th>Ver Datos</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -73,7 +71,9 @@
                             <td><button type="button" class="btn btn-primary">
                                     <i class="glyphicon glyphicon-minus"></i>
                                 </button></td>
-                           
+                            <td><button type="button" class="btn btn-primary">
+                                    <i class="">Ver datos</i>
+                                </button></td>
                         </tr>
                     </c:forEach>
                 </tbody>
@@ -94,7 +94,7 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Nombre  Alumno</th>
+                        <th>Nombre  Completo</th>
                         <th>Programa</th>
                         <th>Asignatura</th>
                         <th>Nota 1</th>
@@ -105,44 +105,34 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
+                        <td>Cecilia Fernanda Moreno Lira</td>
+                        <td>Programa1</td>
+                        <td>Asignatura 1</td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
+                        <td></td>
+                        <td></td>                        
+                        <td>Asignatura 2</td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
+                        <td></td>
+                        <td></td>
+                        <td>Asignatura 3</td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                 </tbody>
-            </table>
-            <button type="button" class="btn btn-primary">
-                <i class="glyphicon glyphicon-plus"></i>
-            </button>
-            <button type="button" class="btn btn-primary">
-                <i class="glyphicon glyphicon-pencil"></i>
-            </button>
-            <button type="button" class="btn btn-primary">
-                <i class="glyphicon glyphicon-minus"></i>
-            </button>
-
+            </table>           
         </div>
         <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>

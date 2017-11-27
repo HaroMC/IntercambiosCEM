@@ -8,6 +8,7 @@ public class Alumno extends Persona {
     private long numeroMatricula;
     private Date fechaMatricula;
     private byte esMoroso;
+    
     private ArrayList<Certificado> certificados;
     private ArrayList<Calificacion> calificaciones;
     
@@ -74,8 +75,8 @@ public class Alumno extends Persona {
     public String toString() {
         return
                 super.toString() +
-                "Número matrícula    : " + numeroMatricula + "\n" +
-                "Fecha Matrícula     : " + fechaMatricula + "\n";
+                "Número matrícula : " + numeroMatricula + "\n" +
+                "Fecha Matrícula  : " + fechaMatricula + "\n";
     }
     
 }

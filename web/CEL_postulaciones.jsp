@@ -26,7 +26,6 @@
             <br/>
             <div class="form-group">
                 <label class="col-sm-2 control-label">${mensaje}</label>
-
             </div>
             <table class="table table-bordered table-striped">
                 <thead>

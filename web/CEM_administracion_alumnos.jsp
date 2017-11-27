@@ -51,7 +51,7 @@
         <div class="container">
             <h2>Alumnos existentes</h2>      
             <p>Si necesitas buscar un Alumno en especifico puedes hacerlo aqui:</p>
-            <input class="form-control" id="myInput2" type="text" placeholder="Escribe aca lo que buscas..">
+            <input class="form-control" id="myInput" type="text" placeholder="Escribe aca lo que buscas..">
             <br/>
             <table class="table table-bordered table-striped">
                 <thead>
@@ -59,14 +59,17 @@
                         <th>Rut</th>
                         <th>Nombre Completo</th>
                         <th>Nombre de Usuario</th>
+                        <th>Telefono</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
-                <tbody id="myTable2">
+                <tbody id="myTable">
                     <c:forEach var="p" items="${listadoAlumnos}" >
                         <tr>
                             <td> <c:out value="${p.rut}" /> </td>
                             <td> <c:out value="${p.nombreCompleto}" /> </td>
-                            <td> <c:out value="${p.nombre}" /> </td>
+                            <td> <c:out value="${p.usuario.nombre}" /> </td>
+                            <td> <c:out value="${p.telefono}" /> </td>
                             <td><button type="button" class="btn btn-primary">
                                     <i class="glyphicon glyphicon-minus"></i>
                                 </button></td>

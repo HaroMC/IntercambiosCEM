@@ -8,7 +8,7 @@
          pageEncoding="UTF-8"
          import="cem.modelo.entidad.Usuario" 
          session="true" %>
-        
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,18 +23,15 @@
         <%
             /**
              * Código que verifica si el usuario en sesión puede visitar esta
-             * página. De no tener permiso, se le redirecciona a la página
-             * "no autorizado".
+             * página. De no tener permiso, se le redirecciona a la página "no
+             * autorizado".
              */
             if (session.getAttribute("usuarioActual") == null) {
                 response.sendRedirect("no-autorizado.html");
-            }
-            else {
-                if (((Usuario) session.getAttribute("usuarioActual"))
-                        .getPerfil()
-                        .compareToIgnoreCase("Administrador") != 0) {
-                    response.sendRedirect("no-autorizado.html");
-                }
+            } else if (((Usuario) session.getAttribute("usuarioActual"))
+                    .getPerfil()
+                    .compareToIgnoreCase("Administrador") != 0) {
+                response.sendRedirect("no-autorizado.html");
             }
         %>
         <%@include  file="menuCEM.jsp" %>
@@ -152,4 +149,14 @@
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
         -->
     </body>
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
 </html>
